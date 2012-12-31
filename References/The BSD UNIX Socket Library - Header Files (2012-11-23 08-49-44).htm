@@ -1,0 +1,1468 @@
+﻿<html><!--
+ Archive processed by SingleFile 
+ url: http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr2/zr2bsdhf.htm 
+ saved date: Fri Nov 23 2012 08:49:43 GMT+0800 (China Standard Time) 
+--><!-- This page produced Wed Apr 25 14:03:34 EDT 2001
+ --><!-- Used program version 1.25 from production --><head>
+<!-- <META http-equiv="Content-Type" content="text/html; charset="> -->
+<title>The BSD UNIX Socket Library : Header Files </title><link type="image/x-icon" rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAAAABMLAAATCwAAAAEAAAAAAADDfQAAxYIKAPLixwDZrF0A27FmAOjNnADEgAYA27JnAMR/AwDiwIMAw34BANKdPwDPljIA0p5BANqvYgDkxIsAx4YRAM6ULgDHhRAA7928AN+6dwDx4MMAxoQNAMWCCQDozp4A5siTAOfMmgDEgAUAyYkYAMWBBwDZrV4A3bVtAM2TLADiv4IA3LRrAOjOnwDr06gA6M2dAOnPoQDGgwwA3rdxAMmLGwDLjSAAxH8EANmsXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALS0tLS0EBgASDAUtLS0tLS0tLS0rACcIAAAACy0tLS0tLS0EJi0tLQUKAAAOLS0tLS0tLS0tLS0tAgAAACMtLS0tLS0tLS0qLS0DAAAHLS0tLS0tLS0AABktDwAAKC0tLS0tLS0cABEtLQMAFxMtLS0tLS0LABYtLS0AAAktLS0tLS0hAAAtLS0BAA0tLS0tLS0VHQAeLS0gACktLS0tLS0tFAAADy0JAAAtLS0tLS0tLR8AACwtLRAtLS0tLS0tLS0kAAAAAi0tLS0tLS0tLS0tLQ4AAAoaLS0tJQctLS0tLS0tDQAAAAgBABstLS0tLS0tLS0YDAEABiItLS0tLfgfAADwDwAA5wcAAP+DAAD+wwAA/EMAAPjDAADxxwAA448AAMMfAADCPwAAw38AAMH/AADg5wAA8A8AAPgfAAA="></head>
+<body bgcolor="#FFFFFF">
+<!-- navigation -->
+<table cellpadding="0" cellspacing="0">
+<tbody><tr valign="top">
+<td align="center">
+<a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr2/lr2bsd.htm">
+<img border="0" src="data:image/gif;base64,R0lGODdhYwAQAKIAAP///8zMzMzMmZmZmWZmZjOZmTNmZgAAACH/CkFkb2JlICAAAAAAIfkEAQAAAAAsAAAAAGMAEAAAA40outz+MMpJawPY6s37xoAnPoZTjmIQhChanMvbeoM6i4Uc67dG1D1OjjeEBSm/wNFiKCqaOeMykpxWoDCsdVLdTppGsJcKHEsMUrT50V1DpAL4uu2ud+j2fCUJCAwIgIGCg4SFhoeIiYqLgAM1fX6OkpOUlZaXmJmam5ySKhgqoaKjpKWmp6ipqqukAAkAOw=="><br><font size="-2">Chapter Contents</font></a></td>
+<td align="center">
+<a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr2/zlr2bsdo.htm">
+<img border="0" src="data:image/gif;base64,R0lGODdhYwAQAKIAAP///8zMzMzMmZmZmWZmZjOZmTNmZgAAACH/CkFkb2JlICAAAAAAIfkEAQAAAAAsAAAAAGMAEAAAA38outz+MMpJawPY6s37xoAnTsZoKkEQnqxQlK03pLFZvHVHzLl34z3NLhDcGH6wImWo1ByBTQkzWjkmqY8plnTdMrTeSDcsAJPPEzN67RgCAgOCfE6v2+/4vH7P78sHM29wgISFhoeIiYqLjI2OhCkYKZOUlZaXmJmam5ydlgAJADs="><br><font size="-2">Previous</font></a></td>
+<td align="center">
+<a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr2/zr2bsdsf.htm">
+<img border="0" src="data:image/gif;base64,R0lGODdhYwAQAKIAAP///8zMzMzMmZmZmWZmZjOZmTNmZgAAACH/CkFkb2JlICAAAAAAIfkEAQAAAAAsAAAAAGMAEAAAA30outz+MMpJawPY6s37xoAnPsVoOkEQnmZRsueQwqP70h4h45598xpdAMjxGYjBHdJiOy4rwmfF5ZROolZJoZqNYLsPLvjxHZst5bPaKwMEBoS4fE6v2+/4vH7Pjw/aKX+Cg4SFhoeIiYqLjIMpGCmRkpOUlZaXmJmam5QACQA7"><br><font size="-2">Next</font></a></td>
+</tr></tbody></table>
+<!-- running head -->
+<table width="100%" cellpadding="4">
+<tbody><tr valign="MIDDLE">
+<td bgcolor="#CCCC99"><i><font size="2">The BSD UNIX Socket Library</font></i></td>
+</tr>
+</tbody></table>
+<h1><font size="5"><a name="zr2bsdhf">Header Files</a></font></h1>
+<p>
+<a name="z1992159">
+The SAS/C Socket Library provides
+header files to enable you to program with socket functions.  A list of the
+header files, accompanied by a brief description of each one and an explanation
+of its structures, follows. Refer to </a><a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr2/zr2porhf.htm">Header Filenames</a> for a discussion of header file naming conventions.
+</p><p><a name="z1992160">
+The header files
+in this section are listed in the following
+order:
+</a>
+</p><ol start="1" type="1">
+<li><a name="z1992161">
+</a>
+<code><b><a name="zid-3919">&lt;sys/types.h&gt;</a></b></code>
+
+<p>
+
+</p></li><li><a name="z1992162">
+</a>
+<code><b><a name="zid-3920">&lt;sys/uio.h&gt;</a></b></code>
+
+<p>
+
+</p></li><li><a name="z1992163">
+</a>
+<code><b><a name="zid-3921">&lt;errno.h&gt;</a></b></code>
+
+<p>
+
+</p></li><li><a name="z1992164">
+</a>
+<code><b><a name="zid-3922">&lt;sys/ioctl.h&gt;</a></b></code>
+
+<p>
+
+</p></li><li><a name="z1992165">
+</a>
+<code><b><a name="zid-3923">&lt;fcntl.h&gt;</a></b></code>
+
+<p>
+
+</p></li><li><a name="z1992166">
+</a>
+<code><b><a name="zid-3924">&lt;sys/socket.h&gt;</a></b></code>
+
+<p>
+
+</p></li><li><a name="z1992167">
+</a>
+<code><b><a name="zid-3925">&lt;netdb.h&gt;</a></b></code>
+
+<p>
+
+</p></li><li><a name="z1992168">
+</a>
+<code><b><a name="zid-3926">&lt;netinet/in_systm.h&gt;</a></b></code>
+
+<p>
+
+</p></li><li><a name="z1992169">
+</a>
+<code><b><a name="zid-3927">&lt;netinet/ip_icmp.h&gt;</a></b></code>
+
+<p>
+
+</p></li><li><a name="z1992170">
+</a>
+<code><b><a name="zid-3928">&lt;netinet/udp.h&gt;</a></b></code>
+
+<p>
+
+</p></li><li><a name="z1992171">
+</a>
+<code><b><a name="zid-3929">&lt;netinet/ip.h&gt;</a></b></code>
+
+<p>
+
+</p></li><li><a name="z1992172">
+</a>
+<code><b><a name="zid-3930">&lt;netinet/in.h&gt;</a></b></code>
+
+<p>
+
+</p></li><li><a name="z1992173">
+</a>
+<code><b><a name="zid-3931">&lt;arpa/inet.h&gt;</a></b></code>
+
+<p>
+
+</p></li><li><a name="z1992174">
+</a>
+<code><b><a name="zid-3932">&lt;arpa/nameser.h&gt;</a></b></code>
+
+<p>
+
+</p></li><li><a name="z1992175">
+</a>
+<code><b><a name="zid-3933">&lt;resolv.h&gt;</a></b></code>
+
+<p>
+
+</p></li><li><a name="z1992176">
+</a>
+<code><b><a name="zid-3934">&lt;net/if.h&gt;</a></b></code>
+
+<p>
+
+</p></li><li><a name="z1992177">
+</a>
+<code><b><a name="zid-3935">&lt;strings.h&gt;</a></b></code>
+
+<p>
+</p></li></ol>
+
+<p><a name="z1992178">
+In
+many cases the contents of one header file depend
+on the prior inclusion of another header file.  The description for each header
+file lists any other header files on which the header file may depend.  Failure
+to adhere to these ordering dependencies usually results in compilation errors.
+ The order that the header files follow in this chapter reflects the dependencies
+between header files.</a>
+</p><p><b>Note:</b>&nbsp;&nbsp;&nbsp;<a name="z1992179">
+Sockets are not defined by
+the POSIX.1 and POSIX.1a standards. Therefore, if your program uses sockets,
+you should not define the symbol </a>
+<code><b><a name="zid-3936">_POSIX_SOURCE</a></b></code>
+, as this will exclude socket-related types from standard
+POSIX header files such as 
+<code><b><a name="zid-3937">&lt;sys/types.h&gt;</a></b></code>
+.&nbsp;&nbsp;<img border="0" src="data:image/gif;base64,R0lGODlhCAAIAID/AP///5mZmSwAAAAACAAIAAACB4yPqcvtXQAAOw==" alt="[cautionend]" align="bottom"><br>
+</p><p><table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr valign="bottom"><td><hr></td></tr>
+<tr valign="top"><td><b><font size="5"><a name="zbsdhfty">&lt;sys/types.h&gt;</a></font></b></td></tr></tbody></table>
+</p><p>
+<a name="z1992180">
+This header file contains definitions to
+allow for the porting of BSD programs.</a>
+</p><p><a name="z1992181">
+</a>
+<code><b><a name="zid-3938">&lt;sys/types.h&gt;</a></b></code>
+ must usually be included before other socket-related header files;
+refer to the individual header file descriptions that follow for the specific
+dependency.
+</p><p><a name="z1992182">
+This header file declares the following </a>
+<code><b><a name="zid-3939">typedef</a></b></code>
+ names for use as abbreviations for three
+commonly used types: 
+
+<table cellpadding="6" cellspacing="2">
+<tbody><tr valign="top"><td></td><td><a name="z1992183">
+</a>
+<code><b><a name="zid-3940">typedef
+unsigned u_char;</a></b></code>
+
+<p><a name="z1992184">
+</a>
+<code><b><a name="zid-3941">u_char;</a></b></code>
+</p></td></tr>
+<tr valign="top"><td></td><td><a name="z1992185">
+</a>
+<code><b><a name="zid-3942">typedef
+unsigned u_short;</a></b></code>
+
+<p><a name="z1992186">
+</a>
+<code><b><a name="zid-3943">u_short;</a></b></code>
+</p></td></tr>
+<tr valign="top"><td></td><td><a name="z1992187">
+</a>
+<code><b><a name="zid-3944">typedef
+unsigned u_long;</a></b></code>
+
+<p><a name="z1992188">
+</a>
+<code><b><a name="zid-3945">u_long;</a></b></code>
+.</p></td></tr></tbody></table>
+</p><p><a name="z1992189">
+The following </a>
+<code><b><a name="zid-3946">typedef</a></b></code>
+ name is commonly used for buffer pointers:  
+
+
+</p><pre><a name="zid-3947">typedef char * caddr_t;</a></pre>
+<p>
+</p><p><a name="z1992190">
+This header file also defines the </a>
+<code><b><a name="zid-3948">FD_SET</a></b></code>
+, 
+<code><b><a name="zid-3949">FD_ZERO</a></b></code>
+, 
+<code><b><a name="zid-3950">FD_CLR</a></b></code>
+, 
+<code><b><a name="zid-3951">FD_ISSET</a></b></code>
+, and 
+<code><b><a name="zid-3952">FD_SETSIZE</a></b></code>
+ macros used by 
+<code><b><a name="zid-3953">select</a></b></code>
+ to manipulate socket descriptors.  Refer
+to <a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr2/lr2sfr.htm">Socket Function Reference</a> for a
+description of these macros.
+<br></p><h3><a name="zbsdhfti">timeval</a></h3>
+<p>
+<a name="z1992191">
+This structure is used by the </a>
+<code><b><a name="zid-3954">select </a></b></code>
+call to set the amount of time for a
+user process to wait. 
+
+
+</p><pre><a name="zid-3955">struct timeval {
+   long tv_sec;     /* seconds      */
+   long tv_usec;    /* microseconds */
+};</a></pre>
+<p>
+</p><p><a name="z1992192">
+For more information on the inclusion of this structure
+in the </a>
+<code><b><a name="zid-3956">&lt;sys/types.h&gt;</a></b></code>
+
+header file, refer to <a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr2/lr2por.htm">Porting UNIX Socket Applications to the SAS/C Environment</a>.
+</p><p><table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr valign="bottom"><td><hr></td></tr>
+<tr valign="top"><td><b><font size="5"><a name="zbsdhfui">&lt;sys/uio.h&gt;</a></font></b></td></tr></tbody></table>
+</p><p>
+<a name="z1992193">
+The structure in the </a>
+<code><b><a name="zid-3957">&lt;sys/uio.h&gt;</a></b></code>
+ header file is described in the following section.  
+<code><b><a name="zid-3958">&lt;sys/types.h&gt;</a></b></code>
+ must be included
+before this header file.
+<br></p><h3><a name="zsdhfiov">iovec</a></h3>
+<p>
+<a name="z1992194">
+This
+structure is used by the </a>
+<code><b><a name="zid-3959">readv</a></b></code>
+, 
+<code><b><a name="zid-3960">writev</a></b></code>
+, 
+<code><b><a name="zid-3961">sendmsg</a></b></code>
+, and 
+<code><b><a name="zid-3962">recvmsg </a></b></code>
+calls.  An array of 
+<code><b><a name="zid-3963">iovec </a></b></code>
+structures describes the pieces of a noncontiguous
+buffer. 
+
+
+</p><pre><a name="zid-3964">struct iovec {
+   void * iov_base;
+   int    iov_len;
+};</a></pre>
+<p>
+</p><p><table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr valign="bottom"><td><hr></td></tr>
+<tr valign="top"><td><b><font size="5"><a name="zbsdhfer">&lt;errno.h&gt;</a></font></b></td></tr></tbody></table>
+</p><p>
+<a name="z1992195">
+This header file contains definitions for
+the macro identifiers that name system error status conditions.  When a SAS/C
+Library function sets an error status by assigning a nonzero value to </a>
+<code><b><a name="zid-3965">errno</a></b></code>
+, the calling program can
+check for a particular value by using the name defined in 
+<code><b><a name="zid-3966">&lt;errno.h&gt;</a></b></code>
+. The following table lists all the 
+<code><b><a name="zid-3967">errno</a></b></code>
+ values normally associated
+with the socket library functions:
+</p><p>
+<table cellpadding="6" cellspacing="0" border="1">
+
+
+<tbody><tr valign="bottom" bgcolor="#CCCCCC">
+  <th align="LEFT" valign="TOP" width="30.05%"><b><a name="z1992196">
+Errno Value</a></b></th>
+  <th align="LEFT" valign="TOP" width="29.55%"><b><a name="z1992197">
+perror message</a></b></th>
+  <th align="LEFT" valign="TOP" width="40.40%"><b><a name="z1992198">
+Explanation</a></b></th>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992199">
+</a>
+<code><b><a name="z1439008">EACCES</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992200">
+permission denied</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992201">
+The program does not have access to this socket.</a></td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992202">
+</a>
+<code><b><a name="z1456805">EADDRINUSE</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992203">
+socket address is already being used</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992204">
+The given address is already in use.</a></td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992205">
+</a>
+<code><b><a name="z1456806">EADDRNOTAVAIL</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992206">
+socket address not usable</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992207">
+The given address is not available on the local host.</a></td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992208">
+</a>
+<code><b><a name="z1456807">EAFNOSUPPORT</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992209">
+unsupported socket addressing family</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992210">
+The addressing family is not supported or is not consistent
+with socket type. The SAS/C Library supports only </a>
+<code><b><a name="z1456808">AF_INET</a></b></code>
+ (and 
+<code><b><a name="z1456809">AF_UNIX</a></b></code>
+ if integrated sockets are used).</td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992211">
+</a>
+<code><b><a name="z1456810">EALREADY</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992212">
+previous connecton not yet completed</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992213">
+The socket is marked for non-blocking I/o, and and earlier </a>
+<code><b><a name="z1456811">connect</a></b></code>
+ call has not yet completed.</td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992214">
+</a>
+<code><b><a name="z1456812">EBADF</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992215">
+file or socket not open or unsuitable</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992216">
+The descriptor value passed does not correspond to an
+open socket or file.</a></td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992217">
+</a>
+<code><b><a name="z1456813">ECONNABORTED</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992218">
+connection aborted by local network software</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992219">
+The local communications software aborted the connection.</a></td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992220">
+</a>
+<code><b><a name="z1456814">ECONNREFUSED</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992221">
+destination host refused socket connection</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992222">
+The destination host refused the socket connection.</a></td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992223">
+</a>
+<code><b><a name="z1456815">ECONNRESET</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992224">
+connection reset by peer</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992225">
+The peer process has reset the connection.</a></td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992226">
+</a>
+<code><b><a name="z1456816">EDESTADDRREQ</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992227">
+socket operation requires destination address</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992228">
+Supply a destination address for this socket.</a></td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992229">
+</a>
+<code><b><a name="z1456817">EHOSTDOWN</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992230">
+destination host is down</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992231">
+The destination host is down.</a></td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992232">
+</a>
+<code><b><a name="z1456818">EHOSTUNREACH</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992233">
+destination host is unreachable</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992234">
+The destination host is unreachable.</a></td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992235">
+</a>
+<code><b><a name="z1456819">EINPROGRESS</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992236">
+socket connection in progress</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992237">
+The connection has begun, but control is returned so
+that the call will not block. The connection is complete when the </a>
+<code><b><a name="z1456820">select</a></b></code>
+ call indicates
+that the socket is ready for writing. This is not an error.</td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992238">
+</a>
+<code><b><a name="z1456821">EISCONN</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992239">
+socket is already connected</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992240">
+The program called </a>
+<code><b><a name="z1439014">connect</a></b></code>
+ on a connected socket.</td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992241">
+</a>
+<code><b><a name="z1456822">EMSGSIZE</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992242">
+message too large for datagram socket</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992243">
+A datagram socket could not accommodate a message as
+large as this one.</a></td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992244">
+</a>
+<code><b><a name="z1456823">ENETDOWN</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992245">
+local host's network down or inaccessible</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992246">
+The program cannot talk to the networking software on
+this local machine, or the host's network is down.</a></td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992247">
+</a>
+<code><b><a name="z1456824">ENETRESET</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992248">
+remote host dropped network communications</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992249">
+The remote host is not communicating over the network
+at this time.</a></td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992250">
+</a>
+<code><b><a name="z1456825">ENETUNREACH</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992251">
+destination network is unreachable</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992252">
+This host cannot find a route to the destination network.</a></td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992253">
+</a>
+<code><b><a name="z1456826">ENOBUFS</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992254">
+insufficient buffers in network software</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992255">
+The operating system did not have enough memory to perform
+the requested operation.</a></td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992256">
+</a>
+<code><b><a name="z1456827">ENOPROTOOPT</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992257">
+option not supported for protocol type</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992258">
+The socket option or option level is invalid.</a></td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992259">
+</a>
+<code><b><a name="z1456828">ENOTCONN</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992260">
+socket is not connected</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992261">
+The socket is not connected.</a></td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992262">
+</a>
+<code><b><a name="zid-3969">ENOTSOCK</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992263">
+file descriptor not associated with a socket</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992264">
+The given file descriptor is either assigned to a file
+or is completely unassigned.</a></td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992265">
+</a>
+<code><b><a name="zid-3970">EOPNOTSUPP</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992266">
+operation not supported on socket</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992267">
+The call does not support this type of socket.</a></td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992268">
+</a>
+<code><b><a name="z1456830">EPFNOSUPPORT</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992269">
+unsupported socket protocol family</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992270">
+The given protocol family is unknown or unsupported
+by the TCP/IP network software.</a></td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992271">
+</a>
+<code><b><a name="z1456831">EPIPE</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992272">
+broken pipe or socket connection</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992273">
+The peer process closed the socket before your process
+was finished with it.</a></td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992274">
+</a>
+<code><b><a name="z1456832">EPROTONOSUPPORT</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992275">
+unsupported socket protocol</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992276">
+The given protocol is unknown or is not supported by
+the TCP/IP network software</a></td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992277">
+</a>
+<code><b><a name="z1456833">EPROTOTYPE</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992278">
+protocol inconsistent with socket type</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992279">
+When calling the socket, the protocol was not </a>
+<code><b><a name="z1456834">0</a></b></code>
+
+and not consistent with the socket type.</td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992280">
+</a>
+<code><b><a name="z1456835">ESHUTDOWN</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992281">
+connection has been shut down</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992282">
+The connection has been shut down.</a></td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992283">
+</a>
+<code><b><a name="z1456836">ESOCKTNOSUPPORT</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992284">
+socket type not allowed</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992285">
+The program specified a socket type that is not supported
+by the TCP/IP network software.</a></td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992286">
+</a>
+<code><b><a name="z1456837">ESYS</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992287">
+operating system interface failure</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992288">
+The underlying operating system software or the TCP/IP
+software returned an abnormal failure condition. Contact TCP/IP vendor.</a></td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992289">
+</a>
+<code><b><a name="z1456838">ETIMEDOUT</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992290">
+socket connection attempt timed out</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992291">
+The destination host did not respond to a connection
+request.</a></td>
+</tr>
+
+
+<tr valign="top" bgcolor="#FFFFFF">
+  
+<td align="LEFT" valign="TOP" width="30.05%"><a name="z1992292">
+</a>
+<code><b><a name="z1456839">EWOULDBLOCK</a></b></code>
+</td>
+  
+<td align="LEFT" valign="TOP" width="29.55%"><a name="z1992293">
+socket operation would block</a></td>
+  
+<td align="LEFT" valign="TOP" width="40.40%"><a name="z1992294">
+The socket is marked for non-blocking I/O, and the call
+would have been blocked. This is not an error.</a></td>
+</tr>
+
+</tbody></table>
+
+</p><p>
+</p><p><b>Note:</b>&nbsp;&nbsp;&nbsp;<a name="z1992295">
+Socket library functions may occasionally set </a>
+<code><b><a name="zid-3971">errno</a></b></code>
+ values not shown in the
+above table. In particular, when integrated sockets are used, <b>UNIX
+System Services</b> (USS) defined 
+<code><b><a name="zid-3972">errno</a></b></code>
+ values may be stored to indicate conditions specific to the USS
+implementation. Common SAS/C 
+<code><b><a name="zid-3973">errno</a></b></code>
+ values are listed in Chapter 1, "Introduction to the SAS/C Library,"
+in  <b>SAS/C Library Reference, Volume 1</b>. Also refer to <a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr2/z2102589.htm#zposixer">POSIX and USS Error Numbers</a> for USS related 
+<code><b><a name="zid-3974">errno</a></b></code>
+ values. For a complete
+listing of all 
+<code><b><a name="zid-3975">errno</a></b></code>
+ values,
+see the <b>SAS/C Compiler and Library Quick Reference Guide</b>.&nbsp;&nbsp;<img border="0" src="data:image/gif;base64,R0lGODlhCAAIAID/AP///5mZmSwAAAAACAAIAAACB4yPqcvtXQAAOw==" alt="[cautionend]" align="bottom"><br>
+</p><p><table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr valign="bottom"><td><hr></td></tr>
+<tr valign="top"><td><b><font size="5"><a name="zsdhfioc">&lt;sys/ioctl.h&gt;</a></font></b></td></tr></tbody></table>
+</p><p>
+<a name="z1992296">
+This header file contains definitions for
+the symbols required by the </a>
+<code><b><a name="zid-3976">ioctl</a></b></code>
+ function, as well as the declaration for 
+<code><b><a name="zid-3977">ioctl</a></b></code>
+.
+</p><p><table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr valign="bottom"><td><hr></td></tr>
+<tr valign="top"><td><b><font size="5"><a name="zbsdhffc">&lt;fcntl.h&gt;</a></font></b></td></tr></tbody></table>
+</p><p>
+<a name="z1992297">
+This header file contains definitions for
+the constants associated with the </a>
+<code><b><a name="zid-3978">fcntl</a></b></code>
+ function, as well as declarations for UNIX style I/O functions.
+Failure to include the 
+<code><b><a name="zid-3979">&lt;sys/uio.h&gt;</a></b></code>
+ header file before this header file may result in a warning message
+if 
+<code><b><a name="zid-3980">readv</a></b></code>
+ or 
+<code><b><a name="zid-3981">writev</a></b></code>
+ is called.
+</p><p><table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr valign="bottom"><td><hr></td></tr>
+<tr valign="top"><td><b><font size="5"><a name="zbsdhfso">&lt;sys/socket.h&gt;</a></font></b></td></tr></tbody></table>
+</p><p>
+<a name="z1992298">
+This header file contains macro definitions related to
+the creation of sockets, for example, the type of socket (stream, datagram,
+or raw), the options supported, and the address family. (</a>
+<code><b><a name="zid-3982">AF_UNIX</a></b></code>
+ is supported if integrated sockets are
+used.) The SAS/C Compiler only supports the TCP/IP and the 
+<code><b><a name="zid-3983">AF_INET</a></b></code>
+ Internet address family.  The 
+<code><b><a name="zid-3984">&lt;sys/socket.h&gt;</a></b></code>
+ header file contains declarations
+for most of the functions that operate on sockets.  You must include the 
+<code><b><a name="zid-3985">&lt;sys/types.h&gt;</a></b></code>
+ header file
+before this header file.  The structures in the 
+<code><b><a name="zid-3986">&lt;sys/socket.h&gt;</a></b></code>
+ header file are described in the following sections.
+<br></p><h3><a name="zbsdhfli">linger</a></h3>
+<p>
+<a name="z1992299">
+This
+structure is used for manipulating the amount of time that a socket waits
+for the transmission of unsent messages after the initiation of the </a>
+<code><b><a name="zid-3987">close</a></b></code>
+ call. 
+
+
+</p><pre><a name="z1438842">struct linger {
+   int     l_onoff;          /* option on/off                      */
+   int     l_linger;         /* linger time, in seconds            */
+};</a></pre>
+<p>
+<br></p><h3><a name="zbsdhfck">sockaddr</a></h3>
+<p>
+<a name="z1992300">
+This is a generic socket address structure. Because different
+underlying transport mechanisms address peer processes in different ways,
+the socket address format may vary.  
+</a>
+
+</p><pre><a name="z1438843">struct sockaddr {
+   u_short sa_family;        /* address family                     */
+   char    sa_data[14] ;     /* up to 14 bytes of direct address   */
+};</a></pre>
+<p>
+<br></p><h3><a name="zbsdhfms">msghdr</a></h3>
+<p>
+<a name="z1992301">
+This structure contains the message header for the </a>
+<code><b><a name="zid-3988">recvmsg</a></b></code>
+ and 
+<code><b><a name="zid-3989">sendmsg</a></b></code>
+ calls.  
+
+
+</p><pre><a name="z1438846">struct msghdr {
+   caddr_t msg_name;               /* optional address             */
+   int     msg_namelen;            /* size of address              */
+   struct  iovec *msg_iov;         /* scatter/gather array         */
+   int     msg_iovlen;             /* # elements in msg_iov        */
+   caddr_t msg_accrights;          /* ignored for AF_INET          */
+   int     msg_accrightslen;       /* ignored for AF_INET          */
+};</a></pre>
+<p>
+<br></p><h3><a name="zsdhfcli">clientid</a></h3>
+<p>
+<a name="z1992302">
+This structure is used by the </a>
+<code><b><a name="zid-3990">getclientid</a></b></code>
+, 
+<code><b><a name="zid-3991">givesocket</a></b></code>
+, and 
+<code><b><a name="zid-3992">takesocket </a></b></code>
+routines.
+ These routines allow OS/390 or CMS programs to pass socket descriptors. 
+The routines compensate for the unavailablity of 
+<code><b><a name="zid-3993">fork</a></b></code>
+ (except via USS) as a means of creating an independent process
+that shares file descriptors with its parent. 
+
+
+</p><pre><a name="z1438851">struct clientid {
+   int domain;          /* Such as AF_INET.                        */
+   char name[8];        /* Address space or virtual machine name.  */
+   char subtaskname[8]; /* Can be set to blank or a subask ID.     */
+   char reserved20[20]; /* Do not use the contents of this         */
+                        /* structure.                              */
+};</a></pre>
+<p>
+<br></p><h3><a name="zid-3994">clientpid</a></h3>
+<p>
+<a name="z1992303">
+This structure is used by the
+<b><code>getclientpid</code></b>, <b><code>givesocket_pid</code></b>, and <b><code>takesocket_pid</code></b>
+routines. These routines allow OS/390 programs to pass integrated socket descriptors
+to independent child processes.  
+</a>
+
+</p><pre><a name="zid-3995">struct clientpid {
+   int domain;               /* addressing domain AF-INET */
+   char reserve4[4];         /* unused - set to binary zeroes */
+   pid_t pid;                /* client process ID number */
+   char task[8];             /* unused - set to blanks (0x40) */
+   unsigned char flag;       /* options flag */
+   char reserve3[3];         /* unused - set to binary zeroes */
+   int sid;                  /* socket identifier */
+   char reserve12[12];       /* unused - set to binary zeroes */
+};</a></pre>
+<p>
+</p><p><table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr valign="bottom"><td><hr></td></tr>
+<tr valign="top"><td><b><font size="5"><a name="zdhfnetd">&lt;netdb.h&gt;</a></font></b></td></tr></tbody></table>
+</p><p>
+<a name="z1992304">
+This header file contains structures returned by
+the network database library. Internet addresses and port numbers are stored
+in network byte order, identical to IBM 370 byte order.  Other quantities,
+including network numbers, are stored in host byte order. Despite the fact
+that network byte order and host byte order are identical on the IBM System/370,
+a portable program must distinguish between the two. The structures in the </a>
+<code><b><a name="zid-3996">&lt;netdb.h&gt;</a></b></code>
+ header file are
+described in the following sections.
+<br></p><h3><a name="zbsdhfho">hostent</a></h3>
+<p>
+<a name="z1992305">
+This structure contains host information. 
+</a>
+
+</p><pre><a name="z1438853">struct hostent {
+   char    *h_name;        /* official name of host                */
+   char    **h_aliases;    /* alias list                           */
+   int     h_addrtype;     /* host address type                    */
+   int     h_length;       /* length of address                    */
+   char    **h_addr_list;  /* list of addresses from name server   */
+ #define h_addr h_addr_list[0]  /* address, for backward           */
+                                /* compatiblity                    */
+};</a></pre>
+<p>
+<br></p><h3><a name="zdhfnete">netent</a></h3>
+<p>
+<a name="z1992306">
+This
+structure contains network information. 
+</a>
+
+</p><pre><a name="z1438854">struct  netent {
+   char            *n_name;        /* official name of network     */
+   char            **n_aliases;    /* alias list                   */
+   int             n_addrtype;     /* net address type             */
+                                   /* Only AF_INET is supported.   */
+   unsigned long   n_net;          /* network number               */
+};</a></pre>
+<p>
+<br></p><h3><a name="zsdhfser">servent</a></h3>
+<p>
+<a name="z1992307">
+This structure contains service information. 
+</a>
+
+</p><pre><a name="z1438855">struct  servent {
+   char    *s_name;        /* official service name                */
+   char    **s_aliases;    /* alias list                           */
+   int     s_port;         /* port #                               */
+   char    *s_proto;       /* protocol to use                      */
+};</a></pre>
+<p>
+<br></p><h3><a name="zsdhfpro">protoent</a></h3>
+<p>
+<a name="z1992308">
+This structure contains protocol information. 
+</a>
+
+</p><pre><a name="z1438856">struct  protoent {
+   char    *p_name;        /* official protocol name               */
+   char    **p_aliases;    /* alias list                           */
+   int     p_proto;        /* protocol #                           */
+};</a></pre>
+<p>
+<br></p><h3><a name="zsremnet">rpcent</a></h3>
+<p>
+<a name="z1992309">
+</a>
+<code><b><a name="zid-3997">&lt;netdb.h&gt;</a></b></code>
+ also defines a structure
+used to store information about programs using the Sun RPC protocol. This
+structure is defined as follows: 
+
+
+</p><pre><a name="z1438858">struct rpcent {
+   char    *r_name;        /* name of server for RPC program       */
+   char    **r_aliases;    /* alias list                           */
+   int     r_number;       /* RPC program number                   */
+};</a></pre>
+<p>
+</p><p><a name="z1992310">
+Sun RPC programs can be identified by name or by number.
+ The </a>
+<code><b><a name="zid-3998">getrpcbyname</a></b></code>
+ function
+returns 
+<code><b><a name="zid-3999">rpcent</a></b></code>
+ structure.
+<br></p><h3><a name="zsdhfher">herror</a></h3>
+<p>
+<a name="z1992311">
+The </a>
+<code><b><a name="zid-4000">&lt;netdb.h&gt;</a></b></code>
+ header file also
+contains macro definitions for the integer 
+<code><b><a name="zid-4001">h_errno</a></b></code>
+, which describes name server conditions. Refer to <a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr2/lr2sfr.htm">Socket Function Reference</a> for more information on
+
+<code><b><a name="zid-4002">h_errno</a></b></code>
+.
+</p><p><table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr valign="bottom"><td><hr></td></tr>
+<tr valign="top"><td><b><font size="5"><a name="zbsdhfin">&lt;netinet/in.h&gt;</a></font></b></td></tr></tbody></table>
+</p><p>
+<a name="z1992312">
+This header file contains constants and structures defined
+by the Internet system.  Several macros are defined for manipulating Internet
+addresses.  Among these are </a>
+<code><b><a name="zid-4003">INADDR_ANY</a></b></code>
+, which indicates that no specific local address is required, and 
+<code><b><a name="zid-4004">INADDR_NONE</a></b></code>
+, which generally
+indicates an error in address manipulation functions.  Refer to <a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr2/bind.htm">bind</a> for more information on binding a
+local address to the socket.
+</p><p><a name="z1992313">
+You must include the </a>
+<code><b><a name="zid-4005">&lt;sys/types.h&gt;</a></b></code>
+ header file before this header file. The structures
+in the 
+<code><b><a name="zid-4006">&lt;netinet/in.h&gt;</a></b></code>
+
+header file are described in the following sections.
+<br></p><h3><a name="zdhfinad">in_addr</a></h3>
+<p>
+<a name="z1992314">
+This structure contains the Internet address in network byte
+order, which is the same as host byte order on the IBM System/370. 
+</a>
+
+</p><pre><a name="zid-4007">struct in_addr {
+   u_long s_addr;
+};</a></pre>
+<p>
+<br></p><h3><a name="zhfadrin">sockaddr_in</a></h3>
+<p>
+<a name="z1992315">
+This structure contains the socket address, which includes
+the
+host's Internet address and a port number.  This is the specific address structure
+used for a socket address when the transport mechanism is TCP/IP. 
+</a>
+
+</p><pre><a name="z1438869">struct sockaddr_in {
+   short   sin_family;
+   u_short sin_port;
+   struct  in_addr sin_addr;
+   char    sin_zero[8];
+};</a></pre>
+<p>
+</p><p><table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr valign="bottom"><td><hr></td></tr>
+<tr valign="top"><td><b><font size="5"><a name="zid-4008">&lt;netinet/in_systm.h&gt;</a></font></b></td></tr></tbody></table>
+</p><p>
+<a name="z1992316">
+This header file contains definitions to facilitate the
+porting of low-level network control and query Internetwork Control and Message
+Protocol (ICMP), and Internetwork Protocol (IP) raw socket type applications.
+The Internet ping client utility is an example of such a program.</a>
+</p><p><a name="z1992317">
+</a>
+<code><b><a name="zid-4009">&lt;netinet/in_systm.h&gt;</a></b></code>
+ must usually be included before other ICMP or IP socket related header
+files such as 
+<code><b><a name="zid-4010">&lt;netinet/ip.h&gt;</a></b></code>
+ and 
+<code><b><a name="zid-4011">&lt;netinet/ip_icmp.h&gt;</a></b></code>
+. Refer to the individual header file descriptions that follow for
+the specific dependency.
+</p><p><a name="z1992318">
+This header declares the following </a>
+<code><b><a name="zid-4012">typedef</a></b></code>
+ names for use as abbreviations for three
+commonly used types for internetwork order, that is types with the bytes in
+high endian order.
+</p><dl>
+<dt><a name="z1992319">
+</a>
+<code><b><a name="zid-4013">typedef
+u_short n_short;</a></b></code>
+</dt>
+<dd><a name="z1992320">
+declares unsigned short integer as received
+from the network.</a>
+<p></p></dd>
+
+<dt><a name="z1992321">
+</a>
+<code><b><a name="zid-4014">typedef
+u_long n_long;</a></b></code>
+</dt>
+<dd><a name="z1992322">
+declares an unsigned long integer as received
+from the network.</a>
+<p></p></dd>
+
+<dt><a name="z1992323">
+</a>
+<code><b><a name="zid-4015">typedef
+u_long n_time;</a></b></code>
+</dt>
+<dd><a name="z1992324">
+declares an unsigned long integer representing
+minutes and seconds since 00:00 Greenwich mean time, in byte reverse order.</a>
+<p></p></dd>
+</dl>
+<p>
+</p><p><a name="z1992325">
+The following definition is also available to kernel
+functions that provide a network time definition for the </a>
+<code><b><a name="zid-4016">iptime</a></b></code>
+ function. 
+
+
+</p><pre><a name="zid-4017">#ifdef _KERNEL
+n_time iptime();
+#endif</a></pre>
+<p>
+</p><p><table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr valign="bottom"><td><hr></td></tr>
+<tr valign="top"><td><b><font size="5"><a name="zid-4018">&lt;netinet/ip_icmp.h&gt;</a></font></b></td></tr></tbody></table>
+</p><p>
+<a name="z1992326">
+This header file contains definitions of constants and
+structures required for using the ICMP protocol as described in IBM's RFC
+792.  Prior inclusion of </a>
+<code><b><a name="zid-4019">&lt;netinet/in_systm.h&gt;</a></b></code>
+ is required.
+</p><p><table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr valign="bottom"><td><hr></td></tr>
+<tr valign="top"><td><b><font size="5"><a name="zid-4020">&lt;netinet/ip.h&gt;</a></font></b></td></tr></tbody></table>
+</p><p>
+<a name="z1992327">
+This header file contains definitions of constants and
+structures required for using the IP protocol (Internet Protocol, Version
+4) as described in IBM's RFC 791.  Prior inclusion of </a>
+<code><b><a name="zid-4021">&lt;netinet/in_systm.h&gt;</a></b></code>
+ is required.
+</p><p><table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr valign="bottom"><td><hr></td></tr>
+<tr valign="top"><td><b><font size="5"><a name="zid-4022">&lt;netinet/udp.h&gt;</a></font></b></td></tr></tbody></table>
+</p><p>
+<a name="z1992328">
+This header file contains definitions of the User Datagram
+Protocol (UDP) header for UDP datagrams. UDP datagrams consist of a fixed
+header section immediately followed by the data section.  The length of entire
+datagram, including the header and data, is maintained in UDP length field
+as a count of the number of octets (an <b>octet</b> is 8 bits; on IBM
+S370/390 systems this is 1 byte) in the datagram. Thus, the mininum value
+is </a>
+<code><b><a name="zid-4023">8</a></b></code>
+ (64 bits), which is
+the length of the header alone. 
+
+
+</p><pre><a name="z1438886">struct udphdr {
+    u_short uh_sport;  /* source port      */
+    u_short uh_dport;  /* destination port */
+    short uh_ulen;     /* udp length       */
+    u_short uh_sum;    /* udp checksum     */
+};</a></pre>
+<p>
+</p><p><table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr valign="bottom"><td><hr></td></tr>
+<tr valign="top"><td><b><font size="5"><a name="zsdhfarp">&lt;arpa/inet.h&gt;</a></font></b></td></tr></tbody></table>
+</p><p>
+<a name="z1992329">
+This header file contains declarations
+for the network address resolution functions. You must include the </a>
+<code><b><a name="zid-4024">&lt;netinet/in.h&gt;</a></b></code>
+ header file before this header
+file.
+</p><p><table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr valign="bottom"><td><hr></td></tr>
+<tr valign="top"><td><b><font size="5"><a name="zsdhfnam">&lt;arpa/nameser.h&gt;</a></font></b></td></tr></tbody></table>
+</p><p>
+<a name="z1992330">
+This header file contains definitions
+that enable applications to communicate with Internet name servers. The contents
+of this header file are not of interest to most applications; however, this
+header file must be included before the </a>
+<code><b><a name="zid-4025">&lt;resolv.h&gt;</a></b></code>
+ header file. Applications that manipulate resolver options
+must include this header file. You must include the 
+<code><b><a name="zid-4026">&lt;sys/types.h&gt;</a></b></code>
+ header file before this header
+file. 
+</p><p><table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr valign="bottom"><td><hr></td></tr>
+<tr valign="top"><td><b><font size="5"><a name="zsdhfres">&lt;resolv.h&gt;</a></font></b></td></tr></tbody></table>
+</p><p>
+<a name="z1992331">
+This header file contains global definitions for
+the resolver. Definitions and structures in the </a>
+<code><b><a name="zid-4027">&lt;resolv.h&gt;</a></b></code>
+ header file are discussed in the following sections.
+ You must include the 
+<code><b><a name="zid-4028">&lt;sys/types.h&gt;</a></b></code>
+, 
+<code><b><a name="zid-4029">&lt;netinet/in.h&gt;</a></b></code>
+,
+and 
+<code><b><a name="zid-4030">&lt;arpa/nameser.h&gt;</a></b></code>
+
+header files before this header file.
+<br></p><h3><a name="zsdhfsta">state</a></h3>
+<p>
+<a name="z1992332">
+</a>
+<code><b><a name="zid-4031">_res</a></b></code>
+ refers to a 
+<code><b><a name="zid-4032">state</a></b></code>
+ structure describing resolver operations.
+ In the SAS/C implementation, 
+<code><b><a name="zid-4033">_res</a></b></code>
+ is a macro.  Because 
+<code><b><a name="zid-4034">_res </a></b></code>
+ is not a variable, a program should not directly declare it.
+ Inclusion of the 
+<code><b><a name="zid-4035">&lt;resolv.h&gt;</a></b></code>
+ header file declares 
+<code><b><a name="zid-4036">_res</a></b></code>
+. 
+
+
+</p><pre><a name="z1438900">struct state {
+   int     retrans;                /* retransmition time interval     */
+   int     retry;                  /* number of times to              */
+                                   /* retransmit                      */
+   long    options;                /* option flags - See below.       */
+   int     nscount;                /* number of name servers          */
+   struct  sockaddr_in nsaddr_list[MAXNS];  /* address of name        */
+                                            /* server                 */
+ #define nsaddr  nsaddr_list[0]    /* for backward compatibility      */
+   u_short id;                     /* current packet id               */
+   char    defdname[MAXDNAME];     /* default domain                  */
+   char    *dnsrch[MAXDNSRCH+1];   /* components of domain to search  */
+};</a></pre>
+<p>
+<br></p><h3><a name="zsdhfbor">Bitwise OR Options</a></h3>
+<p>
+<a name="z1992333">
+The following bit masks are
+resolver options that can be specified.
+They are stored in </a>
+<code><b><a name="zid-4037">_res.options</a></b></code>
+.
+</p><dl>
+<dt><a name="z1992334">
+</a>
+<code><b><a name="zid-4038">RES_DEBUG</a></b></code>
+</dt>
+<dd><a name="z1992335">
+print resolver debugging messages.</a>
+<p></p></dd>
+
+<dt><a name="z1992336">
+</a>
+<code><b><a name="zid-4039">RES_USEVC</a></b></code>
+</dt>
+<dd><a name="z1992337">
+use TCP connections rather than UDP datagrams
+for queries.</a>
+<p></p></dd>
+
+<dt><a name="z1992338">
+</a>
+<code><b><a name="zid-4040">RES_STAYOPEN</a></b></code>
+</dt>
+<dd><a name="z1992339">
+when specified along with </a>
+<code><b><a name="zid-4041">RES_USEVC</a></b></code>
+, keep the TCP connection open between
+queries.
+<p></p></dd>
+
+<dt><a name="z1992340">
+</a>
+<code><b><a name="zid-4042">RES_RECURSE</a></b></code>
+</dt>
+<dd><a name="z1992341">
+for queries, set the recursion-desired bit.
+ This is the default. </a>
+<code><b><a name="zid-4043">res_send</a></b></code>
+ does not make queries iteratively. The name server handles recursion.
+<p></p></dd>
+
+<dt><a name="z1992342">
+</a>
+<code><b><a name="zid-4044">RES_DEFNAMES</a></b></code>
+</dt>
+<dd><a name="z1992343">
+have </a>
+<code><b><a name="zid-4045">res_mkquery</a></b></code>
+ append the default domain name to single-component names.
+This is the default.
+<p></p></dd>
+
+<dt><a name="z1992344">
+</a>
+<code><b><a name="zid-4046">RES_DNSRCH</a></b></code>
+</dt>
+<dd><a name="z1992345">
+have </a>
+<code><b><a name="zid-4047">gethostbyname</a></b></code>
+ search for host names in the current parent domains.
+<p></p></dd>
+
+<dt><a name="z1992346">
+</a>
+<code><b><a name="zid-4048">RES_IGNTC</a></b></code>
+</dt>
+<dd><a name="z1992347">
+ignore truncation errors; do not retry.</a>
+<p></p></dd>
+</dl>
+<p>
+</p><p><table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr valign="bottom"><td><hr></td></tr>
+<tr valign="top"><td><b><font size="5"><a name="zbsdhfif">&lt;net/if.h&gt;</a></font></b></td></tr></tbody></table>
+</p><p>
+<a name="z1992348">
+This header file contains structures that define
+the network interface and provide a packet transport mechanism.  </a>
+<code><b><a name="zid-4049">&lt;net/if.h&gt;</a></b></code>
+ is useful only for low-level programming
+of the network interface.  You must include the 
+<code><b><a name="zid-4050">&lt;sys/types.h&gt;</a></b></code>
+ and 
+<code><b><a name="zid-4051">&lt;sys/socket.h&gt;</a></b></code>
+ header files before this header file.
+</p><p><table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr valign="bottom"><td><hr></td></tr>
+<tr valign="top"><td><b><font size="5"><a name="zsdhfstr">&lt;strings.h&gt;</a></font></b></td></tr></tbody></table>
+</p><p>
+<a name="z1992349">
+This header file provides compatibility with the
+BSD UNIX </a>
+<code><b><a name="zid-4052">&lt;strings.h&gt;</a></b></code>
+
+header file and the 
+<code><b><a name="zid-4053">index</a></b></code>
+, 
+<code><b><a name="zid-4054">rindex</a></b></code>
+, 
+<code><b><a name="zid-4055">bzero</a></b></code>
+, 
+<code><b><a name="zid-4056">ffs</a></b></code>
+, and 
+<code><b><a name="zid-4057">bcmp</a></b></code>
+ functions.
+Refer to <a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr2/z2porbsd.htm">BSD Library Dependencies</a> for more information on using these functions.
+
+</p><p><!-- navigation -->
+</p><p><table cellpadding="0" cellspacing="0">
+<tbody><tr valign="top">
+<td align="center">
+<a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr2/lr2bsd.htm">
+<img border="0" src="data:image/gif;base64,R0lGODdhYwAQAKIAAP///8zMzMzMmZmZmWZmZjOZmTNmZgAAACH/CkFkb2JlICAAAAAAIfkEAQAAAAAsAAAAAGMAEAAAA40outz+MMpJawPY6s37xoAnPoZTjmIQhChanMvbeoM6i4Uc67dG1D1OjjeEBSm/wNFiKCqaOeMykpxWoDCsdVLdTppGsJcKHEsMUrT50V1DpAL4uu2ud+j2fCUJCAwIgIGCg4SFhoeIiYqLgAM1fX6OkpOUlZaXmJmam5ySKhgqoaKjpKWmp6ipqqukAAkAOw=="><br><font size="-2">Chapter Contents</font></a></td>
+<td align="center">
+<a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr2/zlr2bsdo.htm">
+<img border="0" src="data:image/gif;base64,R0lGODdhYwAQAKIAAP///8zMzMzMmZmZmWZmZjOZmTNmZgAAACH/CkFkb2JlICAAAAAAIfkEAQAAAAAsAAAAAGMAEAAAA38outz+MMpJawPY6s37xoAnTsZoKkEQnqxQlK03pLFZvHVHzLl34z3NLhDcGH6wImWo1ByBTQkzWjkmqY8plnTdMrTeSDcsAJPPEzN67RgCAgOCfE6v2+/4vH7P78sHM29wgISFhoeIiYqLjI2OhCkYKZOUlZaXmJmam5ydlgAJADs="><br><font size="-2">Previous</font></a></td>
+<td align="center">
+<a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr2/zr2bsdsf.htm">
+<img border="0" src="data:image/gif;base64,R0lGODdhYwAQAKIAAP///8zMzMzMmZmZmWZmZjOZmTNmZgAAACH/CkFkb2JlICAAAAAAIfkEAQAAAAAsAAAAAGMAEAAAA30outz+MMpJawPY6s37xoAnPsVoOkEQnmZRsueQwqP70h4h45598xpdAMjxGYjBHdJiOy4rwmfF5ZROolZJoZqNYLsPLvjxHZst5bPaKwMEBoS4fE6v2+/4vH7Pjw/aKX+Cg4SFhoeIiYqLjIMpGCmRkpOUlZaXmJmam5QACQA7"><br><font size="-2">Next</font></a></td>
+<td align="center">
+<a href="#zr2bsdhf">
+<img border="0" src="data:image/gif;base64,R0lGODdhYwAQAKIAAP///8zMzMzMmZmZmWZmZjOZmTNmZgAAACH/CkFkb2JlICAAAAAAIfkEAQAAAAAsAAAAAGMAEAAAA3koutz+MMpJawPY6s37xoAnjqQVBGGpruVwsqMBj4Q7d0Uh31wd8Jpcbges+IoUoZCIjBybEIN0OoU6bdYs6ant9rDesBEsLkN8gMCAwG673/C4fE6v2+/sgSut1vv/gIGCg4SFhoeIficYJ42Oj5CRkpOUlZaXkAAJADs="><br><font size="-2">Top of Page</font></a></td>
+</tr></tbody></table>
+
+
+</p><p><a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/index.htm"><img src="data:image/gif;base64,R0lGODdhMAAwAOMAAAAAAIAAAAD//wD/AMDAwP8A//8AAICAgAAAgIAAgP//////AACAAICAAAAA/wAAACwAAAAAMAAwAAAE/tAc5xA6ALTAwfngBxhGABBZKlCUlRVF4h1Se2WbOYdiaaIpwIpVeSVkn1rlpuGYDoRotFc6BYVEFwCGpE2WmKYudPVZg0MWwigTCJSWcO6nqCumoypQlV1vYzNwTDkZBHZ3BBhmdXhpLWxCXjZyTieHeCQmjIlYan5cQm9fcTgdlnaYHZsYjkVbR4Gjg5VkQZkAq502L4BJspRjUlOKHXsZrZ+wH8KkYk/CiYp6V45aoMuMzYQe0D3F1ESuMV2Gd9q03dI/4J685FLnwcLe62jhyV2CwM/z6mcqudzFmlRKnhR6/44FfJXvV0F+B/0ZA7CgYoOLDQT6IigmA5R+/iO+oVk4biCYh9xA3poogGQvSSc7powYUhMiViSVwYwHcVgem3gqLsCY8U9Djpw8pquJ66aQhXcwbIzp9CPNW7laOs0Q1WSzqkvNsOzDldPUZkln+lzJTk1ZqTtndbC6ViSfdka9ylWqcpq9LJBEXBlMuLDhwx+IKl7MuLFjx04iS55MubLly5gza658uLPnz6BDix5sojQA06hPq07NerVr1Bdby35Ne3bqizByzxYq1Hbt17jHyZDN++LqQ3Z8mwh+RMbv4kU1gbRNgTksN9hXQz8O8reJ6g24XGcR5ke0FAcyng9imoR7EuDFtyF/HJXUjJeSln7vJL5wXeWdZ7CeB/ihwkl7mfgAXlfH0Ffaduk1lYtu/HHgX3MAZmAChOoJlgIo7gWgoAPWzUcBBgMwwACHuIBUUoUBXDjeiQCkuKJQxkWIiE8gJmghieH9lwaKKrK443kvhvhjiRnaaKSLgIQ4YgQAOw=="></a>
+</p><p><font size="1"><a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/common/images/copyrite.htm">Copyright © 2001
+ by SAS Institute Inc., Cary, NC, USA. All rights reserved.</a></font>
+
+
+</p></body></html>

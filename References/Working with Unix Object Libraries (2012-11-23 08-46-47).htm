@@ -1,0 +1,444 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><!--
+ Archive processed by SingleFile 
+ url: http://www.trilug.org/~chilcote/Unix/wwobjlib.html 
+ saved date: Fri Nov 23 2012 08:46:45 GMT+0800 (China Standard Time) 
+--><head>
+	<title>Working with Unix Object Libraries</title>
+<link type="image/x-icon" rel="shortcut icon" href="data:text/html; charset=utf-8;base64,PCFET0NUWVBFIGh0bWwgUFVCTElDICItLy9XM0MvL0RURCBYSFRNTCAxLjAgVHJhbnNpdGlvbmFsLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL1RSL3hodG1sMS9EVEQveGh0bWwxLXRyYW5zaXRpb25hbC5kdGQiPgo8aHRtbCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94aHRtbCIgbGFuZz0iZW4iIHhtbDpsYW5nPSJlbiI+CjxoZWFkIHByb2ZpbGU9Imh0dHA6Ly9nbXBnLm9yZy94Zm4vMTEiPgo8bWV0YSBodHRwLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD11dGYtOCIgLz4KICA8bWV0YSBodHRwLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD1VVEYtOCIgLz4KICAgIAogIDx0aXRsZT5QYWdlIG5vdCBmb3VuZCB8IFRyaWFuZ2xlIExpbnV4IFVzZXJzIEdyb3VwPC90aXRsZT4KICAgIAogIDxtZXRhIG5hbWU9ImdlbmVyYXRvciIgY29udGVudD0iRHJ1cGFsIi8+CiAgPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1TdHlsZS1UeXBlIiBjb250ZW50PSJ0ZXh0L2NzcyIgLz4KICA8bWV0YSBodHRwLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD11dGYtOCIgLz4KPGxpbmsgcmVsPSJzaG9ydGN1dCBpY29uIiBocmVmPSIvbWlzYy9mYXZpY29uLmljbyIgdHlwZT0iaW1hZ2UveC1pY29uIiAvPgoKICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Ii9zaXRlcy90cmlsdWcub3JnL3RoZW1lcy9iZWVibGVicm94L2JlZWJsZWJyb3gtc3R5bGUuY3NzIiB0eXBlPSJ0ZXh0L2NzcyIgbWVkaWE9InNjcmVlbiIgLz4KICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Ii9zaXRlcy90cmlsdWcub3JnL3RoZW1lcy9iZWVibGVicm94L2JlZWJsZWJyb3gtbG9jYWwuY3NzIiB0eXBlPSJ0ZXh0L2NzcyIgbWVkaWE9InNjcmVlbiIgLz4KICA8IS0tIGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSIvc2l0ZXMvdHJpbHVnLm9yZy90aGVtZXMvYmVlYmxlYnJveC9iZWVibGVicm94LWV4dGVybmFsbGlua3MuY3NzIiB0eXBlPSJ0ZXh0L2NzcyIgbWVkaWE9InNjcmVlbiIgLyAtLT4KICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Ii9zaXRlcy90cmlsdWcub3JnL3RoZW1lcy9iZWVibGVicm94L2JlZWJsZWJyb3gtcHJpbnQuY3NzIiB0eXBlPSJ0ZXh0L2NzcyIgbWVkaWE9InByaW50IiAvPgogIAogIDxsaW5rIHJlbD0iaWNvbiIgaHJlZj0iL3NpdGVzL3RyaWx1Zy5vcmcvdGhlbWVzL2JlZWJsZWJyb3gvaW1hZ2VzL3RyaXR1eC1mYXZpY29uLnBuZyIgdHlwZT0iaW1hZ2UvcG5nIi8+CiAgPGxpbmsgcmVsPSJzaG9ydGN1dCBpY29uIiBocmVmPSIvc2l0ZXMvdHJpbHVnLm9yZy90aGVtZXMvYmVlYmxlYnJveC9pbWFnZXMvdHJpdHV4LWZhdmljb24ucG5nIi8+CgogIDxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyIgbWVkaWE9ImFsbCI+QGltcG9ydCAiL21vZHVsZXMvbm9kZS9ub2RlLmNzcyI7PC9zdHlsZT4KPHN0eWxlIHR5cGU9InRleHQvY3NzIiBtZWRpYT0iYWxsIj5AaW1wb3J0ICIvbW9kdWxlcy9wb2xsL3BvbGwuY3NzIjs8L3N0eWxlPgo8c3R5bGUgdHlwZT0idGV4dC9jc3MiIG1lZGlhPSJhbGwiPkBpbXBvcnQgIi9tb2R1bGVzL3N5c3RlbS9kZWZhdWx0cy5jc3MiOzwvc3R5bGU+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyIgbWVkaWE9ImFsbCI+QGltcG9ydCAiL21vZHVsZXMvc3lzdGVtL3N5c3RlbS5jc3MiOzwvc3R5bGU+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyIgbWVkaWE9ImFsbCI+QGltcG9ydCAiL21vZHVsZXMvdXNlci91c2VyLmNzcyI7PC9zdHlsZT4KCjwvaGVhZD4KCjxib2R5PgoKICA8IS0tIEZvciBub24tdmlzdWFsIG9yIG5vbi1zdHlsZXNoZWV0LWNhcGFibGUgdXNlciBhZ2VudHMgLS0+CiAgPGRpdiBpZD0ibWFpbmxpbmsiPjxhIGhyZWY9IiNtYWluIj5Ta2lwIHRvIG1haW4gY29udGVudC48L2E+PC9kaXY+CgogIDwhLS0gSGVhZGVyIC0tPgogIDxkaXYgaWQ9ImhlYWRlciI+CiAgICA8ZGl2IGNsYXNzPSJsZWZ0Ij4KICAgICAgPGEgaHJlZj0iLyIgdGl0bGU9IkhvbWUiPjxpbWcgc3JjPSIvc2l0ZXMvdHJpbHVnLm9yZy90aGVtZXMvYmVlYmxlYnJveC9pbWFnZXMvdHJpdHV4LTEwMC5wbmciIGFsdD0iVHJpVHV4Ii8+PC9hPgogICAgICA8cD48c3BhbiBjbGFzcz0iYWx0ZXJuYXRpdmUiPls8L3NwYW4+CiAgICAgIDxhIGhyZWY9Ii8iIHRpdGxlPSJIb21lIj5UcmlhbmdsZSBMaW51eCBVc2VycyBHcm91cDwvYT4gICAgICA8c3BhbiBjbGFzcz0iYWx0ZXJuYXRpdmUiPl08L3NwYW4+PC9wPgoKICAgICAgICAgIDwvZGl2PgoKICAgIDxkaXYgY2xhc3M9InJpZ2h0Ij4KCiAgICAgIAogICAgICAgICAgICA8ZGl2PgogICAgICAgIDxmb3JtIGlkPSJzZWFyY2hfZm9ybSIgY2xhc3M9InNlYXJjaC1mb3JtIiBhY3Rpb249Ii9zZWFyY2gvbm9kZSIgbWV0aG9kPSJwb3N0Ij4KICAgICAgICA8ZGl2PgogICAgICAgICAgPGxhYmVsPlNlYXJjaDwvbGFiZWw+IAogICAgICAgICAgPGlucHV0IHR5cGU9InRleHQiIG1heGxlbmd0aD0iMjU1IiBjbGFzcz0iZm9ybS10ZXh0IiBuYW1lPSJrZXlzIiBzaXplPSIyMCIgdmFsdWU9IiIgLz4KICAgICAgICAgIDxpbnB1dCBpZD0ic2VhcmNoc3VibWl0IiB0eXBlPSJzdWJtaXQiIG5hbWU9Im9wIiBjbGFzcz0iZm9ybS1zdWJtaXQiIHZhbHVlPScmcmFxdW87JyAvPgogICAgICAgIDwvZGl2PgogICAgICAgIDwvZm9ybT4KICAgICAgPC9kaXY+CiAgICAgICAgICA8L2Rpdj4KCiAgICA8ZGl2IGNsYXNzPSJzdWJoZWFkZXIiPgogICAgICA8c3BhbiBjbGFzcz0iaGlkZGVuIj5OYXZpZ2F0aW9uOjwvc3Bhbj4KICAgICAgPGEgaHJlZj0iaHR0cDovL3RyaWx1Zy5vcmciIHRpdGxlPSJIb21lIj5Ib21lPC9hPnwgPGEgaHJlZj0iL3dpa2kiIHRpdGxlPSJUaGUgVHJpTFVHIHdpa2kiPldpa2k8L2E+fCA8YSBocmVmPSIvY29udGFjdCIgdGl0bGU9IkZvcm0gdG8gY29udGFjdCB0aGUgVHJpTFVHIHN0ZWVyaW5nIGNvbW1pdHRlZSI+Q29udGFjdCBUcmlMVUc8L2E+fCA8YSBocmVmPSJodHRwOi8vcGxhbmV0LnRyaWx1Zy5vcmciIHRpdGxlPSJUaGUgVHJpTFVHIHBsYW5ldCBhZ2dyZWdhdG9yIj5QbGFuZXQ8L2E+ICAgIDwvZGl2PgogIDwvZGl2PiA8IS0tIEhlYWRlciAtLT4KCiAgPGRpdiBpZD0ic2lkZWJhciI+CiAgPHVsPgogICAgPGxpPgogICAgICAgICAgPC9saT4KICAgICAgPC91bD4KICA8L2Rpdj4gPCEtLSBzaWRlYmFyIC0tPgoKICA8IS0tIEJlZ2luIE1haW4gQ29udGVudCAtLT4KICA8ZGl2IGlkPSJtYWluIj4KCiAgICAgIAogICAgICAgICAgICA8aDEgY2xhc3M9InRpdGxlIj5QYWdlIG5vdCBmb3VuZDwvaDE+ICAgICAgICAgICAgICAgICAgCiAgICAgIAogICAgPGJyIGlkPSJlbmRtYWluIi8+CiAgPC9kaXY+CiAgPCEtLSBFbmQgTWFpbiBDb250ZW50IC0tPgoKICA8IS0tIEZvb3RlciAtLT4KICA8ZGl2IGNsYXNzPSJmb290ZXIiIGlkPSJmb290ZXIiPgogICAgPGhyIC8+CiAgICA8cD5UcmlMVUcgaXMgYSByZWdpc3RlcmVkIE5DIGVkdWNhdGlvbmFsIG5vbi1wcm9maXQgZm9yIHRoZSBwdXJwb3NlIG9mIHByb21vdGluZyBhbmQgc3VwcG9ydGluZyB0aGUgdXNlIG9mIExpbnV4IGFuZCByZWxhdGVkIEZyZWUgYW5kIE9wZW4gU291cmNlIHByb2dyYW1zIGluIHRoZSBUcmlhbmdsZSBhcmVhLjwvcD4KPGJyLz4KICAgIFRoaXMgc2l0ZSBpcyB1c2luZyBhIG1vZGlmaWVkIHZlcnNpb24gb2YgdGhlICAKICAgIDxhIGhyZWY9Imh0dHA6Ly9iZWVibGVicm94Lm5ldC9wcm9qZWN0cy93b3JkcHJlc3MtdGhlbWUiPkJlZWJsZWJyb3ggVGhlbWU8L2E+PGJyLz4KICA8L2Rpdj4KICAKPC9ib2R5Pgo8L2h0bWw+Cg=="></head>
+
+<body bgcolor="#000000" text="#DDDDDD" link="#C0C0C0" vlink="#C0C0C0" alink="#FFFFFF">
+	<a name="top"></a>
+	<table cellpadding="10" align="center" border="0" width="100%">
+		<tbody><tr>
+		  <th colspan="2" align="CENTER" valign="TOP">
+		  <h1>Unix Articles</h1>
+		  </th>
+		</tr>
+		
+		<tr>
+		  <td colspan="2" align="RIGHT" valign="TOP" bgcolor="#404040">
+		  <a target="topindex"></a><hr>
+			  <a href="http://www.trilug.org/~chilcote/index.html">HOME</a> 
+			  <a href="http://www.trilug.org/~chilcote/Unix/ctags.html">ctags</a> 
+			  <a href="http://www.trilug.org/~chilcote/Unix/tree-climbing.html">Tree Climbing</a>
+			  <a href="http://www.trilug.org/~chilcote/Unix/titlebar.html">Title Bar</a>
+		  <hr>
+		  </td>
+		</tr>
+		
+		<tr>
+		  <td valign="TOP" align="CENTER" width="20%">
+		    <table border="0" cellpadding="5">
+		      <tbody><tr><th bgcolor="#303030">
+		            <p><b>INDEX</b></p>
+		          </th>
+		      </tr>
+		      <tr>
+		        <td bgcolor="#505050">
+		          <a href="http://www.trilug.org/~chilcote/index.html">HOME</a>
+		        </td>
+		      </tr>
+		      <tr>
+		        <td bgcolor="#D0D0D0" align="RIGHT">
+		          <a href="#Overzicht"><font color="#000000">Content...</font></a><br>
+		          <a href="#About"><font color="#000000">About this site...</font></a><br>
+		        </td>
+		      </tr>
+		      <tr>
+		        <td bgcolor="#505050">
+		          <a href="http://www.trilug.org/~chilcote/Unix/ctags.html">ctags</a>
+		        </td>
+		      </tr>
+		      <tr>
+		        <td bgcolor="#505050">
+			  <a href="http://www.trilug.org/~chilcote/Unix/tree-climbing.html">Tree Climbing</a>
+			</td>
+		      </tr>
+		      <tr>
+		        <td bgcolor="#505050">
+			  <a href="http://www.trilug.org/~chilcote/Unix/titlebar.html">Title Bar</a>
+			</td>
+		      </tr>
+		      <tr>
+		    </tr></tbody></table>
+		  </td>
+		  
+		  <td valign="TOP" align="LEFT">
+			
+<h1>Working with Unix Object Libraries</h1> 
+<font size="3">
+<hr size="3"> 
+<h2>Contents</h2>
+<menu>
+<li type="disc"><a href="#disclaimer">Disclaimer</a>
+</li><li><a href="#intro">Introduction</a>
+</li><li><a href="#cplusplus">C++ Class Libraries</a>
+</li><li><a href="#creating">How to Create an Object Library</a>
+</li><li><a href="#gutsof">Finding Out What's Inside an Object Library</a>
+</li><li><a href="#updating">Updating an Object Library</a>
+</li><li><a href="#extracting">Removing and Extracting Object Files from a Library</a>
+</li><li><a href="#linking">Linking An Object Library to an Application</a>
+</li><li><a href="#ansicorg">Unix ANSI C Object Library &amp; Header Organization</a>
+</li><li><a href="#cplusplusorg">Unix C++ Class Library &amp; Header Organization</a>
+</li><li><a href="#sharedlibs">Shared Libraries</a>
+</li><li><a href="#refs">References</a>
+</li></menu>
+<hr size="3">
+<h2><a name="disclaimer">Disclaimer</a></h2>
+<p><b>This document is unsupported.
+The information given here is not guaranteed to be useful for any
+purpose, explicit or implied.  It is placed on this web site strictly
+as a unsupported free service.  It is as accurate as the author has
+been able to verify, and will be updated with additions and corrections
+as time permits.</b></p>
+<hr size="3">
+
+<h2><a name="intro">Introduction</a></h2>
+<p>A Unix object library is a group of compiled files combined into
+a single library file.  The standard Unix archiver, <b>ar</b>, is
+used to combine and maintain these files.  The standard naming scheme
+for these libraries is <b>libXXX.a</b>, where <b>XXX</b> is a brief
+descriptive string.  For example, the system library of math functions
+is called <b>libm.a</b>.   The Athena Widget Library for X Windows is
+called <b>libXaw.a</b>.</p>
+
+<p>By convention, most Unix system libraries are stored in the path
+<b>/usr/lib</b>. Some libraries may also exist in <b>/lib</b> and in
+<b>/usr/local/lib</b>, depending on the version of Unix and the system
+administrator's needs.  In contrast, a developer's application-specific
+libraries may be placed anywhere on the filesystem.  The files contained
+in Unix object libraries have been compiled, but have not yet been linked.
+These object files usually have the extension ".o" to indicate this state.
+During the final phase of building an application, the C compiler or
+system linker is used to link against the object library.  This makes
+building an application with an object library considerably faster than
+compiling the separate routines down from source.  Object libraries
+are useful for other reasons as well.  They provide a mechanism for
+combining multiple related functions.  Libraries simplify code re-use,
+providing ready access to debugged routines.  A standard header file
+is usually provided for each object library to provide prototypes for
+library functions.  This allows the compiler to verify correct function
+parameter types for each library call.</p>
+
+<p>Note the distinction between a Unix "object file" and the concept of an
+<b>object</b> under object-oriented programming; there is no connection
+between the two.  The term "object" has been used to refer to unlinked
+compiled code under Unix since long before OOP became widely known.</p>
+
+<p>Unix object files are created using the "-c" parameter of the standard
+C compiler, <b>cc</b>, and the HP C++ compiler, <b>CC</b>, as well.</p>
+
+<h2><a name="cplusplus">C++ Class Libraries</a></h2>
+<p>When C++ Class Libraries are built for Unix systems, object libraries
+are how they are stored.  Our HP-UX standard C++ class library is
+stored as <b>/usr/lib/libC.a</b>.  This library contains object
+modules that contain the <b>iostream</b> and <b>fstream</b> classes,
+among others.  This library is linked to a C++ program by default, much
+as <b>/lib/libc.a</b> (the standard C library) is linked to an ANSI C
+program whenever one is compiled.</p>
+
+<p>Header files for the HP-UX C++ class libraries are stored in
+<b>/usr/include/CC</b>. For example, the <b>iostream</b> class library header is
+<b>/usr/include/CC/iostream.h</b>. This path is searched automatically when
+the header file is included between "&lt;" and "&gt;" brackets in the <b>#include</b>
+precompiler statement; therefore</p>
+<code>
+#include &lt;iostream.h&gt;
+<br><br></code>
+<p>is all that's required for the compiler to find the header file.</p>
+
+<p>Header files for application-specific C++ class libraries may be placed
+anywhere on the filesystem; if this is done, the "-I" parameter will be
+needed to specify the path to the include files.</p>
+
+<p>Note that while header files are not directly related to the concept
+of a Unix object library, in practice, it is difficult to discuss one
+without referring to the other.  Header files are essential in that they
+provide the information necessary to interface with an object library.</p>
+
+<h2><a name="creating">How to Create an Object Library</a></h2>
+<p>As stated above, <b>ar</b>, the standard Unix archiver, is routinely
+used to create Unix object libraries.  The resulting file, which ends in
+".a", can therefore be referred to as an <b>archive</b>; however, the
+term library is recommended as it is more descriptive for our purposes.
+Archive files created by <b>ar</b> can contain any type of file, including
+text and executable files; in contrast, object libraries contain only
+compiled object files.
+
+</p><p>The syntax for building a library from a group of object files is</p>
+<code>
+ar r &lt;library file&gt; &lt;list of object files&gt;
+<br><br></code>
+<p>for example,</p>
+<code>
+ar r libmultidim.a hypercube.o mobius_strip.o klien_bottle.o tesseract.o
+<br></code>
+
+<p>will create a library in the current directory called
+<b>libmultidim.a</b>, which contains the four object files given in
+the example.</p>
+
+<p><u>Note:</u> some versions of Unix require an additional step to
+prepare an object library, which is building a symbol table.  This
+operation requires the <b>ranlib</b> utility.  Under  some Unixes, including
+HP-UX, <b>ar</b> builds the symbol table automatically.</p>
+
+<p>The Unix make utility has built-in rules that allow convenient building
+and maintaining of object libraries.  <b>ar</b> can update an individual
+object file "on the fly", without having to rebuild the entire library.
+For this reason, updating an object library is usually as simple as
+editing a particular source file and typing "make".  The rest is done
+automatically, with the help of an appropriately written Makefile.</p>
+
+<h2><a name="gutsof">Finding Out What's Inside an Object Library</a></h2>
+
+<p><b>ar</b> has several options, and one of them, the "t" parameter, tells it
+to print a table of contents for the archive.  For our example, typing
+<code>"ar t libmultidim.a"</code> would provide this result:</p>
+<pre>hypercube.o 
+mobius_strip.o 
+klien_bottle.o 
+tesseract.o
+</pre>
+<p>It is possible to list the symbols used by the files inside our library
+using the Unix <b>nm</b> (for "name symbols") command.  When one types</p>
+<code>
+nm libXXX.a
+</code><br>
+<p>each object file within the library is shown, followed by a list of
+the symbols within the object file.</p>
+
+<p><b>nm</b> may also be used to examine the symbol tables of individual object
+files and executable programs.  Keep in mind that for this to work, the
+"-g" parameter of the compiler must be used to include the symbolic
+information.  In addition, if <b>strip</b> is used to remove the symbol
+table from an executable program, <b>nm</b> will no longer be able to list
+it's contents.</p>
+
+<h2><a name="updating">Updating an Object Library</a></h2>
+<p>What do we do if we need to change just one of the object files within
+a library?  ar makes this straightforward.  The same parameter used to
+build the library, "r", also has the function of replacing an object
+file in an archive with a new version.</p>
+<code>
+ar r libmultidim.a hypercube.o
+</code><br>
+<p>would remove the existing object file <b>hypercube.o</b> from the library,
+and insert an object file with the same name from the current
+working directory.  At the same time, the library's symbol table
+is rebuilt to reflect any changes.</p>
+
+<h2><a name="extracting">Removing and Extracting Object Files from a Library</a></h2>
+<p>Occasionally it is useful to remove an object file from a library.
+This is necessary when one of the internal files' functions are replaced
+by those in another file, or when an object file must be renamed.
+ar performs this operation using the "d" parameter.  Typing</p>
+<code>
+ar d libmultidim.a hypercube.o
+</code><br>
+<p>would delete the <b>hypercube.o</b> object file from the library.</p>
+
+<p>It is unlikely that we will have need to extract an object file from
+a library, but for completeness' sake, the "x" parameter provides this
+ability.  Typing</p>
+<code>
+ar x libmultidim.a hypercube.o
+</code><br>
+<p>will extract a copy of hypercube.o into the current directory.</p>
+
+<p>Note that the object file will continue to exist inside the library.
+Also note that if a file already existed with the same name in the current
+directory, it could be silently overwritten -- unless the user's shell
+is set to warn of this condition.</p>
+
+<h2><a name="linking">Linking An Object Library to an Application</a></h2>
+
+<p>The parameters and syntax that are used to link Unix object libraries
+to applications have become standardized.  "-l" is used to specify each
+individual object library.  "-L" is used to specify the pathnames on
+which to search for object libraries.</p>
+
+<p>Library names are normally abbreviated, when specified to the compiler,
+using the "-l" parameter.  This differs from how source and object
+file names are provided.  Since object library names have the format
+"libXXX.a", the beginning "lib" and the final ".a" are stripped from
+the library name in the parameter specification.</p>
+
+<p>For example, to link the standard math library <b>/lib/libm.a</b> to your
+program, you need only specify "-lm" in the compile/link command. The
+compiler uses this information to build the library name, and links it in.</p>
+
+<p>Using our example library <b>libmultidim.a</b>, we would convert this to
+"-lmultidim" in the compile/link command (note that these commands will
+most likely be made part of an automated build process).</p>
+
+<p>As mentioned previously, the paths to standard system libraries are
+built into the compiler and do not need to be explicitly stated.
+Application-specific library pathnames, however, need to be specified
+using the "-L" parameter, one for each pathname.</p>
+
+<p>The path for each application-specific library must be placed prior
+to the "-l" parameter specifying the library itself.  The library path
+specification need only be given once; the linker will thereafter search
+the specified path for each subsequent library in the compile/link
+command.</p>
+
+<p>A complete specification for an example application compile &amp; link,
+using the Unix math library and our example object library, would be</p>
+<code></code><pre><code>
+CC -g -I/usr/local/include -o spin_5d spin_5d.C -lm \
+	-L/usr/local/lib -lmultidim
+
+</code></pre>
+<p>For the sake of completeness, it's necessary to mention that this clever
+arrangement for linked library specification can be ignored, if one
+uses the entire path and library filename in the "-l" specification.
+If a single library in a nonstandard location is needed, it can be
+specified using, for example,</p>
+<code></code><pre><code>
+CC -g -I/usr/local/include -o spin_5d spin_5d.C -lm \
+     -l/usr/local/lib/libmultidim.a
+
+</code></pre>
+<p>If there are several libraries to include, this method can make builds
+difficult to write.</p>
+
+<h2><a name="ansicorg">Unix ANSI C Object Library &amp; Header Organization</a></h2>
+
+<p>Standard Unix libraries, such as the math library <b>libm.a</b>,
+require one or more standard header files (in /usr/include) along with
+the object files in the library itself.</p>
+
+<p>The header files for ANSI C libraries contain, in general, three
+categories of items that will need to be public, or visible to user
+programs.  These items are</p>
+
+<ul type="disc">
+<li>Precompiler definitions, including constants and macros
+</li><li>Standard data structures, such as structs and unions
+</li><li>Library function prototypes
+</li></ul>
+
+<p>These elements provide the interface for correctly accessing the object
+libraries' functions.  Precompiler macros, for instance, replace library
+functions for some simple, frequently used routines; <b>getc()</b> and
+<b>putc()</b> are two examples.  Common structures provide consistent
+means of handling data formats that are standard to the Unix operating
+system.  For example, struct <b>tm</b> in <b>time.h</b> is a complete
+means of referencing time under Unix.</p>
+
+<p>Function prototypes are an important way to ensure that library
+functions are being correctly referenced, under ANSI C.  The ability of
+modern compilers to flag errors in function parameters saves an enormous
+amount of time spent debugging.</p>
+
+<p>Header files must be well documented to be useful.  Standard Unix
+libraries are documented in the man pages under category #3, <u>User
+Library Functions</u>.  For individual application libraries, the method of
+documentation usually is comprised of the library specification, combined
+with consistent and adequate comments in the header files themselves.</p>
+
+<p>The object library code for Unix standard libraries is usually
+proprietary, and is unavailable to the application developer.
+This code is considered private in scope, and contains the body code
+for the functions described in the header file(s) for the library.
+Since standardized means of accessing the library functions are provided
+and well documented, there is no need to reference the internal code in
+these libraries.</p>
+
+<h2><a name="cplusplusorg">Unix C++ Class Library &amp; Header Organization</a></h2>
+
+<p>Unix C++ class library header files contain, primarily, C++ class
+definitions.  These class definitions have various public definitions
+needed by applications developers.  Some of these elements are</p>
+
+<ul type="disc">
+<li>Public Member Function Prototypes
+</li><li>Inline Member Function Definitions
+</li><li>Virtual Member Function Definitions
+</li><li>Public Enumerated Type Definitions
+</li></ul>
+
+<p>With the exception of small inline member function definitions, the
+majority of the member functions are defined in the separately compiled
+object library code.  Since the standard C++ header files use full OOP
+data hiding, there is no question of access to class library internal
+variables.  Use of the well-defined standard class library interfaces
+is therefore required.</p>
+
+<p>Many C++ class library functions use the ANSI C library functions
+internally. Since C++ is "downwardly compatible" with ANSI C, it makes
+sense to use the predefined and well-tested functions in the standard
+libraries, when the need arises.  For this reason several of the C++
+class library headers include, within themselves, ANSI C standard Unix
+library headers.</p>
+
+<h2><a name="sharedlibs">Shared Libraries</a></h2>
+
+<p>Shared libraries take the concept of Unix object libraries a step
+further in making their functions generally available.  They allow
+a commonly-used library to be linked such that it can be loaded into
+memory, and made available to other programs without having to have its
+compiled object code combined with the executable program.</p>
+
+<p>Referencing shared libraries makes an application smaller, since
+the library's object files are not a part of the executable program.
+A reference table is placed in the executable instead, which the system
+dynamic loader, <b>dld.sl</b>, can use to find the shared library
+functions.  Since the shared library is already memory resident, the
+application loads and runs faster.</p>
+
+<p>Building shared libraries requires system-specific tools, and is
+not very portable between different Unix platforms.  For this reason,
+using them for non-system level applications is a serious undertaking.
+The process of building and maintaining shared libraries is more complex,
+but for frequently used, system-wide applications, the overhead is
+worth the trouble.  This topic may be expanded in future revisions of
+this document.</p>
+
+<h2><a name="refs">References</a></h2>
+
+<p>The best source of information regarding Unix object libraries is,
+fortunately or not, the man pages on your system.  "man ar", for example,
+will provide a list of many more options for building and maintaining
+object libraries than are provided here.</p>
+
+<p>Other man pages of interest include:</p>
+
+<table border="0">
+<tbody><tr><td><b>cc(1)</b></td><td>- for information on linking and compiling object libraries</td></tr>
+<tr><td><b>make(1)</b></td><td>- for built-in rules on creating object libraries</td></tr>
+<tr><td><b>a.out(4)</b></td><td>- for specific information on what Unix object files contain, 
+and how they are used</td></tr>
+<tr><td><b>crt0(3)</b></td><td>- to provide more thorough information on the C runtime startup 
+routines added by the linker</td></tr>
+<tr><td><b>ld(1)</b></td><td>- for more information on object file linking and shared libraries</td></tr>
+<tr><td><b>dld.sl(5)</b></td><td>- still more about shared libraries, and how they are loaded and used.</td></tr>
+<tr><td><b>ios(3)</b></td><td>- For an example of how Unix C++ class libraries are documented.</td></tr>
+</tbody></table>
+
+<hr size="3">
+<u>Working with Unix Object Libraries</u> is Copyright © 1997 by Scott Chilcote.
+
+
+		  </font></td>
+		</tr>
+		
+		<tr>
+		  <td bgcolor="#404040" align="RIGHT" colspan="2">
+		       	  <a target="bottomindex"></a><hr>
+			  <a href="http://www.trilug.org/~chilcote/index.html">HOME</a> 
+			  <a href="http://www.trilug.org/~chilcote/Unix/ctags.html">ctags</a> 
+			  <a href="http://www.trilug.org/~chilcote/Unix/tree-climbing.html">Tree Climbing</a>
+			  <a href="http://www.trilug.org/~chilcote/Unix/titlebar.html">Title Bar</a>
+		  <hr>
+		  </td>
+		</tr>
+	</tbody></table>
+
+
+	
+	
+
+</body></html>

@@ -1,0 +1,639 @@
+BODY {
+	BACKGROUND: #363636; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 11px arial; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
+}
+A:link {
+	COLOR: #036c9b; TEXT-DECORATION: none
+}
+body_alink {
+	COLOR: #036c9b; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #036c9b; TEXT-DECORATION: none
+}
+body_avisited {
+	COLOR: #036c9b; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff6600; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #ff6600; TEXT-DECORATION: none
+}
+body_ahover {
+	COLOR: #ff6600; TEXT-DECORATION: none
+}
+.page {
+	COLOR: #363636
+}
+TD {
+	FONT: 12px arial
+}
+TH {
+	FONT: 12px arial
+}
+P {
+	FONT: 12px arial
+}
+LI {
+	FONT: 12px arial
+}
+.tborder {
+	BACKGROUND: #d6d6d6; COLOR: #000000
+}
+.tcat {
+	BACKGROUND: url(/forums/images/gradients/gradient_tcat.gif) #4589b4 repeat-x left top; COLOR: #fefefe; FONT: 11px arial
+}
+.tcat A:link {
+	COLOR: #fefefe; TEXT-DECORATION: none
+}
+.tcat_alink {
+	COLOR: #fefefe; TEXT-DECORATION: none
+}
+.tcat A:visited {
+	COLOR: #fefefe; TEXT-DECORATION: none
+}
+.tcat_avisited {
+	COLOR: #fefefe; TEXT-DECORATION: none
+}
+.tcat A:hover {
+	COLOR: #fefefe; TEXT-DECORATION: none
+}
+.tcat A:active {
+	COLOR: #fefefe; TEXT-DECORATION: none
+}
+.tcat_ahover {
+	COLOR: #fefefe; TEXT-DECORATION: none
+}
+.thead {
+	BACKGROUND: #464d52; COLOR: #d6d6d6; FONT: 11px arial
+}
+.thead A:link {
+	COLOR: #d6d6d6; TEXT-DECORATION: none
+}
+.thead_alink {
+	COLOR: #d6d6d6; TEXT-DECORATION: none
+}
+.thead A:visited {
+	COLOR: #d6d6d6; TEXT-DECORATION: none
+}
+.thead_avisited {
+	COLOR: #d6d6d6; TEXT-DECORATION: none
+}
+.thead A:hover {
+	COLOR: #ff6600; TEXT-DECORATION: underline
+}
+.thead A:active {
+	COLOR: #ff6600; TEXT-DECORATION: underline
+}
+.thead_ahover {
+	COLOR: #ff6600; TEXT-DECORATION: underline
+}
+.tfoot {
+	BACKGROUND: #464d52; COLOR: #8c8c8c
+}
+.tfoot A:link {
+	COLOR: #8c8c8c
+}
+.tfoot_alink {
+	COLOR: #8c8c8c
+}
+.tfoot A:visited {
+	COLOR: #8c8c8c
+}
+.tfoot_avisited {
+	COLOR: #8c8c8c
+}
+.tfoot A:hover {
+	COLOR: #8c8c8c
+}
+.tfoot A:active {
+	COLOR: #8c8c8c
+}
+.tfoot_ahover {
+	COLOR: #8c8c8c
+}
+.alt1 {
+	BACKGROUND: #f6f8f8; COLOR: #3a3a3a
+}
+.alt1Active {
+	BACKGROUND: #f6f8f8; COLOR: #3a3a3a
+}
+.alt1 A:link {
+	COLOR: #036c9b
+}
+.alt1_alink {
+	COLOR: #036c9b
+}
+.alt1Active A:link {
+	COLOR: #036c9b
+}
+.alt1Active_alink {
+	COLOR: #036c9b
+}
+.alt1 A:visited {
+	COLOR: #036c9b
+}
+.alt1_avisited {
+	COLOR: #036c9b
+}
+.alt1Active A:visited {
+	COLOR: #036c9b
+}
+.alt1Active_avisited {
+	COLOR: #036c9b
+}
+.alt1 A:hover {
+	COLOR: #ff6600
+}
+.alt1 A:active {
+	COLOR: #ff6600
+}
+.alt1_ahover {
+	COLOR: #ff6600
+}
+.alt1Active A:hover {
+	COLOR: #ff6600
+}
+.alt1Active A:active {
+	COLOR: #ff6600
+}
+.alt1Active_ahover {
+	COLOR: #ff6600
+}
+.alt2 {
+	BACKGROUND: #f6f8f8; COLOR: #3a3a3a
+}
+.alt2Active {
+	BACKGROUND: #f6f8f8; COLOR: #3a3a3a
+}
+.alt2 A:link {
+	COLOR: #036c9b
+}
+.alt2_alink {
+	COLOR: #036c9b
+}
+.alt2Active A:link {
+	COLOR: #036c9b
+}
+.alt2Active_alink {
+	COLOR: #036c9b
+}
+.alt2 A:visited {
+	COLOR: #036c9b
+}
+.alt2_avisited {
+	COLOR: #036c9b
+}
+.alt2Active A:visited {
+	COLOR: #036c9b
+}
+.alt2Active_avisited {
+	COLOR: #036c9b
+}
+.alt2 A:hover {
+	COLOR: #ff6600
+}
+.alt2 A:active {
+	COLOR: #ff6600
+}
+.alt2_ahover {
+	COLOR: #ff6600
+}
+.alt2Active A:hover {
+	COLOR: #ff6600
+}
+.alt2Active A:active {
+	COLOR: #ff6600
+}
+.alt2Active_ahover {
+	COLOR: #ff6600
+}
+.inlinemod {
+	BACKGROUND: #ffffcc; COLOR: #000000
+}
+.wysiwyg {
+	BACKGROUND: #f5f5ff; COLOR: #000000; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 10pt arial; PADDING-LEFT: 0px; MARGIN: 5px 10px 10px; PADDING-RIGHT: 0px
+}
+.wysiwyg A:link {
+	COLOR: #22229c
+}
+.wysiwyg_alink {
+	COLOR: #22229c
+}
+.wysiwyg A:visited {
+	COLOR: #22229c
+}
+.wysiwyg_avisited {
+	COLOR: #22229c
+}
+.wysiwyg A:hover {
+	COLOR: #ff4400
+}
+.wysiwyg A:active {
+	COLOR: #ff4400
+}
+.wysiwyg_ahover {
+	COLOR: #ff4400
+}
+TEXTAREA {
+	FONT: 10pt arial
+}
+.bginput {
+	FONT: 10pt arial
+}
+.bginput OPTION {
+	FONT-SIZE: 10pt; FONT-FAMILY: arial
+}
+.bginput OPTGROUP {
+	FONT-SIZE: 10pt; FONT-FAMILY: arial
+}
+.button {
+	FONT: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif
+}
+SELECT {
+	FONT: 11px arial
+}
+OPTION {
+	FONT-SIZE: 11px; FONT-FAMILY: arial
+}
+OPTGROUP {
+	FONT-SIZE: 11px; FONT-FAMILY: arial
+}
+.smallfont {
+	FONT: 11px arial
+}
+.navbar {
+	COLOR: #ffffff; FONT: bold 11px arial
+}
+.navbar A:link {
+	COLOR: #ffffff
+}
+.navbar_alink {
+	COLOR: #ffffff
+}
+.navbar A:visited {
+	COLOR: #ffffff
+}
+.navbar_avisited {
+	COLOR: #ffffff
+}
+.navbar A:hover {
+	COLOR: #ff6600
+}
+.navbar A:active {
+	COLOR: #ff6600
+}
+.navbar_ahover {
+	COLOR: #ff6600
+}
+.highlight {
+	FONT-WEIGHT: bold; COLOR: #ff0000
+}
+.fjsel {
+	BACKGROUND: #4589b4; COLOR: #ffffff
+}
+.fjdpth0 {
+	BACKGROUND: #f7f7f7; COLOR: #000000
+}
+.panel {
+	BORDER-TOP: #758b94 1px solid; BORDER-RIGHT: #758b94 1px solid; BACKGROUND: #ededed; BORDER-BOTTOM: #758b94 1px solid; COLOR: #000000; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; BORDER-LEFT: #758b94 1px solid; PADDING-RIGHT: 10px
+}
+.panelsurround {
+	BORDER-TOP: #758b94 1px solid; BORDER-RIGHT: #758b94 1px solid; BACKGROUND: #f6f8f8; BORDER-BOTTOM: #758b94 1px solid; COLOR: #000000; BORDER-LEFT: #758b94 1px solid
+}
+LEGEND {
+	COLOR: #22229c; FONT: 11px arial
+}
+.vbmenu_control {
+	BACKGROUND: url(/forums/images/gradients/gradient_tcat.gif) #4589b4 repeat-x left top; WHITE-SPACE: nowrap; COLOR: #ffffff; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; FONT: bold 11px arial; PADDING-LEFT: 6px; PADDING-RIGHT: 6px
+}
+.vbmenu_control A:link {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.vbmenu_control_alink {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.vbmenu_control A:visited {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.vbmenu_control_avisited {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.vbmenu_control A:hover {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}
+.vbmenu_control A:active {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}
+.vbmenu_control_ahover {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}
+.vbmenu_popup {
+	BORDER-TOP: #0b198c 1px solid; BORDER-RIGHT: #0b198c 1px solid; BACKGROUND: #ffffff; BORDER-BOTTOM: #0b198c 1px solid; COLOR: #000000; BORDER-LEFT: #0b198c 1px solid
+}
+.vbmenu_option {
+	CURSOR: pointer; BACKGROUND: #f8f8f8; WHITE-SPACE: nowrap; COLOR: #3a3a3a; FONT: 11px arial
+}
+.vbmenu_option A:link {
+	COLOR: #3a3a3a; TEXT-DECORATION: none
+}
+.vbmenu_option_alink {
+	COLOR: #3a3a3a; TEXT-DECORATION: none
+}
+.vbmenu_option A:visited {
+	COLOR: #3a3a3a; TEXT-DECORATION: none
+}
+.vbmenu_option_avisited {
+	COLOR: #3a3a3a; TEXT-DECORATION: none
+}
+.vbmenu_option A:hover {
+	COLOR: #fff; TEXT-DECORATION: none
+}
+.vbmenu_option A:active {
+	COLOR: #fff; TEXT-DECORATION: none
+}
+.vbmenu_option_ahover {
+	COLOR: #fff; TEXT-DECORATION: none
+}
+.vbmenu_hilite {
+	CURSOR: pointer; BACKGROUND: #4589b4; WHITE-SPACE: nowrap; COLOR: #3a3a3a; FONT: 11px arial
+}
+.vbmenu_hilite A:link {
+	COLOR: #fff; TEXT-DECORATION: none
+}
+.vbmenu_hilite_alink {
+	COLOR: #fff; TEXT-DECORATION: none
+}
+.vbmenu_hilite A:visited {
+	COLOR: #fff; TEXT-DECORATION: none
+}
+.vbmenu_hilite_avisited {
+	COLOR: #fff; TEXT-DECORATION: none
+}
+.vbmenu_hilite A:hover {
+	COLOR: #fff; TEXT-DECORATION: none
+}
+.vbmenu_hilite A:active {
+	COLOR: #fff; TEXT-DECORATION: none
+}
+.vbmenu_hilite_ahover {
+	COLOR: #fff; TEXT-DECORATION: none
+}
+.bigusername {
+	FONT-SIZE: 18px
+}
+TD.thead {
+	PADDING-BOTTOM: 4px; PADDING-TOP: 4px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px
+}
+TH.thead {
+	PADDING-BOTTOM: 4px; PADDING-TOP: 4px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px
+}
+DIV.thead {
+	PADDING-BOTTOM: 4px; PADDING-TOP: 4px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px
+}
+.pagenav A {
+	TEXT-DECORATION: none
+}
+.pagenav TD {
+	PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px
+}
+.shade {
+	COLOR: #777777; TEXT-DECORATION: none
+}
+A.shade:link {
+	COLOR: #777777; TEXT-DECORATION: none
+}
+A.shade:visited {
+	COLOR: #777777; TEXT-DECORATION: none
+}
+A.shade:active {
+	COLOR: #ff4400; TEXT-DECORATION: underline
+}
+A.shade:hover {
+	COLOR: #ff4400; TEXT-DECORATION: underline
+}
+.tcat .shade {
+	COLOR: #dddddd
+}
+.thead .shade {
+	COLOR: #dddddd
+}
+.tfoot .shade {
+	COLOR: #dddddd
+}
+.fieldset {
+	MARGIN-BOTTOM: 6px
+}
+.fieldset {
+	FONT-SIZE: 11px
+}
+.fieldset TD {
+	FONT-SIZE: 11px
+}
+.fieldset P {
+	FONT-SIZE: 11px
+}
+.fieldset LI {
+	FONT-SIZE: 11px
+}
+.page {
+	FLOAT: left
+}
+#contentcolumn {
+	MARGIN-RIGHT: 200px
+}
+#rightcolumn {
+	FLOAT: left; MARGIN-LEFT: -200px; WIDTH: 200px
+}
+#leftcolumn {
+	FLOAT: left; MARGIN-LEFT: -20px; WIDTH: 200px
+}
+.sidemenubutton A {
+	BORDER-TOP: #d1cccc 1px solid; POSITION: relative; PADDING-BOTTOM: 4px; PADDING-TOP: 4px; PADDING-LEFT: 4px; DISPLAY: block; PADDING-RIGHT: 4px
+}
+.sidemenubutton A:hover {
+	BACKGROUND-COLOR: #ffe58b
+}
+.sidemenu {
+	FONT-SIZE: 12px; FONT-FAMILY: arial; FONT-WEIGHT: bold
+}
+.topadvert {
+	RIGHT: 20px; POSITION: absolute; TOP: 20px
+}
+.articletitle {
+	FONT-SIZE: 14px; FONT-WEIGHT: bold
+}
+.pagenav .tborder .vbmenu_control {
+	BACKGROUND-POSITION: -4px 50%
+}
+.headerimg {
+	BACKGROUND-COLOR: #4589b4
+}
+H1 {
+	FONT-SIZE: 12px; FONT-FAMILY: arial; FONT-WEIGHT: bold
+}
+H2 {
+	FONT-SIZE: 14px; FONT-FAMILY: arial; FONT-WEIGHT: bold; DISPLAY: inline; PADDING-RIGHT: 5px
+}
+.titletext {
+	FONT-SIZE: 10pt
+}
+.footertext {
+	FONT-SIZE: 11px; COLOR: #d6d6d6
+}
+.footertext A {
+	FONT-SIZE: 11px; COLOR: #d6d6d6; TEXT-DECORATION: none
+}
+.topnav {
+	FONT-SIZE: 16px; FONT-FAMILY: arial; FONT-WEIGHT: bold; COLOR: #cbcbcb; TEXT-ALIGN: right; MARGIN-TOP: 59px; MARGIN-RIGHT: 39px
+}
+.topnav A:link {
+	FONT-SIZE: 16px; FONT-FAMILY: arial; FONT-WEIGHT: bold; COLOR: #648395; TEXT-DECORATION: none
+}
+.topnav A:hover {
+	FONT-SIZE: 16px; FONT-FAMILY: arial; FONT-WEIGHT: bold; COLOR: #648395; TEXT-DECORATION: none
+}
+.topnav A:visited {
+	FONT-SIZE: 16px; FONT-FAMILY: arial; FONT-WEIGHT: bold; COLOR: #648395; TEXT-DECORATION: none
+}
+.topnav A:active {
+	FONT-SIZE: 16px; FONT-FAMILY: arial; FONT-WEIGHT: bold; COLOR: #648395; TEXT-DECORATION: none
+}
+.navigation {
+	HEIGHT: 33px; BACKGROUND: url(../../images/template/navigationbg.gif) repeat-x
+}
+.navitem {
+	BACKGROUND: url(../../images/template/navitembg.gif) no-repeat right top; WHITE-SPACE: nowrap; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 13px; PADDING-RIGHT: 13px
+}
+.navitem A:link {
+	FONT-SIZE: 12px; FONT-FAMILY: arial; FONT-WEIGHT: bold; COLOR: #ffffff; TEXT-DECORATION: none
+}
+.navitem A:active {
+	FONT-SIZE: 12px; FONT-FAMILY: arial; FONT-WEIGHT: bold; COLOR: #ffffff; TEXT-DECORATION: none
+}
+.navitem A:visited {
+	FONT-SIZE: 12px; FONT-FAMILY: arial; FONT-WEIGHT: bold; COLOR: #ffffff; TEXT-DECORATION: none
+}
+.navitem A:hover {
+	COLOR: #ffe58b
+}
+.navleft {
+	PADDING-LEFT: 10px
+}
+.navright {
+	PADDING-RIGHT: 10px
+}
+.breadcrumb {
+	BACKGROUND: url(../../images/misc/bcbg.gif) repeat-x
+}
+.bcleft {
+	FONT-SIZE: 11px; HEIGHT: 28px; FONT-FAMILY: arial; BACKGROUND: url(../../images/misc/bcleft.gif) no-repeat left top; COLOR: #036c9b; PADDING-LEFT: 41px; LINE-HEIGHT: 28px
+}
+.bcright {
+	BACKGROUND: url(../../images/misc/bcright.gif) no-repeat right top
+}
+.bcleft A:link {
+	FONT-SIZE: 11px; FONT-FAMILY: arial; COLOR: #036c9b; TEXT-DECORATION: none
+}
+.bcleft A:hover {
+	FONT-SIZE: 11px; FONT-FAMILY: arial; COLOR: #036c9b; TEXT-DECORATION: none
+}
+.bcleft A:active {
+	FONT-SIZE: 11px; FONT-FAMILY: arial; COLOR: #036c9b; TEXT-DECORATION: none
+}
+.bcleft A:visited {
+	FONT-SIZE: 11px; FONT-FAMILY: arial; COLOR: #036c9b; TEXT-DECORATION: none
+}
+.bginput2 {
+	FONT-SIZE: 11px; BORDER-TOP: #788791 1px solid; HEIGHT: 15px; FONT-FAMILY: arial; BORDER-RIGHT: #788791 1px solid; BACKGROUND: #fefefe; BORDER-BOTTOM: #788791 1px solid; COLOR: #94a0a9; PADDING-TOP: 3px; PADDING-LEFT: 5px; BORDER-LEFT: #788791 1px solid; WIDTH: 109px
+}
+.userinformation {
+	FONT-WEIGHT: bold; COLOR: #fff
+}
+.userinformation A:link {
+	COLOR: #ffe58b
+}
+.userinformation A:active {
+	COLOR: #ffe58b
+}
+.userinformation A:visited {
+	COLOR: #ffe58b
+}
+.userinformation A:hover {
+	COLOR: #ff6600
+}
+.lbutton {
+	BORDER-LEFT-WIDTH: 0px; HEIGHT: 20px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND: url(../../images/misc/login.png) no-repeat; BORDER-BOTTOM-WIDTH: 0px; BORDER-TOP-WIDTH: 0px; WIDTH: 54px
+}
+IMG {
+	BORDER-LEFT-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-TOP-WIDTH: 0px
+}
+.althp {
+	BACKGROUND: #f6f8f8
+}
+.altf1 {
+	BACKGROUND: #ffffff
+}
+.altf2 {
+	BACKGROUND: #eef4f9
+}
+.tcat_left {
+	FONT-SIZE: 12px; HEIGHT: 45px; FONT-FAMILY: arial; BACKGROUND: url(../../images/template/tcat_left.gif) no-repeat; FONT-WEIGHT: bold; PADDING-LEFT: 19px; LINE-HEIGHT: 45px
+}
+.tcat_right {
+	FONT-SIZE: 12px; HEIGHT: 45px; FONT-FAMILY: arial; BACKGROUND: url(../../images/template/tcat_right.gif) no-repeat right top; FONT-WEIGHT: bold; LINE-HEIGHT: 45px
+}
+.tfooter {
+	FONT-SIZE: 1px; HEIGHT: 3px; BACKGROUND: #d1cccc; MARGIN-TOP: 2px
+}
+.vbmenu_c {
+	HEIGHT: 32px; PADDING-RIGHT: 4px
+}
+.vbmenu_c A:link {
+	FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+.vbmenu_c A:hover {
+	FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+.vbmenu_c A:active {
+	FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+.vbmenu_c A:visited {
+	FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+.pbleft {
+	BACKGROUND: #e0e0e0; WIDTH: 179px
+}
+.pbmiddle {
+	BACKGROUND: #ededed
+}
+.pbright {
+	BACKGROUND: url(../../images/misc/pbrightbg.gif) repeat-y; WIDTH: 14px
+}
+.pbrighttop {
+	FONT-SIZE: 1px; HEIGHT: 8px; BACKGROUND: url(../../images/misc/pbrighttop.gif) no-repeat; WIDTH: 14px
+}
+.pblefttop {
+	MARGIN-BOTTOM: 13px; FONT-SIZE: 1px; HEIGHT: 8px; BACKGROUND: url(../../images/misc/pblefttop.gif) no-repeat; WIDTH: 179px
+}
+.pbmiddletop {
+	HEIGHT: 10px; BACKGROUND: #ededed
+}
+.pbmiddletopright {
+	FONT-SIZE: 1px; HEIGHT: 8px; BACKGROUND: url(../../images/misc/pbmiddletopright.gif) no-repeat right top
+}
+.pbmessage {
+	FONT-SIZE: 13px; COLOR: #273d49; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; PADDING-LEFT: 13px; PADDING-RIGHT: 13px
+}
+.pbleftbot {
+	HEIGHT: 9px; BACKGROUND: url(../../images/misc/pbleftbot.gif) no-repeat left top; WIDTH: 179px
+}
+.pbrightbot {
+	HEIGHT: 9px; BACKGROUND: url(../../images/misc/pbrightbot.gif) no-repeat left top; WIDTH: 14px
+}
+.pbmiddlebot {
+	HEIGHT: 9px; BACKGROUND: #ededed
+}
+.pbmiddlebotright {
+	FONT-SIZE: 1px; HEIGHT: 9px; BACKGROUND: url(../../images/misc/pbmiddlebotright.gif) no-repeat right top
+}

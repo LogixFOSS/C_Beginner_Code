@@ -1,0 +1,1244 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0084)http://www.velocityreviews.com/forums/t314156-pointer-to-an-array-of-structures.html -->
+<HTML lang=en dir=ltr xmlns="http://www.w3.org/1999/xhtml"><HEAD><META 
+content="IE=7.0000" http-equiv="X-UA-Compatible">
+<TITLE>Pointer to an array of structures</TITLE>
+<META content="text/html; charset=ISO-8859-1" http-equiv=Content-Type>
+<META name=keywords 
+content="Pointer,to,an,array,of,structures, Pointer to an array of structures">
+<META name=description 
+content="Hi there.. My name is Frank Münnich. I've got a question about pointers that refer to an array of a structure. How do I declare that type? If I have declared a structure"><!-- CSS Stylesheet -->
+<STYLE id=vbulletin_css type=text/css>@import url( http://www.velocityreviews.com/forums/clientscript/vbulletin_css/style-0af30db7-00004.css );
+</STYLE>
+<LINK rel=stylesheet type=text/css 
+href="Pointer%20to%20an%20array%20of%20structures_files/vbulletin_important.css"><!-- / CSS Stylesheet -->
+<SCRIPT type=text/javascript 
+src="Pointer%20to%20an%20array%20of%20structures_files/yahoo-dom-event.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="Pointer%20to%20an%20array%20of%20structures_files/connection-min.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+<!--
+var SESSIONURL = "";
+var SECURITYTOKEN = "guest";
+var IMGDIR_MISC = "/forums/images/misc";
+var vb_disable_ajax = parseInt("0", 10);
+// -->
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="Pointer%20to%20an%20array%20of%20structures_files/vbulletin_global.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="Pointer%20to%20an%20array%20of%20structures_files/vbulletin_menu.js"></SCRIPT>
+<LINK title="Velocity Reviews RSS Feed" rel=alternate type=application/rss+xml 
+href="http://www.velocityreviews.com/forums/external.php?type=RSS2"><LINK 
+title="Velocity Reviews - C Programming - RSS Feed" rel=alternate 
+type=application/rss+xml 
+href="http://www.velocityreviews.com/forums/external.php?type=RSS2&amp;forumids=42">
+<SCRIPT type=text/javascript 
+src="Pointer%20to%20an%20array%20of%20structures_files/vbulletin_post_loader.js"></SCRIPT>
+
+<STYLE id=vbulletin_showthread_css type=text/css>#links DIV {
+	WHITE-SPACE: nowrap
+}
+#links IMG {
+	VERTICAL-ALIGN: middle
+}
+</STYLE>
+
+<META name=GENERATOR content="MSHTML 10.00.9200.16384"></HEAD>
+<BODY onload="">
+<DIV class=headerimg><A href="http://www.velocityreviews.com/"><IMG 
+alt="Velocity Reviews - Computer Hardware Reviews" 
+src="Pointer%20to%20an%20array%20of%20structures_files/header.jpg" width=500 
+height=100></A></DIV><!-- content table -->
+<TABLE class=navigation cellSpacing=0 cellPadding=0 width="100%" align=center 
+border=0>
+  <TBODY>
+  <TR align=center>
+    <TD class=navleft></TD>
+    <TD class=navitem><A href="http://www.velocityreviews.com/">Home</A></TD>
+    <TD class=navitem><A 
+      href="http://www.velocityreviews.com/forums/">Forums</A></TD>
+    <TD class=navitem><A 
+      href="http://www.velocityreviews.com/reviews/">Reviews</A></TD>
+    <TD class=navitem><A 
+      href="http://www.velocityreviews.com/guides/">Guides</A></TD>
+    <TD class=navitem><A 
+      href="http://www.velocityreviews.com/forums/f16-newsgroups.html">Newsgroups</A></TD>
+    <TD class=navitem><A 
+      href="http://www.velocityreviews.com/forums/register.php" 
+      rel=nofollow>Register</A></TD>
+    <TD id=navbar_search class=navitem><A accessKey=4 
+      href="http://www.velocityreviews.com/forums/search.php" 
+      rel=nofollow>Search</A>
+      <SCRIPT type=text/javascript> vbmenu_register("navbar_search"); </SCRIPT>
+       </TD>
+    <TD width="100%" align=right><!-- login form -->
+      <FORM 
+      onsubmit="md5hash(vb_login_password, vb_login_md5password, vb_login_md5password_utf, 0)" 
+      method=post 
+      action=http://www.velocityreviews.com/forums/login.php?do=login>
+      <SCRIPT type=text/javascript 
+      src="Pointer%20to%20an%20array%20of%20structures_files/vbulletin_md5.js"></SCRIPT>
+
+      <TABLE cellSpacing=0 cellPadding=0 border=0>
+        <TBODY>
+        <TR>
+          <TD 
+          style="FONT-SIZE: 12px; WHITE-SPACE: nowrap; FONT-WEIGHT: bold; COLOR: #fff; PADDING-RIGHT: 3px">Member 
+            Login:</TD>
+          <TD style="PADDING-RIGHT: 3px"><INPUT tabIndex=101 
+            onfocus="if (this.value == 'User Name') this.value = '';" 
+            id=navbar_username class=bginput2 style="FONT-SIZE: 11px" 
+            accessKey=u size=10 value="User Name" name=vb_login_username></TD>
+          <TD style="PADDING-RIGHT: 3px"><INPUT tabIndex=102 
+            id=navbar_password class=bginput2 style="FONT-SIZE: 11px" size=10 
+            type=password name=vb_login_password></TD>
+          <TD class=smallfont style="MARGIN-RIGHT: 3px" noWrap><LABEL 
+            for=cb_cookieuser_navbar><INPUT tabIndex=103 id=cb_cookieuser_navbar 
+            accessKey=c type=checkbox value=1 name=cookieuser></LABEL></TD>
+          <TD><INPUT tabIndex=104 title="Enter your username and password in the boxes provided to login, or click the 'register' button to create a profile for yourself." class=lbutton accessKey=s type=submit></TD></TR></TBODY></TABLE><INPUT 
+      type=hidden name=s> <INPUT type=hidden value=guest name=securitytoken> 
+      <INPUT type=hidden value=login name=do> <INPUT type=hidden 
+      name=vb_login_md5password> <INPUT type=hidden 
+      name=vb_login_md5password_utf> </FORM><!-- / login form --></TD>
+    <TD class=navright></TD></TR></TBODY></TABLE><!-- NAVBAR POPUP MENUS --><!-- header quick search form -->
+<DIV id=navbar_search_menu class=vbmenu_popup style="DISPLAY: none" align=left>
+<TABLE cellSpacing=1 cellPadding=4 border=0>
+  <TBODY>
+  <TR>
+    <TD class=thead>Search Forums</TD></TR>
+  <TR>
+    <TD title=nohilite class=vbmenu_option>
+      <FORM id=cse-search-box action=/forums/googlesearch.php>
+      <DIV><INPUT type=hidden value=002919058480771089906:xn_bclo__0i name=cx> 
+      <INPUT type=hidden value=FORID:10 name=cof> <INPUT type=hidden value=UTF-8 
+      name=ie> <INPUT name=q> <INPUT type=submit value=Search name=sa> 
+      </DIV></FORM>
+      <SCRIPT type=text/javascript 
+      src="Pointer%20to%20an%20array%20of%20structures_files/brand.js"></SCRIPT>
+    </TD></TR>
+  <TR>
+    <TD class=vbmenu_option><A accessKey=4 
+      href="http://www.velocityreviews.com/forums/search.php" 
+      rel=nofollow>Advanced Search</A></TD></TR></TBODY></TABLE></DIV><!-- / header quick search form --><!-- / NAVBAR POPUP MENUS --><!-- PAGENAV POPUP -->
+<DIV id=pagenav_menu class=vbmenu_popup style="DISPLAY: none">
+<TABLE cellSpacing=1 cellPadding=4 border=0>
+  <TBODY>
+  <TR>
+    <TD class=thead noWrap>Go to Page...</TD></TR>
+  <TR>
+    <TD title=nohilite class=vbmenu_option>
+      <FORM id=pagenav_form onsubmit="return this.gotopage()" method=get 
+      action=http://www.velocityreviews.com/forums/index.php><INPUT 
+      id=pagenav_itxt class=bginput style="FONT-SIZE: 11px" size=4> <INPUT id=pagenav_ibtn class=button type=button value=Go> 
+  </FORM></TD></TR></TBODY></TABLE></DIV><!-- / PAGENAV POPUP --><!-- open content container -->
+<DIV align=center>
+<DIV class=page style="TEXT-ALIGN: left; WIDTH: 100%">
+<DIV 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 20px; PADDING-RIGHT: 20px" 
+align=left>
+<DIV id=contentcolumn><BR><SPAN class=navbar><A 
+href="http://www.velocityreviews.com/forums/index.php">Velocity Reviews</A> 
+<SPAN class=navbar>&gt; <A 
+href="http://www.velocityreviews.com/forums/f16-newsgroups.html">Newsgroups</A></SPAN> 
+<SPAN class=navbar>&gt; <A 
+href="http://www.velocityreviews.com/forums/f55-programming.html">Programming</A></SPAN> 
+<SPAN class=navbar>&gt; <A 
+href="http://www.velocityreviews.com/forums/f42-c-programming.html">C 
+Programming</A></SPAN> &gt; Pointer to an array of structures </SPAN><BR><BR><A 
+id=poststop name=poststop></A><!-- controls above postbits -->
+<TABLE style="MARGIN-BOTTOM: 3px" cellSpacing=0 cellPadding=0 width="100%" 
+border=0>
+  <TBODY>
+  <TR vAlign=bottom>
+    <TD class=smallfont><A 
+      href="http://www.velocityreviews.com/forums/newreply.php?do=newreply&amp;noquote=1&amp;p=1669054" 
+      rel=nofollow><IMG border=0 alt=Reply 
+      src="Pointer%20to%20an%20array%20of%20structures_files/reply.gif"></A></TD></TR></TBODY></TABLE><!-- / controls above postbits --><!-- toolbar -->
+<DIV class=tcat>
+<DIV class=tcat_right>
+<TABLE style="FLOAT: right" cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD id=threadtools class=vbmenu_c noWrap><A accessKey=3 
+      href="http://www.velocityreviews.com/forums/t314156-pointer-to-an-array-of-structures.html?nojs=1#goto_threadtools" 
+      rel=nofollow>Thread Tools</A>
+      <SCRIPT type=text/javascript> vbmenu_register("threadtools"); </SCRIPT>
+       </TD></TR></TBODY></TABLE>
+<DIV class=tcat_left><!-- google_ad_section_start -->
+<H1>Pointer to an array of structures 
+</H1><!-- google_ad_section_end --></DIV></DIV></DIV><!-- / toolbar -->
+<DIV class=thead style="MARGIN-BOTTOM: 2px; HEIGHT: 10px"> </DIV><!-- end content table --><!-- / end content table -->
+<DIV id=posts><!-- post #1669054 -->
+<DIV id=edit1669054 
+style="PADDING-BOTTOM: 6px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px"><!-- this is not the last post shown on the page -->
+<TABLE id=post1669054 cellSpacing=0 cellPadding=0 width="100%" align=center 
+border=0>
+  <TBODY>
+  <TR vAlign=top>
+    <TD class=pbleft rowSpan=3 width=179 align=center>
+      <DIV class=pblefttop>&nbsp;</DIV>
+      <DIV id=postmenu_1669054>Frank Münnich </DIV>
+      <DIV class=smallfont style="MARGIN-BOTTOM: 3px">Guest</DIV>
+      <DIV class=smallfont>Posts: <STRONG>n/a</STRONG></DIV>
+      <DIV class=smallfont></DIV>
+      <DIV></DIV>&nbsp; <!-- / controls --></TD>
+    <TD id=td_post_1669054 class=pbmiddle>
+      <DIV class=pbmiddletop></DIV>
+      <DIV class=pbmessage>
+      <TABLE style="MARGIN-BOTTOM: 3px" cellSpacing=0 cellPadding=0 width="100%" 
+      align=center>
+        <TBODY>
+        <TR>
+          <TD 
+            align=right><!-- status icon and date -->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            07-11-2003 <!-- / status icon and date --></TD></TR></TBODY></TABLE><!-- message -->
+      <DIV id=post_message_1669054 class=KonaBody><!-- google_ad_section_start -->Hi there..<BR><BR>My name 
+      is Frank Münnich. I've got a question about pointers that<BR>refer to an 
+      array of a structure.<BR>How do I declare that type?<BR><BR>If I have 
+      declared a structure<BR>struct mystruc {<BR>int x,y,z;<BR>char 
+      a,b,c;<BR>};<BR><BR>and have furthermore declared<BR><BR>mystruc 
+      data[20];<BR><BR>and now I would like to have a pointer that refers to the 
+      array of<BR>structures, how do I do this?<BR><BR>mystruc *mypointer[20] 
+      declares an array of 20 pointers, not a pointer<BR>referring to an array 
+      of 20 structures.<BR><BR>I need this in order to pass the whole structure 
+      as a parameter in a<BR>function, so that the function can alter the data 
+      in the field.<BR><BR>If anyone could help, it would be HIGHLY 
+      appreciated.<BR>Sincerely yours,<BR><BR>Frank Münnich / TU Dresden<BR><!-- google_ad_section_end --></DIV><!-- / message --></DIV></TD>
+    <TD class=pbright rowSpan=3 width=14 align=center>
+      <DIV class=pbrighttop>&nbsp;</DIV></TD></TR>
+  <TR>
+    <TD class=pbmiddle style="PADDING-RIGHT: 5px" height="100%" vAlign=bottom>
+      <DIV class=pbmessage></DIV></TD></TR>
+  <TR>
+    <TD class=pbmiddle style="PADDING-RIGHT: 5px" align=right><A 
+      href="http://www.velocityreviews.com/forums/newreply.php?do=newreply&amp;p=1669054" 
+      rel=nofollow><IMG border=0 alt="Reply With Quote" 
+      src="Pointer%20to%20an%20array%20of%20structures_files/quote.gif"></A> 
+  </TD></TR>
+  <TR>
+    <TD class=pbleftbot></TD>
+    <TD class=pbmiddlebot></TD>
+    <TD class=pbrightbot></TD></TR></TBODY></TABLE><!-- post 1669054 popup menu -->
+<DIV id=postmenu_1669054_menu class=vbmenu_popup style="DISPLAY: none">
+<TABLE cellSpacing=1 cellPadding=4 border=0>
+  <TBODY>
+  <TR>
+    <TD class=thead>Frank Münnich</TD></TR></TBODY></TABLE></DIV><!-- / post 1669054 popup menu -->
+<DIV 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 6px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  <TBODY>
+  <TR vAlign=top>
+    <TD class=pbleft rowSpan=2 width=200 align=center>
+      <DIV class=pblefttop>&nbsp;</DIV></TD>
+    <TD class=pbmiddle>
+      <DIV class=pbmiddletop></DIV>
+      <DIV class=pbmessage>
+      <TABLE style="MARGIN-BOTTOM: 3px" cellSpacing=0 cellPadding=0 width="100%" 
+      align=center>
+        <TBODY>
+        <TR>
+          <TD align=right></TD></TR></TBODY></TABLE>
+      <SCRIPT type=text/javascript>
+<!--
+
+var google_adnum = 0;
+var customadstyle = 'postbit';
+
+google_ad_client = 'pub-9482258749662266';
+google_ad_channel ="7752722178";
+google_ad_output = 'js';
+google_max_num_ads = '1';
+google_ad_type = 'text,image,flash,html';
+google_image_size = '300x250';
+google_feedback = 'on';
+google_skip = google_adnum;
+
+// -->
+</SCRIPT>
+
+      <SCRIPT type=text/javascript 
+      src="Pointer%20to%20an%20array%20of%20structures_files/adsense.js"></SCRIPT>
+
+      <SCRIPT type=text/javascript 
+      src="Pointer%20to%20an%20array%20of%20structures_files/show_ads.js"></SCRIPT>
+      </DIV></TD>
+    <TD class=pbright rowSpan=2 width=14 align=center>
+      <DIV class=pbrighttop>&nbsp;</DIV></TD></TR>
+  <TR>
+    <TD class=pbmiddle style="PADDING-RIGHT: 5px" align=right>&nbsp;</TD></TR>
+  <TR>
+    <TD class=pbleftbot></TD>
+    <TD class=pbmiddlebot></TD>
+    <TD class=pbrightbot></TD></TR></TBODY></TABLE></DIV></DIV><!-- / post #1669054 --><!-- post #1669059 -->
+<DIV id=edit1669059 
+style="PADDING-BOTTOM: 6px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px"><!-- this is not the last post shown on the page -->
+<TABLE id=post1669059 cellSpacing=0 cellPadding=0 width="100%" align=center 
+border=0>
+  <TBODY>
+  <TR vAlign=top>
+    <TD class=pbleft rowSpan=3 width=179 align=center>
+      <DIV class=pblefttop>&nbsp;</DIV>
+      <DIV id=postmenu_1669059>Ben Pfaff </DIV>
+      <DIV class=smallfont style="MARGIN-BOTTOM: 3px">Guest</DIV>
+      <DIV class=smallfont>Posts: <STRONG>n/a</STRONG></DIV>
+      <DIV class=smallfont></DIV>
+      <DIV></DIV>&nbsp; <!-- / controls --></TD>
+    <TD id=td_post_1669059 class=pbmiddle>
+      <DIV class=pbmiddletop></DIV>
+      <DIV class=pbmessage>
+      <TABLE style="MARGIN-BOTTOM: 3px" cellSpacing=0 cellPadding=0 width="100%" 
+      align=center>
+        <TBODY>
+        <TR>
+          <TD 
+            align=right><!-- status icon and date -->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            07-11-2003 <!-- / status icon and date --></TD></TR></TBODY></TABLE><!-- message -->
+      <DIV id=post_message_1669059 class=KonaBody><!-- google_ad_section_start --><A 
+      href="http://www.velocityreviews.com/forums/private.php?do=newpm&amp;u=" 
+      rel=nofollow></A>(Frank Münnich) writes:<BR><FONT color=blue><BR>&gt; My 
+      name is Frank Münnich. I've got a question about pointers that<BR>&gt; 
+      refer to an array of a structure.<BR>&gt; How do I declare that 
+      type?</FONT><BR><BR>struct x 
+      (*p)[size];<BR><!-- google_ad_section_end --></DIV><!-- / message --></DIV></TD>
+    <TD class=pbright rowSpan=3 width=14 align=center>
+      <DIV class=pbrighttop>&nbsp;</DIV></TD></TR>
+  <TR>
+    <TD class=pbmiddle style="PADDING-RIGHT: 5px" height="100%" vAlign=bottom>
+      <DIV class=pbmessage></DIV></TD></TR>
+  <TR>
+    <TD class=pbmiddle style="PADDING-RIGHT: 5px" align=right><A 
+      href="http://www.velocityreviews.com/forums/newreply.php?do=newreply&amp;p=1669059" 
+      rel=nofollow><IMG border=0 alt="Reply With Quote" 
+      src="Pointer%20to%20an%20array%20of%20structures_files/quote.gif"></A> 
+  </TD></TR>
+  <TR>
+    <TD class=pbleftbot></TD>
+    <TD class=pbmiddlebot></TD>
+    <TD class=pbrightbot></TD></TR></TBODY></TABLE><!-- post 1669059 popup menu -->
+<DIV id=postmenu_1669059_menu class=vbmenu_popup style="DISPLAY: none">
+<TABLE cellSpacing=1 cellPadding=4 border=0>
+  <TBODY>
+  <TR>
+    <TD class=thead>Ben Pfaff</TD></TR></TBODY></TABLE></DIV><!-- / post 1669059 popup menu -->
+<DIV 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 6px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  <TBODY>
+  <TR vAlign=top>
+    <TD class=pbleft rowSpan=2 width=200 align=center>
+      <DIV class=pblefttop>&nbsp;</DIV></TD>
+    <TD class=pbmiddle>
+      <DIV class=pbmiddletop></DIV>
+      <DIV class=pbmessage>
+      <TABLE style="MARGIN-BOTTOM: 3px" cellSpacing=0 cellPadding=0 width="100%" 
+      align=center>
+        <TBODY>
+        <TR>
+          <TD align=right></TD></TR></TBODY></TABLE>
+      <SCRIPT type=text/javascript>
+<!--
+
+var customadstyle = 'postbit';
+
+google_ad_client = 'pub-9482258749662266';
+google_ad_channel ="7752722178";
+google_ad_output = 'js';
+google_max_num_ads = '1';
+google_ad_type = 'text,image,flash,html';
+google_image_size = '300x250';
+google_feedback = 'on';
+google_skip = google_adnum;
+
+// -->
+</SCRIPT>
+
+      <SCRIPT type=text/javascript 
+      src="Pointer%20to%20an%20array%20of%20structures_files/adsense.js"></SCRIPT>
+
+      <SCRIPT type=text/javascript 
+      src="Pointer%20to%20an%20array%20of%20structures_files/show_ads.js"></SCRIPT>
+      </DIV></TD>
+    <TD class=pbright rowSpan=2 width=14 align=center>
+      <DIV class=pbrighttop>&nbsp;</DIV></TD></TR>
+  <TR>
+    <TD class=pbmiddle style="PADDING-RIGHT: 5px" align=right>&nbsp;</TD></TR>
+  <TR>
+    <TD class=pbleftbot></TD>
+    <TD class=pbmiddlebot></TD>
+    <TD class=pbrightbot></TD></TR></TBODY></TABLE></DIV></DIV><!-- / post #1669059 --><!-- post #1669058 -->
+<DIV id=edit1669058 
+style="PADDING-BOTTOM: 6px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px"><!-- this is not the last post shown on the page -->
+<TABLE id=post1669058 cellSpacing=0 cellPadding=0 width="100%" align=center 
+border=0>
+  <TBODY>
+  <TR vAlign=top>
+    <TD class=pbleft rowSpan=3 width=179 align=center>
+      <DIV class=pblefttop>&nbsp;</DIV>
+      <DIV id=postmenu_1669058>Eric </DIV>
+      <DIV class=smallfont style="MARGIN-BOTTOM: 3px">Guest</DIV>
+      <DIV class=smallfont>Posts: <STRONG>n/a</STRONG></DIV>
+      <DIV class=smallfont></DIV>
+      <DIV></DIV>&nbsp; <!-- / controls --></TD>
+    <TD id=td_post_1669058 class=pbmiddle>
+      <DIV class=pbmiddletop></DIV>
+      <DIV class=pbmessage>
+      <TABLE style="MARGIN-BOTTOM: 3px" cellSpacing=0 cellPadding=0 width="100%" 
+      align=center>
+        <TBODY>
+        <TR>
+          <TD 
+            align=right><!-- status icon and date -->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            07-11-2003 <!-- / status icon and date --></TD></TR></TBODY></TABLE><!-- message -->
+      <DIV id=post_message_1669058 class=KonaBody><!-- google_ad_section_start -->Frank Münnich &lt;&gt; 
+      wrote:<BR><FONT color=blue><BR>&gt; mystruc data[20];<BR>&gt; <BR>&gt; and 
+      now I would like to have a pointer that refers to the array of<BR>&gt; 
+      structures, how do I do this?</FONT><BR><BR>You can do:<BR><BR>mystruc 
+      *dataArray = &amp;data[0];<BR>mystruc *dataArray = data;<BR><BR>Also, you 
+      may want to read:<BR><BR><A 
+      href="http://www.eskimo.com/~scs/C-faq/q6.2.html" rel=nofollow 
+      target=_blank>http://www.eskimo.com/~scs/C-faq/q6.2.html</A><BR><A 
+      href="http://www.eskimo.com/~scs/C-faq/q6.3.html" rel=nofollow 
+      target=_blank>http://www.eskimo.com/~scs/C-faq/q6.3.html</A><BR><A 
+      href="http://www.eskimo.com/~scs/C-faq/q6.8.html" rel=nofollow 
+      target=_blank>http://www.eskimo.com/~scs/C-faq/q6.8.html</A><BR><BR>-- 
+      <BR>== Eric Gorr ========= <A href="http://www.ericgorr.net/" rel=nofollow 
+      target=_blank>http://www.ericgorr.net/</A> ========= ICQ:9293199 
+      ===<BR>"Therefore the considerations of the intelligent always include 
+      both <BR>benefit and harm." - Sun Tzu<BR>== Insults, like violence, are 
+      the last refuge of the incompetent... ===<BR><!-- google_ad_section_end --></DIV><!-- / message --></DIV></TD>
+    <TD class=pbright rowSpan=3 width=14 align=center>
+      <DIV class=pbrighttop>&nbsp;</DIV></TD></TR>
+  <TR>
+    <TD class=pbmiddle style="PADDING-RIGHT: 5px" height="100%" vAlign=bottom>
+      <DIV class=pbmessage></DIV></TD></TR>
+  <TR>
+    <TD class=pbmiddle style="PADDING-RIGHT: 5px" align=right><A 
+      href="http://www.velocityreviews.com/forums/newreply.php?do=newreply&amp;p=1669058" 
+      rel=nofollow><IMG border=0 alt="Reply With Quote" 
+      src="Pointer%20to%20an%20array%20of%20structures_files/quote.gif"></A> 
+  </TD></TR>
+  <TR>
+    <TD class=pbleftbot></TD>
+    <TD class=pbmiddlebot></TD>
+    <TD class=pbrightbot></TD></TR></TBODY></TABLE><!-- post 1669058 popup menu -->
+<DIV id=postmenu_1669058_menu class=vbmenu_popup style="DISPLAY: none">
+<TABLE cellSpacing=1 cellPadding=4 border=0>
+  <TBODY>
+  <TR>
+    <TD class=thead>Eric</TD></TR></TBODY></TABLE></DIV><!-- / post 1669058 popup menu --></DIV><!-- / post #1669058 --><!-- post #1669069 -->
+<DIV id=edit1669069 
+style="PADDING-BOTTOM: 6px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px"><!-- this is not the last post shown on the page -->
+<TABLE id=post1669069 cellSpacing=0 cellPadding=0 width="100%" align=center 
+border=0>
+  <TBODY>
+  <TR vAlign=top>
+    <TD class=pbleft rowSpan=3 width=179 align=center>
+      <DIV class=pblefttop>&nbsp;</DIV>
+      <DIV id=postmenu_1669069>Default User </DIV>
+      <DIV class=smallfont style="MARGIN-BOTTOM: 3px">Guest</DIV>
+      <DIV class=smallfont>Posts: <STRONG>n/a</STRONG></DIV>
+      <DIV class=smallfont></DIV>
+      <DIV></DIV>&nbsp; <!-- / controls --></TD>
+    <TD id=td_post_1669069 class=pbmiddle>
+      <DIV class=pbmiddletop></DIV>
+      <DIV class=pbmessage>
+      <TABLE style="MARGIN-BOTTOM: 3px" cellSpacing=0 cellPadding=0 width="100%" 
+      align=center>
+        <TBODY>
+        <TR>
+          <TD 
+            align=right><!-- status icon and date -->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            07-11-2003 <!-- / status icon and date --></TD></TR></TBODY></TABLE><!-- message -->
+      <DIV id=post_message_1669069 class=KonaBody><!-- google_ad_section_start --><BR><BR>"Frank Münnich" 
+      wrote:<FONT color=blue><BR>&gt; <BR>&gt; Hi there..<BR>&gt; <BR>&gt; My 
+      name is Frank Münnich. I've got a question about pointers that<BR>&gt; 
+      refer to an array of a structure.<BR>&gt; How do I declare that 
+      type?<BR>&gt; <BR>&gt; If I have declared a structure<BR>&gt; struct 
+      mystruc {<BR>&gt; int x,y,z;<BR>&gt; char a,b,c;<BR>&gt; };<BR>&gt; 
+      <BR>&gt; and have furthermore declared<BR>&gt; <BR>&gt; mystruc 
+      data[20];</FONT><BR><BR>This is an illegal definition. Perhaps you 
+      meant<BR><BR>struct mystruc data[20];<BR><BR><BR>If you are compile this 
+      as C++, stop now. You will continue to have more<BR>problems.<BR><FONT 
+      color=blue><BR>&gt; and now I would like to have a pointer that refers to 
+      the array of<BR>&gt; structures, how do I do this?</FONT><BR><BR>What book 
+      are you using that doesn't explain the array to 
+      pointer<BR>conversion?<BR><FONT color=blue><BR>&gt; I need this in order 
+      to pass the whole structure as a parameter in a<BR>&gt; function, so that 
+      the function can alter the data in the field.</FONT><BR><BR><BR>Declare 
+      your function:<BR><BR>void func (struct mystruc 
+      *funcdata);<BR><BR><BR>Then call it:<BR><BR>func 
+      (data);<BR><BR><BR><BR><BR>Brian Rodenborn<BR><!-- google_ad_section_end --></DIV><!-- / message --></DIV></TD>
+    <TD class=pbright rowSpan=3 width=14 align=center>
+      <DIV class=pbrighttop>&nbsp;</DIV></TD></TR>
+  <TR>
+    <TD class=pbmiddle style="PADDING-RIGHT: 5px" height="100%" vAlign=bottom>
+      <DIV class=pbmessage></DIV></TD></TR>
+  <TR>
+    <TD class=pbmiddle style="PADDING-RIGHT: 5px" align=right><A 
+      href="http://www.velocityreviews.com/forums/newreply.php?do=newreply&amp;p=1669069" 
+      rel=nofollow><IMG border=0 alt="Reply With Quote" 
+      src="Pointer%20to%20an%20array%20of%20structures_files/quote.gif"></A> 
+  </TD></TR>
+  <TR>
+    <TD class=pbleftbot></TD>
+    <TD class=pbmiddlebot></TD>
+    <TD class=pbrightbot></TD></TR></TBODY></TABLE><!-- post 1669069 popup menu -->
+<DIV id=postmenu_1669069_menu class=vbmenu_popup style="DISPLAY: none">
+<TABLE cellSpacing=1 cellPadding=4 border=0>
+  <TBODY>
+  <TR>
+    <TD class=thead>Default User</TD></TR></TBODY></TABLE></DIV><!-- / post 1669069 popup menu --></DIV><!-- / post #1669069 --><!-- post #1669060 -->
+<DIV id=edit1669060 
+style="PADDING-BOTTOM: 6px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px"><!-- this is not the last post shown on the page -->
+<TABLE id=post1669060 cellSpacing=0 cellPadding=0 width="100%" align=center 
+border=0>
+  <TBODY>
+  <TR vAlign=top>
+    <TD class=pbleft rowSpan=3 width=179 align=center>
+      <DIV class=pblefttop>&nbsp;</DIV>
+      <DIV id=postmenu_1669060>Russell Hanneken </DIV>
+      <DIV class=smallfont style="MARGIN-BOTTOM: 3px">Guest</DIV>
+      <DIV class=smallfont>Posts: <STRONG>n/a</STRONG></DIV>
+      <DIV class=smallfont></DIV>
+      <DIV></DIV>&nbsp; <!-- / controls --></TD>
+    <TD id=td_post_1669060 class=pbmiddle>
+      <DIV class=pbmiddletop></DIV>
+      <DIV class=pbmessage>
+      <TABLE style="MARGIN-BOTTOM: 3px" cellSpacing=0 cellPadding=0 width="100%" 
+      align=center>
+        <TBODY>
+        <TR>
+          <TD 
+            align=right><!-- status icon and date -->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            07-11-2003 <!-- / status icon and date --></TD></TR></TBODY></TABLE><!-- message -->
+      <DIV id=post_message_1669060 class=KonaBody><!-- google_ad_section_start -->"Frank Münnich" &lt;&gt; 
+      wrote in message<BR>news:...<FONT color=blue><BR>&gt;<BR>&gt; I've got a 
+      question about pointers that refer to an array of a structure.<BR>&gt; How 
+      do I declare that type?<BR>&gt;<BR>&gt; If I have declared a 
+      structure<BR>&gt; struct mystruc {<BR>&gt; int x,y,z;<BR>&gt; char 
+      a,b,c;<BR>&gt; };<BR>&gt;<BR>&gt; and have furthermore 
+      declared<BR>&gt;<BR>&gt; mystruc data[20];</FONT><BR><BR>That would have 
+      to be<BR><BR>struct mystruc data[20];<BR><FONT color=blue><BR>&gt; and now 
+      I would like to have a pointer that refers to the array of<BR>&gt; 
+      structures, how do I do this?</FONT><BR><BR>struct mystruc 
+      (*mypointer)[20];<BR><FONT color=blue><BR>&gt; mystruc *mypointer[20] 
+      declares an array of 20 pointers, not a pointer<BR>&gt; referring to an 
+      array of 20 structures.</FONT><BR><BR>Yes, though that would 
+      be<BR><BR>struct mystruc *mypointer[20];<BR><FONT color=blue><BR>&gt; I 
+      need this in order to pass the whole structure as a parameter in a<BR>&gt; 
+      function, so that the function can alter the data in the 
+      field.</FONT><BR><BR>If you just need to modify one structure, you could 
+      have your function take<BR>a pointer to a structure:<BR><BR>void foo 
+      (struct mystruc *mypointer) { mypointer-&gt;x = 4; }<BR><BR>In fact, if 
+      you need to modify the contents of an array of structures, you<BR>could 
+      just pass a pointer to the first element:<BR><BR>void foo (struct mystruc 
+      *mypointer, size_t array_length)<BR>{<BR>size_t i;<BR>for (i = 0; i &lt; 
+      array_length; ++i)<BR>{<BR>mypointer[i].x = 4;<BR>}<BR>}<BR><BR>Hope that 
+      helps.<BR><BR>-- <BR>Russell Hanneken<BR><A 
+      href="http://www.velocityreviews.com/forums/private.php?do=newpm&amp;u=" 
+      rel=nofollow></A><BR><BR><BR><!-- google_ad_section_end --></DIV><!-- / message --></DIV></TD>
+    <TD class=pbright rowSpan=3 width=14 align=center>
+      <DIV class=pbrighttop>&nbsp;</DIV></TD></TR>
+  <TR>
+    <TD class=pbmiddle style="PADDING-RIGHT: 5px" height="100%" vAlign=bottom>
+      <DIV class=pbmessage></DIV></TD></TR>
+  <TR>
+    <TD class=pbmiddle style="PADDING-RIGHT: 5px" align=right><A 
+      href="http://www.velocityreviews.com/forums/newreply.php?do=newreply&amp;p=1669060" 
+      rel=nofollow><IMG border=0 alt="Reply With Quote" 
+      src="Pointer%20to%20an%20array%20of%20structures_files/quote.gif"></A> 
+  </TD></TR>
+  <TR>
+    <TD class=pbleftbot></TD>
+    <TD class=pbmiddlebot></TD>
+    <TD class=pbrightbot></TD></TR></TBODY></TABLE><!-- post 1669060 popup menu -->
+<DIV id=postmenu_1669060_menu class=vbmenu_popup style="DISPLAY: none">
+<TABLE cellSpacing=1 cellPadding=4 border=0>
+  <TBODY>
+  <TR>
+    <TD class=thead>Russell Hanneken</TD></TR></TBODY></TABLE></DIV><!-- / post 1669060 popup menu --></DIV><!-- / post #1669060 --><!-- post #1669070 -->
+<DIV id=edit1669070 
+style="PADDING-BOTTOM: 6px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px"><!-- this is not the last post shown on the page -->
+<TABLE id=post1669070 cellSpacing=0 cellPadding=0 width="100%" align=center 
+border=0>
+  <TBODY>
+  <TR vAlign=top>
+    <TD class=pbleft rowSpan=3 width=179 align=center>
+      <DIV class=pblefttop>&nbsp;</DIV>
+      <DIV id=postmenu_1669070>Frank Münnich </DIV>
+      <DIV class=smallfont style="MARGIN-BOTTOM: 3px">Guest</DIV>
+      <DIV class=smallfont>Posts: <STRONG>n/a</STRONG></DIV>
+      <DIV class=smallfont></DIV>
+      <DIV></DIV>&nbsp; <!-- / controls --></TD>
+    <TD id=td_post_1669070 class=pbmiddle>
+      <DIV class=pbmiddletop></DIV>
+      <DIV class=pbmessage>
+      <TABLE style="MARGIN-BOTTOM: 3px" cellSpacing=0 cellPadding=0 width="100%" 
+      align=center>
+        <TBODY>
+        <TR>
+          <TD 
+            align=right><!-- status icon and date -->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            07-11-2003 <!-- / status icon and date --></TD></TR></TBODY></TABLE><!-- message -->
+      <DIV id=post_message_1669070 class=KonaBody><!-- google_ad_section_start -->On Fri, 11 Jul 2003 
+      19:42:34 GMT, <A 
+      href="http://www.velocityreviews.com/forums/private.php?do=newpm&amp;u=" 
+      rel=nofollow></A>(Frank Münnich)<BR>wrote:<BR><FONT color=blue><BR>&gt;Hi 
+      there..<BR>&gt;<BR>&gt;My name is Frank Münnich. I've got a question about 
+      pointers that<BR>&gt;refer to an array of a structure.<BR>&gt;How do I 
+      declare that type?<BR>&gt;<BR>&gt;If I have declared a 
+      structure<BR>&gt;struct mystruc {<BR>&gt; int x,y,z;<BR>&gt; char 
+      a,b,c;<BR>&gt;};<BR>&gt;<BR>&gt;and have furthermore 
+      declared<BR>&gt;<BR>&gt;mystruc data[20];<BR>&gt;<BR>&gt;and now I would 
+      like to have a pointer that refers to the array of<BR>&gt;structures, how 
+      do I do this?<BR>&gt;<BR>&gt;mystruc *mypointer[20] declares an array of 
+      20 pointers, not a pointer<BR>&gt;referring to an array of 20 
+      structures.<BR>&gt;<BR>&gt;I need this in order to pass the whole 
+      structure as a parameter in a<BR>&gt;function, so that the function can 
+      alter the data in the field.<BR>&gt;<BR>&gt;If anyone could help, it would 
+      be HIGHLY appreciated.<BR>&gt;Sincerely yours,<BR>&gt;<BR>&gt;Frank 
+      Münnich / TU Dresden</FONT><BR><BR>To all those helpers out there, THANK 
+      YOU.<BR>You made my day, I really appreciate your work! 
+      Thanks!!<BR>Sincerely yours,<BR>Frank Münnich<BR><!-- google_ad_section_end --></DIV><!-- / message --></DIV></TD>
+    <TD class=pbright rowSpan=3 width=14 align=center>
+      <DIV class=pbrighttop>&nbsp;</DIV></TD></TR>
+  <TR>
+    <TD class=pbmiddle style="PADDING-RIGHT: 5px" height="100%" vAlign=bottom>
+      <DIV class=pbmessage></DIV></TD></TR>
+  <TR>
+    <TD class=pbmiddle style="PADDING-RIGHT: 5px" align=right><A 
+      href="http://www.velocityreviews.com/forums/newreply.php?do=newreply&amp;p=1669070" 
+      rel=nofollow><IMG border=0 alt="Reply With Quote" 
+      src="Pointer%20to%20an%20array%20of%20structures_files/quote.gif"></A> 
+  </TD></TR>
+  <TR>
+    <TD class=pbleftbot></TD>
+    <TD class=pbmiddlebot></TD>
+    <TD class=pbrightbot></TD></TR></TBODY></TABLE><!-- post 1669070 popup menu -->
+<DIV id=postmenu_1669070_menu class=vbmenu_popup style="DISPLAY: none">
+<TABLE cellSpacing=1 cellPadding=4 border=0>
+  <TBODY>
+  <TR>
+    <TD class=thead>Frank Münnich</TD></TR></TBODY></TABLE></DIV><!-- / post 1669070 popup menu --></DIV><!-- / post #1669070 --><!-- post #1669100 -->
+<DIV id=edit1669100 
+style="PADDING-BOTTOM: 6px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px"><!-- this is not the last post shown on the page -->
+<TABLE id=post1669100 cellSpacing=0 cellPadding=0 width="100%" align=center 
+border=0>
+  <TBODY>
+  <TR vAlign=top>
+    <TD class=pbleft rowSpan=3 width=179 align=center>
+      <DIV class=pblefttop>&nbsp;</DIV>
+      <DIV id=postmenu_1669100>Martin Ambuhl </DIV>
+      <DIV class=smallfont style="MARGIN-BOTTOM: 3px">Guest</DIV>
+      <DIV class=smallfont>Posts: <STRONG>n/a</STRONG></DIV>
+      <DIV class=smallfont></DIV>
+      <DIV></DIV>&nbsp; <!-- / controls --></TD>
+    <TD id=td_post_1669100 class=pbmiddle>
+      <DIV class=pbmiddletop></DIV>
+      <DIV class=pbmessage>
+      <TABLE style="MARGIN-BOTTOM: 3px" cellSpacing=0 cellPadding=0 width="100%" 
+      align=center>
+        <TBODY>
+        <TR>
+          <TD 
+            align=right><!-- status icon and date -->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            07-12-2003 <!-- / status icon and date --></TD></TR></TBODY></TABLE><!-- message -->
+      <DIV id=post_message_1669100 class=KonaBody><!-- google_ad_section_start --><A 
+      href="http://www.velocityreviews.com/forums/private.php?do=newpm&amp;u=" 
+      rel=nofollow></A>(Frank Münnich) wrote (11 Jul 2003) in<BR>news: / 
+      comp.lang.c: <BR><FONT color=blue><BR>&gt; Hi there..<BR>&gt; <BR>&gt; My 
+      name is Frank Münnich. I've got a question about pointers that<BR>&gt; 
+      refer to an array of a structure.<BR>&gt; How do I declare that 
+      type?<BR>&gt; <BR>&gt; If I have declared a structure<BR>&gt; struct 
+      mystruc {<BR>&gt; int x,y,z;<BR>&gt; char a,b,c;<BR>&gt; };<BR>&gt; 
+      <BR>&gt; and have furthermore declared<BR>&gt; <BR>&gt; mystruc 
+      data[20];</FONT><BR><BR>This is either wrong and should be<BR>struct 
+      mystruc data[20];<BR>or it is C++ and you are in the wrong place 
+      (news:comp.lang.c++ will <BR>serve better)<BR><FONT color=blue><BR>&gt; 
+      <BR>&gt; and now I would like to have a pointer that refers to the array 
+      of<BR>&gt; structures, how do I do this?</FONT><BR><BR>struct mystruc 
+      *datap;<BR><FONT color=blue><BR>&gt; mystruc *mypointer[20] declares an 
+      array of 20 pointers, not a<BR>&gt; pointer referring to an array of 20 
+      structures.</FONT><BR><BR>If you actually want explicitly "a pointer to an 
+      array of 20 <BR>structures," use<BR>struct mystruc (*datap2)[20];<BR>But 
+      you may find member access a tiny bit trickier.<BR><BR><BR><BR><BR>-- 
+      <BR>Martin Ambuhl<BR>Returning soon to the<BR>Fourth Largest City in 
+      America<BR><!-- google_ad_section_end --></DIV><!-- / message --></DIV></TD>
+    <TD class=pbright rowSpan=3 width=14 align=center>
+      <DIV class=pbrighttop>&nbsp;</DIV></TD></TR>
+  <TR>
+    <TD class=pbmiddle style="PADDING-RIGHT: 5px" height="100%" vAlign=bottom>
+      <DIV class=pbmessage></DIV></TD></TR>
+  <TR>
+    <TD class=pbmiddle style="PADDING-RIGHT: 5px" align=right><A 
+      href="http://www.velocityreviews.com/forums/newreply.php?do=newreply&amp;p=1669100" 
+      rel=nofollow><IMG border=0 alt="Reply With Quote" 
+      src="Pointer%20to%20an%20array%20of%20structures_files/quote.gif"></A> 
+  </TD></TR>
+  <TR>
+    <TD class=pbleftbot></TD>
+    <TD class=pbmiddlebot></TD>
+    <TD class=pbrightbot></TD></TR></TBODY></TABLE><!-- post 1669100 popup menu -->
+<DIV id=postmenu_1669100_menu class=vbmenu_popup style="DISPLAY: none">
+<TABLE cellSpacing=1 cellPadding=4 border=0>
+  <TBODY>
+  <TR>
+    <TD class=thead>Martin Ambuhl</TD></TR></TBODY></TABLE></DIV><!-- / post 1669100 popup menu --></DIV><!-- / post #1669100 --><!-- post #1669108 -->
+<DIV id=edit1669108 
+style="PADDING-BOTTOM: 6px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px"><!-- this is not the last post shown on the page -->
+<TABLE id=post1669108 cellSpacing=0 cellPadding=0 width="100%" align=center 
+border=0>
+  <TBODY>
+  <TR vAlign=top>
+    <TD class=pbleft rowSpan=3 width=179 align=center>
+      <DIV class=pblefttop>&nbsp;</DIV>
+      <DIV id=postmenu_1669108>Malcolm </DIV>
+      <DIV class=smallfont style="MARGIN-BOTTOM: 3px">Guest</DIV>
+      <DIV class=smallfont>Posts: <STRONG>n/a</STRONG></DIV>
+      <DIV class=smallfont></DIV>
+      <DIV></DIV>&nbsp; <!-- / controls --></TD>
+    <TD id=td_post_1669108 class=pbmiddle>
+      <DIV class=pbmiddletop></DIV>
+      <DIV class=pbmessage>
+      <TABLE style="MARGIN-BOTTOM: 3px" cellSpacing=0 cellPadding=0 width="100%" 
+      align=center>
+        <TBODY>
+        <TR>
+          <TD 
+            align=right><!-- status icon and date -->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            07-12-2003 <!-- / status icon and date --></TD></TR></TBODY></TABLE><!-- message -->
+      <DIV id=post_message_1669108 class=KonaBody><!-- google_ad_section_start --><BR>"Martin Ambuhl" 
+      &lt;&gt; wrote in message<FONT color=blue><BR>&gt;<BR>&gt; If you actually 
+      want explicitly "a pointer to an array of 20<BR>&gt; structures," 
+      use<BR>&gt; struct mystruc (*datap2)[20];<BR>&gt; But you may find member 
+      access a tiny bit trickier.<BR>&gt;</FONT><BR>The point is, you almost 
+      certainly don't. I don't think I've ever used such<BR>a construct in more 
+      than ten years of C programming.<BR><BR>Even if you know that your array 
+      is necessarily 20 items long, almost all C<BR>programmers would take the 
+      address of the first element<BR><BR>struct mystruct *datap = 
+      array;<BR>or<BR>struct mystruct *datap = &amp;array[0];<BR><BR>and then 
+      use a counter to access the members of the array;<BR><BR>/* set all the x 
+      members to 100 */<BR>for(i=0;i&lt;20;i++)<BR>datap[i].x = 100;<BR><BR><BR><!-- google_ad_section_end --></DIV><!-- / message --></DIV></TD>
+    <TD class=pbright rowSpan=3 width=14 align=center>
+      <DIV class=pbrighttop>&nbsp;</DIV></TD></TR>
+  <TR>
+    <TD class=pbmiddle style="PADDING-RIGHT: 5px" height="100%" vAlign=bottom>
+      <DIV class=pbmessage></DIV></TD></TR>
+  <TR>
+    <TD class=pbmiddle style="PADDING-RIGHT: 5px" align=right><A 
+      href="http://www.velocityreviews.com/forums/newreply.php?do=newreply&amp;p=1669108" 
+      rel=nofollow><IMG border=0 alt="Reply With Quote" 
+      src="Pointer%20to%20an%20array%20of%20structures_files/quote.gif"></A> 
+  </TD></TR>
+  <TR>
+    <TD class=pbleftbot></TD>
+    <TD class=pbmiddlebot></TD>
+    <TD class=pbrightbot></TD></TR></TBODY></TABLE><!-- post 1669108 popup menu -->
+<DIV id=postmenu_1669108_menu class=vbmenu_popup style="DISPLAY: none">
+<TABLE cellSpacing=1 cellPadding=4 border=0>
+  <TBODY>
+  <TR>
+    <TD class=thead>Malcolm</TD></TR></TBODY></TABLE></DIV><!-- / post 1669108 popup menu --></DIV><!-- / post #1669108 --><!-- post #1669227 -->
+<DIV id=edit1669227 
+style="PADDING-BOTTOM: 6px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px"><!-- this is not the last post shown on the page -->
+<TABLE id=post1669227 cellSpacing=0 cellPadding=0 width="100%" align=center 
+border=0>
+  <TBODY>
+  <TR vAlign=top>
+    <TD class=pbleft rowSpan=3 width=179 align=center>
+      <DIV class=pblefttop>&nbsp;</DIV>
+      <DIV id=postmenu_1669227>Micah Cowan </DIV>
+      <DIV class=smallfont style="MARGIN-BOTTOM: 3px">Guest</DIV>
+      <DIV class=smallfont>Posts: <STRONG>n/a</STRONG></DIV>
+      <DIV class=smallfont></DIV>
+      <DIV></DIV>&nbsp; <!-- / controls --></TD>
+    <TD id=td_post_1669227 class=pbmiddle>
+      <DIV class=pbmiddletop></DIV>
+      <DIV class=pbmessage>
+      <TABLE style="MARGIN-BOTTOM: 3px" cellSpacing=0 cellPadding=0 width="100%" 
+      align=center>
+        <TBODY>
+        <TR>
+          <TD 
+            align=right><!-- status icon and date -->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            07-14-2003 <!-- / status icon and date --></TD></TR></TBODY></TABLE><!-- message -->
+      <DIV id=post_message_1669227 class=KonaBody><!-- google_ad_section_start --><A 
+      href="http://www.velocityreviews.com/forums/private.php?do=newpm&amp;u=" 
+      rel=nofollow></A>(Frank Münnich) writes:<BR><FONT color=blue><BR>&gt; Hi 
+      there..<BR>&gt; <BR>&gt; My name is Frank Münnich. I've got a question 
+      about pointers that<BR>&gt; refer to an array of a structure.<BR>&gt; How 
+      do I declare that type?<BR>&gt; <BR>&gt; If I have declared a 
+      structure<BR>&gt; struct mystruc {<BR>&gt; int x,y,z;<BR>&gt; char 
+      a,b,c;<BR>&gt; };<BR>&gt; <BR>&gt; and have furthermore declared<BR>&gt; 
+      <BR>&gt; mystruc data[20];<BR>&gt; <BR>&gt; and now I would like to have a 
+      pointer that refers to the array of<BR>&gt; structures, how do I do 
+      this?</FONT><BR><BR>Declaration mirrors usage. So think how you would 
+      access the root type<BR>of struct mystruc once you had obtained such a 
+      type.<BR><BR>First you'd have to dereference the 
+      pointer:<BR><BR>*foo<BR><BR>Then, you could access element n of the 
+      resulting array:<BR><BR>(*foo)[n]<BR><BR>NOTE: Remember that postfix 
+      operators have higher precedence than any<BR>others; thus, without the 
+      parens, it would be assumed that foo is an<BR>array of pointers, not the 
+      other way around (as you have already<BR>discovered). Now, you have the 
+      struct you needed! So to declare foo,<BR>you just use:<BR><BR>struct 
+      mystruc (*data)[20];<BR><BR>Note that, since declaration mirrors usage, 
+      and the postfix []<BR>operators bind closer than the unary *, the [] 
+      declarator<BR>also binds closer than the * 
+      declarator.<BR><BR>HTH,<BR>-Micah<BR><BR><!-- google_ad_section_end --></DIV><!-- / message --></DIV></TD>
+    <TD class=pbright rowSpan=3 width=14 align=center>
+      <DIV class=pbrighttop>&nbsp;</DIV></TD></TR>
+  <TR>
+    <TD class=pbmiddle style="PADDING-RIGHT: 5px" height="100%" vAlign=bottom>
+      <DIV class=pbmessage></DIV></TD></TR>
+  <TR>
+    <TD class=pbmiddle style="PADDING-RIGHT: 5px" align=right><A 
+      href="http://www.velocityreviews.com/forums/newreply.php?do=newreply&amp;p=1669227" 
+      rel=nofollow><IMG border=0 alt="Reply With Quote" 
+      src="Pointer%20to%20an%20array%20of%20structures_files/quote.gif"></A> 
+  </TD></TR>
+  <TR>
+    <TD class=pbleftbot></TD>
+    <TD class=pbmiddlebot></TD>
+    <TD class=pbrightbot></TD></TR></TBODY></TABLE><!-- post 1669227 popup menu -->
+<DIV id=postmenu_1669227_menu class=vbmenu_popup style="DISPLAY: none">
+<TABLE cellSpacing=1 cellPadding=4 border=0>
+  <TBODY>
+  <TR>
+    <TD class=thead>Micah Cowan</TD></TR></TBODY></TABLE></DIV><!-- / post 1669227 popup menu --></DIV><!-- / post #1669227 --><!-- post #5037767 -->
+<DIV id=edit5037767 
+style="PADDING-BOTTOM: 6px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px">
+<TABLE id=post5037767 cellSpacing=0 cellPadding=0 width="100%" align=center 
+border=0>
+  <TBODY>
+  <TR vAlign=top>
+    <TD class=pbleft rowSpan=3 width=179 align=center>
+      <DIV class=pblefttop>&nbsp;</DIV>
+      <DIV id=postmenu_5037767><A class=bigusername 
+      href="http://www.velocityreviews.com/forums/member.php?u=79045" 
+      rel=nofollow>prati</A>
+      <SCRIPT 
+      type=text/javascript> vbmenu_register("postmenu_5037767", true); </SCRIPT>
+       <IMG class=inlineimg border=0 alt="prati is offline" 
+      src="Pointer%20to%20an%20array%20of%20structures_files/user_offline.gif"> 
+      </DIV>
+      <DIV class=smallfont style="MARGIN-BOTTOM: 3px">Junior Member</DIV>
+      <DIV class=smallfont>Join Date: <STRONG>Aug 2012</STRONG></DIV>
+      <DIV class=smallfont>Posts: <STRONG>8</STRONG></DIV>
+      <DIV class=smallfont></DIV>
+      <DIV></DIV>&nbsp; <!-- / controls --></TD>
+    <TD id=td_post_5037767 class=pbmiddle>
+      <DIV class=pbmiddletop></DIV>
+      <DIV class=pbmessage>
+      <TABLE style="MARGIN-BOTTOM: 3px" cellSpacing=0 cellPadding=0 width="100%" 
+      align=center>
+        <TBODY>
+        <TR>
+          <TD 
+            align=right><!-- status icon and date -->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            08-02-2012 <!-- / status icon and date --></TD></TR></TBODY></TABLE><!-- message -->
+      <DIV id=post_message_5037767 class=KonaBody><!-- google_ad_section_start -->Hi, I am prati. New to this 
+      forum.I have written one C programme for structure. In this programme i 
+      passing pointer of the array of structure to the display function.<BR>It 
+      takes the input from the user but i am not getting proper output.I mean 
+      its display loop is not working.Please help to solve this 
+      problem.<BR><BR>#include&lt;stdio.h&gt;<BR>#include&lt;conio.h&gt;<BR>struct 
+      data{<BR>int ID;<BR>char name[4];<BR>};<BR>typedef struct data 
+      record;<BR>void display(record *[]);<BR>record emp[2];<BR>int i;<BR>void 
+      main()<BR>{<BR>record 
+      *ptr[2];<BR>ptr=&amp;emp[0];<BR>clrscr();<BR>for(i=0;i&lt;2;i++)<BR>{<BR>printf("enter 
+      name");<BR>scanf("%s",&amp;emp[i].name);<BR>printf("enter 
+      ID");<BR>scanf("%d",&amp;emp[i].ID);<BR>}<BR>display(ptr);<BR>}<BR>void 
+      display(record *ptr[])<BR>{<BR>for(i=0;i&lt;2;i++)<BR>{<BR>printf("%s 
+      %d",ptr[i]-&gt;name,ptr[i]-&gt;ID);<BR>}<BR>getch();<BR>} <!-- google_ad_section_end --></DIV><!-- / message --></DIV></TD>
+    <TD class=pbright rowSpan=3 width=14 align=center>
+      <DIV class=pbrighttop>&nbsp;</DIV></TD></TR>
+  <TR>
+    <TD class=pbmiddle style="PADDING-RIGHT: 5px" height="100%" vAlign=bottom>
+      <DIV class=pbmessage></DIV></TD></TR>
+  <TR>
+    <TD class=pbmiddle style="PADDING-RIGHT: 5px" align=right><A 
+      href="http://www.velocityreviews.com/forums/newreply.php?do=newreply&amp;p=5037767" 
+      rel=nofollow><IMG border=0 alt="Reply With Quote" 
+      src="Pointer%20to%20an%20array%20of%20structures_files/quote.gif"></A> 
+  </TD></TR>
+  <TR>
+    <TD class=pbleftbot></TD>
+    <TD class=pbmiddlebot></TD>
+    <TD class=pbrightbot></TD></TR></TBODY></TABLE><!-- post 5037767 popup menu -->
+<DIV id=postmenu_5037767_menu class=vbmenu_popup style="DISPLAY: none">
+<TABLE cellSpacing=1 cellPadding=4 border=0>
+  <TBODY>
+  <TR>
+    <TD class=thead>prati</TD></TR>
+  <TR>
+    <TD class=vbmenu_option><A 
+      href="http://www.velocityreviews.com/forums/member.php?u=79045" 
+      rel=nofollow>View Public Profile</A></TD></TR>
+  <TR>
+    <TD class=vbmenu_option><A 
+      href="http://www.velocityreviews.com/forums/search.php?do=finduser&amp;u=79045" 
+      rel=nofollow>Find More Posts by prati</A></TD></TR></TBODY></TABLE></DIV><!-- / post 5037767 popup menu -->
+<DIV 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 6px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  <TBODY>
+  <TR vAlign=top>
+    <TD class=pbleft rowSpan=2 width=200 align=center>
+      <DIV class=pblefttop>&nbsp;</DIV></TD>
+    <TD class=pbmiddle>
+      <DIV class=pbmiddletop></DIV>
+      <DIV class=pbmessage>
+      <TABLE style="MARGIN-BOTTOM: 3px" cellSpacing=0 cellPadding=0 width="100%" 
+      align=center>
+        <TBODY>
+        <TR>
+          <TD align=right></TD></TR></TBODY></TABLE>
+      <SCRIPT type=text/javascript>
+<!--
+
+var customadstyle = 'postbit';
+
+google_ad_client = 'pub-9482258749662266';
+google_ad_channel ="7752722178";
+google_ad_output = 'js';
+google_max_num_ads = '1';
+google_ad_type = 'text,image,flash,html';
+google_image_size = '300x250';
+google_feedback = 'on';
+google_skip = google_adnum;
+
+// -->
+</SCRIPT>
+
+      <SCRIPT type=text/javascript 
+      src="Pointer%20to%20an%20array%20of%20structures_files/adsense.js"></SCRIPT>
+
+      <SCRIPT type=text/javascript 
+      src="Pointer%20to%20an%20array%20of%20structures_files/show_ads.js"></SCRIPT>
+      </DIV></TD>
+    <TD class=pbright rowSpan=2 width=14 align=center>
+      <DIV class=pbrighttop>&nbsp;</DIV></TD></TR>
+  <TR>
+    <TD class=pbmiddle style="PADDING-RIGHT: 5px" align=right>&nbsp;</TD></TR>
+  <TR>
+    <TD class=pbleftbot></TD>
+    <TD class=pbmiddlebot></TD>
+    <TD class=pbrightbot></TD></TR></TBODY></TABLE></DIV></DIV><!-- / post #5037767 -->
+<DIV id=lastpost></DIV></DIV><!-- start content table --><!-- / start content table --><!-- controls below postbits -->
+<TABLE style="MARGIN-TOP: -3px" cellSpacing=0 cellPadding=0 width="100%" 
+border=0>
+  <TBODY>
+  <TR vAlign=top>
+    <TD class=smallfont><A 
+      href="http://www.velocityreviews.com/forums/newreply.php?do=newreply&amp;noquote=1&amp;p=5037767" 
+      rel=nofollow><IMG border=0 alt=Reply 
+      src="Pointer%20to%20an%20array%20of%20structures_files/reply.gif"></A></TD></TR></TBODY></TABLE><!-- / controls below postbits --><!-- lightbox scripts -->
+<SCRIPT type=text/javascript 
+src="Pointer%20to%20an%20array%20of%20structures_files/vbulletin_lightbox.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+	<!--
+	vBulletin.register_control("vB_Lightbox_Container", "posts", 1);
+	//-->
+	</SCRIPT>
+<!-- / lightbox scripts --><!-- next / previous links --><BR>
+<DIV class=navbar>
+<DIV class=smallfont align=center><STRONG>«</STRONG> <A 
+href="http://www.velocityreviews.com/forums/t948753-cfp-5th-international-workshop-on-multi-core-computing-systems-mucocos.html">CfP: 
+5th International Workshop on Multi-Core Computing Systems (MuCoCoS)</A> | <A 
+href="http://www.velocityreviews.com/forums/t948980-re-the-c-containers-library.html">Re: 
+The C Containers Library</A> <STRONG>»</STRONG> </DIV></DIV><!-- / next / previous links --><!-- popup menu contents --><BR><!-- thread tools menu -->
+<DIV id=threadtools_menu class=vbmenu_popup style="DISPLAY: none">
+<FORM method=post name=threadadminform 
+action=http://www.velocityreviews.com/forums/postings.php?t=314156&amp;pollid=>
+<TABLE cellSpacing=1 cellPadding=4 border=0>
+  <TBODY>
+  <TR>
+    <TD class=thead>Thread Tools<A name=goto_threadtools></A></TD></TR>
+  <TR>
+    <TD class=vbmenu_option><IMG class=inlineimg alt="Show Printable Version" 
+      src="Pointer%20to%20an%20array%20of%20structures_files/printer.gif"> <A 
+      accessKey=3 
+      href="http://www.velocityreviews.com/forums/printthread.php?t=314156" 
+      rel=nofollow>Show Printable Version</A></TD></TR>
+  <TR>
+    <TD class=vbmenu_option><IMG class=inlineimg alt="Email this Page" 
+      src="Pointer%20to%20an%20array%20of%20structures_files/sendtofriend.gif"> 
+      <A 
+      href="http://www.velocityreviews.com/forums/sendmessage.php?do=sendtofriend&amp;t=314156" 
+      rel=nofollow>Email this Page</A></TD></TR></TBODY></TABLE></FORM></DIV><!-- / thread tools menu --><!-- **************************************************** --><!-- **************************************************** --><!-- / popup menu contents --><!-- forum rules and admin links -->
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  <TBODY>
+  <TR vAlign=bottom>
+    <TD vAlign=top width="100%">
+      <TABLE class=tborder cellSpacing=0 cellPadding=6 width=210 border=0>
+        <THEAD>
+        <TR>
+          <TD class=thead><A onclick="return toggle_collapse('forumrules')" 
+            style="FLOAT: right" 
+            href="http://www.velocityreviews.com/forums/t314156-pointer-to-an-array-of-structures.html#top"><IMG 
+            id=collapseimg_forumrules border=0 alt="" 
+            src="Pointer%20to%20an%20array%20of%20structures_files/collapse_thead.gif"></A> 
+            Posting Rules </TD></TR></THEAD>
+        <TBODY id=collapseobj_forumrules>
+        <TR>
+          <TD class=alt1 noWrap>
+            <DIV class=smallfont>
+            <DIV>You <STRONG>may not</STRONG> post new threads</DIV>
+            <DIV>You <STRONG>may not</STRONG> post replies</DIV>
+            <DIV>You <STRONG>may not</STRONG> post attachments</DIV>
+            <DIV>You <STRONG>may not</STRONG> edit your posts</DIV>
+            <HR>
+
+            <DIV><A 
+            href="http://www.velocityreviews.com/forums/misc.php?do=bbcode" 
+            rel=nofollow target=_blank>BB code</A> is <STRONG>On</STRONG></DIV>
+            <DIV><A 
+            href="http://www.velocityreviews.com/forums/misc.php?do=showsmilies" 
+            rel=nofollow target=_blank>Smilies</A> are <STRONG>On</STRONG></DIV>
+            <DIV><A 
+            href="http://www.velocityreviews.com/forums/misc.php?do=bbcode#imgcode" 
+            rel=nofollow target=_blank>[IMG]</A> code is 
+            <STRONG>On</STRONG></DIV>
+            <DIV>HTML code is <STRONG>Off</STRONG></DIV>
+            <DIV><A 
+            href="http://www.velocityreviews.com/forums/misc.php?do=linkbacks#trackbacks" 
+            rel=nofollow target=_blank>Trackbacks</A> are 
+            <STRONG>On</STRONG></DIV>
+            <DIV><A 
+            href="http://www.velocityreviews.com/forums/misc.php?do=linkbacks#pingbacks" 
+            rel=nofollow target=_blank>Pingbacks</A> are 
+            <STRONG>On</STRONG></DIV>
+            <DIV><A 
+            href="http://www.velocityreviews.com/forums/misc.php?do=linkbacks#refbacks" 
+            rel=nofollow target=_blank>Refbacks</A> are 
+            <STRONG>Off</STRONG></DIV>
+            <HR>
+
+            <DIV><A 
+            href="http://www.velocityreviews.com/forums/misc.php?do=showrules" 
+            rel=nofollow target=_blank>Forum 
+      Rules</A></DIV></DIV></TD></TR></TBODY></TABLE></TD>
+    <TD class=smallfont align=right>
+      <TABLE cellSpacing=0 cellPadding=0 border=0>
+        <TBODY>
+        <TR>
+          <TD></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!-- /forum rules and admin links --><BR>
+<TABLE class=tborder cellSpacing=0 cellPadding=6 width="100%" align=center 
+border=0>
+  <THEAD>
+  <TR>
+    <TD class=tcat width="100%" colSpan=5><A 
+      onclick="return toggle_collapse('similarthreads')" style="FLOAT: right" 
+      href="http://www.velocityreviews.com/forums/t314156-pointer-to-an-array-of-structures.html#top"><IMG 
+      id=collapseimg_similarthreads border=0 alt="" 
+      src="Pointer%20to%20an%20array%20of%20structures_files/collapse_tcat.gif"></A> 
+      Similar Threads<A name=similarthreads></A> </TD></TR></THEAD>
+  <TBODY id=collapseobj_similarthreads>
+  <TR class=thead align=center>
+    <TD class=thead width="40%">Thread</TD>
+    <TD class=thead width="15%" noWrap>Thread Starter</TD>
+    <TD class=thead width="20%">Forum</TD>
+    <TD class=thead width="5%">Replies</TD>
+    <TD class=thead width="20%">Last Post</TD></TR>
+  <TR>
+    <TD class=alt1 align=left><SPAN class=smallfont><A 
+      title="Hi, &#10; &#10;A have a pointer to an array of a derived class, which I want to cast to its  &#10;base class. That is, im trying to do something like this: &#10;void..." 
+      href="http://www.velocityreviews.com/forums/t720879-cast-a-pointer-to-array-to-base-class-pointer-to-array.html">Cast 
+      a pointer to array to base class pointer to array</A></SPAN> </TD>
+    <TD class=alt2 noWrap><SPAN class=smallfont>Hansen</SPAN></TD>
+    <TD class=alt1 noWrap><SPAN class=smallfont>C++</SPAN></TD>
+    <TD class=alt2 align=center><SPAN class=smallfont>3</SPAN></TD>
+    <TD class=alt1 align=right><SPAN class=smallfont>04-24-2010 <SPAN 
+      class=time>04:30 PM</SPAN></SPAN></TD></TR>
+  <TR>
+    <TD class=alt1 align=left><SPAN class=smallfont><A 
+      title="I am having trouble figuring out how to declare a pointer to an array &#10;of structures and initializing the pointer with a value.  I've looked &#10;at..." 
+      href="http://www.velocityreviews.com/forums/t443944-need-help-declaring-a-pointer-to-an-array-of-structures.html">Need 
+      Help Declaring a Pointer to an Array of Structures</A></SPAN> </TD>
+    <TD class=alt2 noWrap><SPAN class=smallfont>gcary@trancer.com</SPAN></TD>
+    <TD class=alt1 noWrap><SPAN class=smallfont>C Programming</SPAN></TD>
+    <TD class=alt2 align=center><SPAN class=smallfont>12</SPAN></TD>
+    <TD class=alt1 align=right><SPAN class=smallfont>09-04-2006 <SPAN 
+      class=time>05:31 AM</SPAN></SPAN></TD></TR>
+  <TR>
+    <TD class=alt1 align=left><SPAN class=smallfont><A 
+      title="I'm trying to put pointer to flexible array of structures in other &#10;structure. I want to have pointer to array of pixels in screen &#10;structure. Here..." 
+      href="http://www.velocityreviews.com/forums/t440639-pointer-to-flexible-array-of-structures-in-other-structure.html">pointer 
+      to flexible array of structures in other structure</A></SPAN> </TD>
+    <TD class=alt2 noWrap><SPAN class=smallfont>ulyses</SPAN></TD>
+    <TD class=alt1 noWrap><SPAN class=smallfont>C Programming</SPAN></TD>
+    <TD class=alt2 align=center><SPAN class=smallfont>8</SPAN></TD>
+    <TD class=alt1 align=right><SPAN class=smallfont>01-04-2006 <SPAN 
+      class=time>06:23 AM</SPAN></SPAN></TD></TR>
+  <TR>
+    <TD class=alt1 align=left><SPAN class=smallfont><A 
+      title='Hello all, &#10; &#10;  I need some advice/help on a particular problem I am having. I have &#10;a basic struct called "indv_rpt_rply" that holds information for...' 
+      href="http://www.velocityreviews.com/forums/t434568-pointer-to-an-array-of-structures-how-to-get-it-to-work-correclty-if-possible.html">Pointer 
+      to an array of structures, how to get it to work correclty, if 
+      possible???</A></SPAN> </TD>
+    <TD class=alt2 noWrap><SPAN class=smallfont>mrhicks</SPAN></TD>
+    <TD class=alt1 noWrap><SPAN class=smallfont>C Programming</SPAN></TD>
+    <TD class=alt2 align=center><SPAN class=smallfont>1</SPAN></TD>
+    <TD class=alt1 align=right><SPAN class=smallfont>07-16-2004 <SPAN 
+      class=time>11:24 PM</SPAN></SPAN></TD></TR>
+  <TR>
+    <TD class=alt1 align=left><SPAN class=smallfont><A 
+      title="I am trying to pass a pointer to an array of structures to function, &#10;but &#10;I have some problems. I am using MS Visual C++ 6.0, but I think &#10;this is..." 
+      href="http://www.velocityreviews.com/forums/t317396-problem-with-pointer-to-array-of-structures.html">Problem 
+      with pointer to array of structures</A></SPAN> </TD>
+    <TD class=alt2 noWrap><SPAN class=smallfont>Timo</SPAN></TD>
+    <TD class=alt1 noWrap><SPAN class=smallfont>C Programming</SPAN></TD>
+    <TD class=alt2 align=center><SPAN class=smallfont>6</SPAN></TD>
+    <TD class=alt1 align=right><SPAN class=smallfont>02-18-2004 <SPAN 
+      class=time>05:06 
+PM</SPAN></SPAN></TD></TR></TBODY></TABLE><BR><BR></DIV></DIV></DIV><!-- / close content container --><!-- /content area table --></DIV>
+<DIV id=rightcolumn><BR>
+<DIV class=tcat>
+<DIV class=tcat_left>
+<DIV class=sidemenu 
+style="TEXT-ALIGN: center; PADDING-RIGHT: 19px">Advertisments</DIV></DIV></DIV>
+<TABLE cellPadding=0 width="100%" bgColor=#f6f8f8 border=0>
+  <TBODY>
+  <TR>
+    <TD align=center>
+      <SCRIPT type=text/javascript><!--
+google_ad_client = "ca-pub-3832671689629497";
+/* VelocityReviews.com - 160x600 */
+google_ad_slot = "8607460499";
+google_ad_width = 160;
+google_ad_height = 600;
+//-->
+</SCRIPT>
+
+      <SCRIPT type=text/javascript 
+      src="Pointer%20to%20an%20array%20of%20structures_files/show_ads.js">
+</SCRIPT>
+    </TD></TR></TBODY></TABLE>
+<DIV class=tfooter>&nbsp;</DIV><BR><BR></DIV>
+<TABLE class=navigation cellSpacing=0 cellPadding=0 width="100%" align=center 
+border=0>
+  <TBODY>
+  <TR align=center>
+    <TD class=navleft></TD>
+    <TD width="33%"></TD>
+    <TD style="WHITE-SPACE: nowrap" width="33%">
+      <DIV class=footertext>Powered by vBulletin® Version 3.8.6<BR>Copyright 
+      ©2000 - 2012, Jelsoft Enterprises Ltd.. <BR>SEO by vBSEO ©2010, 
+      Crawlability, Inc.</DIV></TD>
+    <TD width="33%" align=right>
+      <DIV class=footertext><STRONG><A accessKey=9 
+      href="http://www.velocityreviews.com/forums/sendmessage.php" 
+      rel=nofollow>Contact Us</A> - <A 
+      href="http://www.velocityreviews.com/forums/archive/">Archive</A> - <A 
+      href="http://www.velocityreviews.com/forums/faq.php?faq=privacypolicy" 
+      rel=nofollow>Privacy Statement</A> - <A 
+      onclick="self.scrollTo(0, 0); return false;" 
+      href="http://www.velocityreviews.com/forums/t314156-pointer-to-an-array-of-structures.html#top">Top</A> 
+      </STRONG></DIV></TD>
+    <TD class=navright></TD></TR></TBODY></TABLE>
+<SCRIPT type=text/javascript>
+<!--
+	// Main vBulletin Javascript Initialization
+	vBulletin_init(); 
+//-->
+</SCRIPT>
+
+<DIV class=topadvert>
+<SCRIPT type=text/javascript><!--
+google_ad_client = "ca-pub-3832671689629497";
+/* VelocityReviews.com - 468x60 */
+google_ad_slot = "3222362788";
+google_ad_width = 468;
+google_ad_height = 60;
+//-->
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="Pointer%20to%20an%20array%20of%20structures_files/show_ads.js">
+</SCRIPT>
+</DIV><!-- temp -->
+<DIV style="DISPLAY: none"><!-- thread rate --><!-- / thread rate --></DIV><!-- start Vibrant Media IntelliTXT script section -->
+<SCRIPT type=text/javascript 
+src="Pointer%20to%20an%20array%20of%20structures_files/front.js"></SCRIPT>
+<!-- end Vibrant Media IntelliTXT script section -->
+<SCRIPT type=text/javascript 
+src="Pointer%20to%20an%20array%20of%20structures_files/23176X817188.skimlinks.js"></SCRIPT>
+<BR>
+<DIV class=smallfont style="Z-INDEX: 3" align=center><A 
+href="http://www.velocityreviews.com/forums/archive/f-3.html">1</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-10.html">2</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-11.html">3</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-14.html">4</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-9.html">5</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-1.html">6</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-44.html">7</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-5.html">8</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-6.html">9</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-13.html">10</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-7.html">11</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-22.html">12</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-23.html">13</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-16.html">14</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-57.html">15</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-33.html">16</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-41.html">17</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-38.html">18</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-46.html">19</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-19.html">20</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-34.html">21</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-35.html">22</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-37.html">23</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-40.html">24</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-20.html">25</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-27.html">26</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-47.html">27</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-56.html">28</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-24.html">29</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-25.html">30</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-26.html">31</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-48.html">32</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-49.html">33</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-50.html">34</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-52.html">35</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-53.html">36</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-51.html">37</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-55.html">38</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-29.html">39</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-59.html">40</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-60.html">41</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-61.html">42</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-62.html">43</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-63.html">44</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-64.html">45</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-65.html">46</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-42.html">47</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-39.html">48</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-31.html">49</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-30.html">50</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-68.html">51</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-43.html">52</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-17.html">53</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-67.html">54</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-66.html">55</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-18.html">56</A> <A 
+href="http://www.velocityreviews.com/forums/archive/f-32.html">57</A> </DIV>
+<SCRIPT type=text/javascript>
+//<![CDATA[
+
+window.orig_onload = window.onload;
+window.onload = function() {
+var cpost=document.location.hash.substring(1);var cpost2='';if(cpost){ var ispost=cpost.substring(0,4)=='post';if(ispost)cpost2='post_'+cpost.substring(4);if((cobj = fetch_object(cpost))||(cobj = fetch_object(cpost2))){cobj.scrollIntoView(true);}else if(ispost){cpostno = cpost.substring(4,cpost.length);if(parseInt(cpostno)>0){location.replace('http://www.velocityreviews.com/forums/showthread.php?p='+cpostno);};} }
+
+if(typeof window.orig_onload == "function") window.orig_onload();
+}
+
+//]]>
+</SCRIPT>
+</BODY></HTML>

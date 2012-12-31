@@ -1,0 +1,1856 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><!--
+ Archive processed by SingleFile 
+ url: http://publications.gbdirect.co.uk/c_book/chapter5/sizeof_and_malloc.html 
+ saved date: Sun Aug 12 2012 11:29:51 GMT+0800 (China Standard Time) 
+--><head>
+<title>The C Book — Sizeof and storage allocation</title>
+
+<link rel="SHORTCUT ICON" href="data:text/plain; charset=UTF-8;base64,AAABAAEAEBAQAAAAAABoAwAAFgAAACgAAAAQAAAAIAAAAAEAGAAAAAAAAAMAABILAAASCwAAAAAAAAAAAAD///////////////////+phWd+SBt0OgmBTSCphWb///////////////////////////////////////+TZj+BTCDMtqT////MtqSRYzx3Pg7///////////////////////////////////91OwrCqJL////////////+/fyUaEKRYzz///////////////////////////////+zk3iFUyf///////////////6lgGB6QxT///////////////////////////////////91PAtxNQN2PQx8RRd6QxRvMwCbcU7////////////////////////imwD///+Zbkp1PAuti22vjnGqh2mog2S6nYX////////imwD////////////////imwD///////91OwrKtaL////////////////////////imwD////////////imwDimwD///////+ab0tvMwBvMwB9RhjTwbH////////////imwDimwD////////imwD///////////9vMwCvjXD///+UaEJ0Ogn////////////////imwD////imwDimwD///////+jfFt4QBD///////////9vMwD////////////////imwDimwDimwDimwD///////+mgWJ0Owr///////////9vMwD////////////////imwDimwD////imwD///////////9xNQORYzy6nYSCTiFvMwCUZ0G5m4L////////imwD////////imwDimwD///////////+OXziASx6Ybkmng2ORYzyjfVz////imwDimwD////////////imwD////////////////////////////////////////imwD////////////////imwD////////////////////////////////////////imwD///////////////////////////////////////////////////////////////////////8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//">
+<style rel="stylesheet" type="text/css">/* Set page-wide defaults, attempting to pre-empt inherited/cascading surprises
+**/
+body, td, th
+{
+  font-family: sans-serif;
+  background: white none;
+  color: #000;
+  padding: 0;
+  margin: 0 0 3em 0;
+}
+
+
+em {
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Defaults for left hand column.  Container for Nav and Contact details */
+.Left
+{
+  margin: 0;
+  padding-top: 2.5ex;
+  padding-bottom: 0;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  font-size: smaller;
+}
+
+
+/* Defaults for central column.  Core page content. */
+.Centre
+{
+  margin: 0;
+  padding-top: 2.3ex;
+  padding-bottom: 0;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  border-left: dotted #CCC 1px;
+  border-right: dotted #CCC 1px;
+}
+
+
+/* Defaults for right hand column.  Largely a container for boxed notices */
+
+.Right
+{
+  margin: 0;
+  padding-top: 2ex;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  font-size: smaller;
+}
+
+
+/* When the first thing in a <div> is a <p>, we don't want any space above the
+** <p> -- it isn't a para break, just the start of this bit of content: */
+div > p:first-child
+{
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Similarly, don't put space after the last <p> in a <div>.  Fortunately,
+** simply not putting space after all <p>s works (cos they (except the first)
+** will have space above them instead: */
+div > p
+{
+  margin-bottom: 0;
+}
+.box p
+{
+  margin-bottom: 0;
+}
+
+/* Very small print notices at the bottom of pages */
+.footnotice
+{
+  font-size: 70%;
+}
+
+/* extra text at the bottom of a column: */
+.ColBtm
+{
+  margin-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* paragraphs within such text: */
+.ColBtm p
+{
+  /* Squash such paras a bit closer together: */
+  margin-top: 0.7ex;
+}
+
+/* <pre> blocks should be indented a little bit. */
+pre {
+  margin-left: 3ex;
+}
+
+
+/* Styles for the C Book. */
+.bigger {
+   font-size: large;
+}
+.inset-figure {
+  text-align: center;
+}
+.inset-example {
+  text-align: center;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+.inset-example pre {
+  text-align: left;
+}
+.inset-table {
+  text-align: center;
+}
+.inset-table table {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  border-collapse: collapse;
+}
+.inset-table td, .inset-table th {
+  padding: 0.2ex 1ex;
+  vertical-align: top
+}
+.cbook-table-heading th, .cbook-table-first-row td {
+  border-top: 1px solid black;
+}
+.cbook-table-last-row td {
+  border-bottom: 1px solid black;
+}
+.cbook-table-notes-row td {
+  font-size: smaller;      /* TODO: this needs to work relatively */
+}
+.cbook-exercises {
+  margin-top: 3ex;
+  margin-bottom: 3ex;
+  border-left: 1ex solid #090;
+  padding-left: 2ex;
+}
+.cbook-exercises .exercise {
+  font-weight: bold;
+}
+.cbook_next_prev {
+  text-align: center;
+  border-top: 1px dashed black;
+  margin: 2em;
+}
+.cbook_next_prev p {
+  margin-left: auto;
+  margin-right: auto;
+  margin: 2em;
+}
+
+
+/* Formatting for course schedules */
+.CourseSchedule h2 {
+  margin-top: 3ex;
+}
+
+
+/* Sneaky tricks ahoy.  'Nav 4' has a bug where it only obeys @media tags if
+** the content is precisely "screen".  But this gives a perfect opportunity to
+** hide the rest of this style sheet from that browser's crappy quarter-baked
+** implementation.  If we just double the "screen", 'Nav 4' ignores it, but
+** sane browsers DTRT: */
+@media screen, screen
+{
+
+/* Boxes */
+  /* A visibly bordered box. Mainly for right hand column notices */
+  .box
+  {
+    border: 1px dotted #C6C6C6;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0;
+    padding-bottom: 0.5ex;
+    margin: 1ex 0em;
+  }
+  .redbox
+  {
+    border: 1px solid #C60000;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0;
+    padding-bottom: 0.5ex;
+    margin: 1ex 0em;
+  }
+
+  /* Ensure that images within boxes don't get squashed up against preceding text. */
+  .box img
+  {
+    margin-top: 0.5ex;
+  }
+  .box a
+  {
+    text-decoration: none;
+  }
+
+/* Normal Links */
+  /* Default link colours and decoration for links in various states */
+  
+  a:link
+  {
+    color: #069; /* #80A0D0; */
+  }
+  
+  /* Default colours for visited links */
+  a:visited
+  {
+    color: #579; /* old purple #A0A; */
+  }
+  /* Default colours for hovered links 
+  N.B. The hovered foreground colour won't change to white for visited links 
+  unless you set a:hover after setting a:visited */
+  a:hover
+  {
+    color: #FFFFFF;
+    background-color: #069; 
+  }
+
+
+/* Headings. Settings required because browser defaults are just innapropriate
+ * for our styles and layout.  Overly large h1 and h2 are particularly
+ * problematic. */
+  /* Default colour for headings. Softer grey to match default text and the
+   * blues in links. */
+  h1, h2, h3, h4, h5, h6
+  {
+    color: #000;
+  }
+
+  h1
+  {
+    text-align: left;
+    font-size: 140%;
+    font-weight: bold;
+  }
+
+  h2
+  {
+    text-align: left;
+    font-size: 116%;
+    font-weight: bold;
+  }
+
+  h3, .faq
+  {
+    text-align: left;
+    font-size: 108%;
+    font-weight: bold;
+  }
+
+  h4
+  {
+    text-align: left;
+    font-size: 102%;
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  h5
+  {
+    text-align: left;
+    font-size: 98%;
+    font-weight: bold;
+  }
+
+  h2 a
+  {
+    text-decoration: none;
+  }
+
+
+/* Settings for the banner area */
+  /* Create banner box to contain Logo, Section banner graphic and Search */
+  .Banner
+  {
+    background-color: #B0B0B0;
+    background-image: url("data:image/jpeg;base64,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");
+    background-repeat: no-repeat;
+    font-family: "andale mono", sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 9.2ex;
+  }
+
+  /* Float the company logo to the left of the banner box */
+  #Logo
+  {
+    float: left;
+    padding: 2ex 2ex;
+  }
+
+  /* Prevent colour from appearing when users mouse over the logo */
+  #Logo a:hover
+  {
+    background-color: transparent;
+  }
+
+  /* Float the search box to the right of the banner box */
+  #Search
+  {
+    float: right;
+    padding-top: 1em;
+    padding-right: 1em;
+  }
+
+  /* Modify form properties to fit with banner position and colours */
+  .Banner form label
+  {
+    display: inline;
+    color: white;
+    font-family: arial, sans-serif;
+    font-weight: bold;
+  }
+  .Banner input
+  {
+    color: #666;
+    background-color: white;
+    font-family: arial, sans-serif;
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+
+  /* We can make things appear only in browsers to which this CSS isn't
+  ** applying by assigning them to the NoCSS2 class, then making such things
+  ** disappear in browsers that are doing this CSS: */
+  .NoCSS2
+  {
+    display: none;
+  }
+
+
+  /*
+  ** Navigation Column
+  */
+
+  /* Have different spacing and left indent for the different levels: */
+  .nav
+  {
+    padding-left:  0em;
+    padding-right:  0em;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .nav0, .nav1
+    {
+      margin: 0;
+      padding-left:  0em;
+      padding-right: 0;
+      padding-top: 0;
+      padding-top: 0;
+    }
+
+  .nav2
+    {
+      margin: 0;
+      padding-left: 0.6em;
+      padding-right: 0;
+      padding-top: 0.1ex;
+      padding-bottom: 0.10ex;
+      color: #069; /* #80A0D0; */
+    }
+
+  .nav3
+    {
+      margin: 0;
+      padding-left: 1.2em;
+      padding-right: 0;
+      padding-top: 0.1ex;
+      padding-bottom: 0.1ex;
+      line-height: 2ex;
+      color: #069; /* #80A0D0; */
+    }
+
+  .nav4
+    {
+      margin: 0;
+      padding-left: 1.8em;
+      padding-right: 0;
+      padding-top: 0.1ex;
+      padding-bottom: 0.1ex;
+      line-height: 2ex;
+      color: #069; /* #80A0D0; */
+    }
+
+  .nav5
+    {
+      margin: 0;
+      padding-left: 2.4em;
+      padding-right: 0;
+      padding-top: 0.1ex;
+      padding-bottom: 0.1ex;
+      line-height: 2ex;
+      color: #069; /* #80A0D0; */
+    }
+
+  /* Navigation links in the left column should be blockwise, so the highlight
+  ** bar (and sensitive area) can go the full width: */
+  .nav a
+  {
+    display: block;
+    /* Plain 'display: block' doesn't work quite right in IE -- the entire
+       block gets things like :hover set right, but hovering over the
+       non-text parts of the block doesn't let you click there.  This is
+       fixed by adding this: */
+    text-decoration: none;
+  }
+
+
+  /* Smaller text in address/etc block: */
+  .ColBtm
+  {
+    font-size: 83%;
+  }
+
+
+  /*
+  ** Search Results
+  */
+
+  .SearchResults em
+  {
+    font-style: normal;         /* not italic */
+    font-weight: bold;
+  }
+
+  .SearchResults li
+  {
+    padding-bottom: 0.8ex;
+  }
+
+
+  /*
+  ** General Forms
+  */
+  .required_field {
+    font-size: 115%;
+    font-weight: bold;
+    color: red;
+  }
+  .error {
+    color: #FF0000;
+    background-color: #FFFFDD;
+    font-weight: bold;
+  }
+  .SpacedForm td {
+    padding-bottom: 2ex;
+  }
+
+
+  /*
+  ** Tab Strip
+  */
+  /* Box to contain tabs */
+  .Tabsbar
+  {
+    margin: 0;
+    padding: 0;
+    background-color: #105080;
+    text-align: right;
+    line-height: 2.2ex;
+  }
+  /* all cells containing a tab: */
+  /* DMF ... I've a feeling that this is now redundant ... must check */
+  .Tab
+  {
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+    padding-top: 0;
+    font-family: "andale mono", sans-serif;
+    font-size: smaller;
+    vertical-align: top;
+    text-align: center;
+  }
+
+  /* Normal state for Tab links.  Main issues: a) L-R padding to avoid
+   * 'resizing' on state change. b) No underlining. c) T-B padding fills all
+   * available line space, ensuring tab-like appearance and no nasty overlaps
+   * when the tab line wraps to two or more visible lines. */
+  .Tab a
+  {
+    margin: 0;
+    border: none;
+    padding-top: 0;
+    padding-bottom:0;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+    text-decoration: none;
+    color: #AACCFF;
+  }
+
+  /* Turn off visited link colour change for Tab menus.  Finely balanced
+   * judgement that consistency and aesthetics together slightly outweigh the
+   * 'where have I been?' value of visited link colours. */
+  .Tab a:visited { color: #AACCFF; }
+
+  /* Tab links in hover state.  Main issues:  a) Pleasant reverse colours. b)
+   * Size consistency with non-hover state and selected tab state. */
+  .Tab a:hover
+  {
+    margin: 0;
+    border: none;
+    padding-top: 0;
+    padding-bottom:0;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+    color: #003399;
+    background-color: #AACCFF;
+  }
+
+  /* By default we assume that sections have a particular style.  That is a
+   * left-over from the previous Smylers/Aaron style sheet.  DMF was hoping that
+   * the following would set defaults for section which didn't have a specific
+   * style defined in its content (the _options file).  DMF not sure that it
+   * works.  Needs checking. */
+  .Tab#ThisTab
+  {
+    margin: 0;
+    border: none;
+    padding-top: 0;
+    padding-bottom:0.1ex;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+    color: #000;
+    background-color: white;
+  }
+
+  /* A default style for any section.  Needs to be set in the section's
+   * _options file for it to work. */
+  .global #ThisTab
+  {
+    margin: 0;
+    border: none;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+    padding-top: 0;
+    padding-bottom:0.1ex;
+    color: #666;
+    background-color: white;
+  }
+
+  /* A series of Theme specific settings, including tabs.  All currently unused and commented
+   * out here.  Left for future reference.
+
+  .Company #ThisTab
+  {
+    margin: 0;
+    border: none;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+    padding-top: 0.4ex;
+    padding-bottom:0.3ex;
+    color: #666;
+    background-color: white;
+  }
+
+  .Company .banner
+  {
+    background-color: #bac8c9;
+  }
+
+  */
+
+  /*
+  ** Images
+  */
+  .Centre p img
+  {
+    float: right;
+    padding-left: 0.6em;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0;
+  }
+
+  .delivery
+  {
+    float: right;
+    vertical-align: middle;
+    text-align: right;
+    width: 100%;
+    padding-bottom: 1ex;
+    font-size: smaller;
+  }
+
+  .delivery img
+  {
+    background-color: white;
+    padding: 0;
+    margin-left: 1.5ex;
+    color: #105080;
+  }
+
+  .delivery a:link, .delivery a:visited
+  {
+    margin:0;
+    padding:0;
+    vertical-align: top;
+    text-decoration: none;
+  }
+
+  .delivery a:hover, .delivery a:active
+  {
+    margin:0;
+    padding:0;
+    vertical-align: top;
+    text-decoration: none;
+  }
+
+  /* Two versions of <hr> style: one for Mozilla and similar, and one
+   * for IE.  The IE one is filtered out with the star-html hack
+   * (see http://centricle.com/ref/css/filters/tests/star_html/) */
+  hr {
+    margin-top: 2ex;
+    border-width: 1px 0 0 0;
+    border-style: dotted none none none;
+    border-color: #CCC;
+  }
+  * html hr {
+    border: 1px dotted #CCC;
+  }
+
+
+} /* @media */
+
+/* Uncommented settings. Put here for editing convenience.  Must be commented
+ * and relocated to sensible places. */
+.photos
+{
+ position: relative;
+ padding: 0;
+ margin: 0;
+ width: 100%;
+}
+.urgent
+{
+  color: #D00;
+}
+
+.debug
+{
+  color: red;
+}
+
+.warning
+{
+  color: red;
+}
+
+/* vi:set ts=2 sw=2 expandtab: */
+
+/* I haven't come across anything with the msdeals id, so I'm now using it for the book reviews. VEW 21/07/09*/
+#msdeals
+{
+  float: right;
+  width: 11em;
+  border: dotted 1px #999;
+  padding: 0 0.5em 0.6ex;
+  margin: 1em;
+  font-size: smaller;  
+  text-align: left;
+}
+
+.author
+{
+  font-weight: normal;
+  font-style: italic;
+  font-size: 90%;
+}
+
+#outline-nav
+{
+ float: right;
+ width: 14em;
+ margin-top: 0.6em;
+ padding: 0 0.5em 0 0.5em;
+ font-size: 0.7em;
+ border: dotted 1px #ccc;
+
+}
+
+#outline-nav h2
+{
+ font-size: 0.9em;
+ border-bottom: none;
+
+}
+
+#outline-nav li
+{
+ /* list-style-type: none; */
+}
+
+#outline-nav li, #outline-nav ul
+{
+ margin-left: 0;
+ padding-left: 0;
+ margin-left: 1em;;
+
+}
+
+#outline-intro
+{
+ /* float: left;
+ width: 69%; */
+ padding-bottom: 1em;
+}
+
+#outline-main
+{
+ clear: both;
+}
+
+#course-contents-list
+{
+ -moz-column-width: 17em;
+ -moz-column-gap: 1em;
+ column-width: 17em;
+ column-gap: 1em;
+
+}
+
+a.gototop
+{
+ float: right;
+ padding-right: 1em;
+
+}
+
+.outline h2
+{
+ border-bottom: solid 2px #105080;
+}
+
+/* DMF 2008-12-03 */
+#container {
+  position: relative;
+}
+* html #container {
+  height: 1px;
+}
+#menu {
+  position: absolute;
+  width: 19%;
+  padding: 1em 0 0 1%;
+}
+#main {
+  position: absolute;
+  /* MB - reduce the width of the main column slightly to give more whitespace
+  width: 56%;
+  left: 20%;
+  */
+  width: 50%;
+  left: 23%;
+
+  padding: 1em 2%;
+}
+#sidebar {
+  position: absolute;
+  width: 19%;
+  padding: 1em 1% 0 0;
+  left: 80%;
+}
+.skiplink {
+  position: absolute;
+  left: -2000px;
+}
+
+#sidebar h3 {
+  margin-top: 0.5ex;
+}
+
+
+#main h1 {
+  margin-top: 0;
+}
+
+/* 10/06/2009 Special offer Class VEW */
+
+#socontainer {
+  position: absolute;
+  top: 2em;
+}
+
+p.specialoffer {
+  color: #FF6600;
+  font-size: 105%;
+  font-weight: bold;
+}
+
+#somain {
+  position: relative;
+  padding-top: 4.5em;
+}
+
+/* This is for the special offers alert in the prices.box */
+
+#boxoffer {
+  color: #FF6600;
+}
+
+/*positioning for book covers and reviews VEW 22/07/09*/
+
+div.right {
+  float: right;
+  clear: right;
+  padding-bottom: 1em;
+  border-bottom: 1px dotted #C6C6C6;
+}
+
+.book {
+  float: left;
+  padding-right: 1em;
+  padding-top: 1em;
+  clear: left;
+}
+
+#left {
+  float: left;
+  clear: left;
+}
+
+
+
+/*VEW 11/11/09*/
+
+address {
+font-style: normal;
+}
+
+/*styling for breadcrumb links VEW 26/03/10*/
+
+div #breadcrumb {
+ font-size: 72%;
+}
+
+/*VEW 17/08/10*/
+
+#phonecontact {
+  font-size: 190%;
+  font-weight: bold;
+  text-align: center;
+}
+
+/*VEW Booking Form 10/09/2010*/
+
+
+#booking-form  a
+{
+  color: #FFFFFF;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+#booking-form-text {
+  text-align: center;
+  margin-top: 0.1em;
+}
+</style>
+<link rel="prev" href="/c_book/chapter5/character_handling.html">
+<link rel="next" href="/c_book/chapter5/function_pointers.html">
+<link rel="contents" href="/c_book/chapter5/">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<!-- order 6-->
+<!-- lastmod 2005-11-10T16:42:05Z-->
+
+<link rel="canonical" href="http://publications.gbdirect.co.uk/c_book/chapter5/sizeof_and_malloc.html">
+
+</head>
+
+<body>
+  <div class="Banner">
+    <span id="Logo">
+      <a href="http://ebusiness.gbdirect.co.uk">
+        <img src="data:image/gif;base64,R0lGODlhigAWAMYAAB4iJgZ+tgp2ppaWlrq6usbGxg5ihtLS0hJSbtra2nZ2dmJiYhoyPuLi4hZOZh4yOurq6p6enu7u7k5OTkZGRoqKivLy8rKysgaGvvb29jIyMoaGhj4+PgaOyh4uMlJSUm5ubhZCVqKiovr6+h4mJnp6eiYmJlpaWjY2NsLCwgKW1n5+fq6ursrKyg5mkhJWcpKSkv7+/i4uLr6+vjo6Oqampho2PmZmZioqKg5umhJaehZKXnJyckJCQoKCgtbW1gKa3s7OzkpKSmpqara2th4qLqqqqpqaml5eXho+Tt7e3ubm5lZWVo6OjhZGWgp6qho2QgKS0gaKxiIiIg5ehg5qkho6RgaCuh4mLhZSagpyngKW2gKa4hJefhpCUhZKZgp6sh4qMh4mKgKS1gKW3gaKyg5qlho6ShJeggp2qhZGXgp6rgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEKAH8ALAAAAACKABYAQAf+gH+Cg4SFhocrRxOHjIU4IEyMOEc8jZaXmJmahFtcO5cXMQODAzFEhUExK4QcMTEnhRIjKIQ0MQSMKDEzjCAxQVOMABAZJoQ3MSKDAEsjNJk8MSWbfzpcAZoTSxlNPEMLNwe7g0QNPDAWri0UjCYDDRIFNxpEFYwyBE2MTAQ3mBQ1lGSQcCACrUIcIiSwYOHHEQ2HJqSAAKHABhnUBBUxw2UMgmCFhAwwMuDEiRIRYAlKVULDBhZGeBhjpIGHjxsmbOGqJaSnEA73hNBCUWIFkpmEpjBZUWJRIxRDVqy4cXAQDSFNYsDwCZEQAANktqAhIQxBFC45ABCSkYrFigX+OA6xXOsKCSETGSyAFKQz17hDvjY0wjHCAtJDMgofbuRrGiMPabh0cJJREIdUrlxlgLG4sufPoENTm5IFS+UW0j73PaQhRQTRsAk1bgSFMqMzV7hgSMLogysYEyq4IlBByCDMEDbcMOJqFMIMonpMIAJ956APChT4+GvIl5ERP3ysmMFukIYlWnsS2bX3zxTUQYb06DFEHyEmPGrEYJGdRw9hX5z1BAMauQDEGC+0Z1V1JRAQQwZAETIXIT/EYM8gPcTQQiGrGaILL4DFIBgjQsTQ0A8opnjBdbdoEo1jlpBABRBAUKEgIWeIQch6MSihxBIQSJDABnthRgRGTKT+w0J3PR6kwAgtHvJhLyJaMsEII1RiXntXjqDAXl0VgkQMBYDEwWEMEPgZDq5U9UcPEKgS25x01mmnIajBmFGHhSATw413atKDD+WJZkUAXHhQWSoKqBZloHbOxkgIXAjwACNTIDAGF1ooash2mYUKI2rUhVpAXIYgIUFmSyBjnSD6ZQYikxsMAZ0rRyBUYWYEoEoIDiJAmZkzhDAXqiurGGIDomWoMQhHW1ChIyNHPBpKDYWg1kBV+mXgK6wxvDaIfq8SMuUhQ7jCQmeCRBCDD4NMUcArhGQ1A7uF+NJoJmJUwQUQOjiwaQ5hNJIVMO6hBkO2Mew7CHrJCqKLEhznPlqIBtwVku6IUppIxMcfpxBDClbFcIAmkmLyQGRS2PYHbrrxZoifrkigEiGoOSxIA6kNoksQFZdrXsaEbNxIhhtaUiLJmaTMyA5lVKrmIWFw5KkgIoR7CWplDrJCDCNgRMi8CxBSgsWEYDyrxlU24iDHjIgMdyPRwMtIEkAYoJZnPfB8rCujxrDqCHEK7qYgAMxg4gwJxMCc0IKozYjRloAAZQIXEND4f0VDp0TmFUb4a5wHEFChcXNOoUQM/hACA9GCmNDD4ZDWbnsm4ihhVH7QFYDv7cAHj8kUH2zQRAVwCa+88oEAADs=" alt="GBdirect Homepage" title="GBdirect Homepage" border="0"></a>
+    </span>
+<!-- Original homebrew search
+    <form action="http://global.gbdirect.co.uk/search.cgi"
+          method="get" id="Search">
+      <label for="search_textbox">Search</label>
+      <input type="text" name="query" size="12" id="search_textbox" value="" />
+      <input type="submit" name="Submit" value="Go" />
+    </form>
+-->
+<!-- Google search -->
+    <span id="Search"><form action="http://www.google.com/cse" id="cse-search-box">
+      <input type="hidden" name="cx" value="010270212093732037646:4pvgkishmkg">
+      <input type="hidden" name="ie" value="UTF-8">
+      <label for="search_textbox">Search</label>
+      <input type="text" name="q" id="search_textbox" size="12" style="border: 1px solid rgb(126, 157, 185); padding: 2px; background-image: url(data:image/gif;base64,R0lGODdhdwAQAOf1AKenp6u3z6fFqam74tmvqau84q283a693uWsp62+49yyra6/5bC/4KvLr7i/0K3Lr6zMr6vNrbXA2a3MsNm2sa3Nr7jB1rfC2rrC1bvC1LjD29+4sty6tbzE2L7E0+C5td+6tea5tL/H18LH1MDI2cHI177I4NzAvL3K5u67suu8tsDL48fL1cPM3sPM4LTctsXN38DO6NbJx+HFwcjO3OfEv87OzsjP4MLQ7MXQ6OfGwsfR5M7S3O7HwfXFvNnUvNfS0dbUzd3VtsrV68vV6dnT0tjU0/DLxuDXstTW29bW1tXW2trV1NDX5crY9NnX0dfX1/HNx9DY6trY0N/V1OPU0c7Z8eXbqdvZz9DZ7t7Y09La6uvT0Nfa4tra29Lb7encq9rb3dHc8uDcy9/a2dbc6eDa2dnc4t7b29fc6dDd9+Ha2drc4uTdwtbd6+bZ19/d3dfe7vTV0PDgodXf9fTW0uva2N/f4OHf2+Pe3tjg8uzb2Onc2+rhwNjh8/DjqfDjquDh49/h5+Ph3dvi7+Pi3dPs1OLi4tzj8dzn3Nbr1/na1uPj4t7n3t3o3Nnl+Nvq3OXl5ubl5u3nzdzt3OXm6ebm593n+/Th3t3t3e/j4vLrs/Lj4Ojn5+jo6Prh3f/g2uLp+ezo5O/p1+np6dzy3enp6urp6vXrxOrp7urq6unq7erq6+js6err6ufr8+br9vzl4eTt/eft+eTu/ezt7eXu/Pbwze7u7u3v7fHt7e/v7vDw7/Dw8vDx8fLx7fHx8vLy8vPy8vvv7fDz9/Lz8/Pz8/Tz8fPz9PTz8/Pz9vT09O/1/vb09PX19PX19fX19vb19fX29fb29fb29vb29/f29vf29/f39/319PX4/fv47fj4+Pn5+f774v/91vn6+/r6+vr6+/r7+/n7//r7/fv7+/z7+/389Pz8/P/7+//8+/z9//39/f79/P79/f/9/P/++v7+/v/+/v///P///////////////////////////////////////////ywAAAAAdwAQAAAI/gDrCRxIsKDBgwgTKlzIsKHDhxAjSpxIseJCcqHibLFyCRxFeYpe5LJIsqREZjvC7AoWSUOJdBQbRQhWEIpNKPVwmtxJklwMLwR9SYJZD566gvTiJXRUAZrAdfDqyVOS06ZBAFgFAmiIdetEryVlOcB2cF6sPVyiRBPobdQkVMfqsZuFSE0WZYkqYHP3yc4RTcZs5BxMEKxhhYclgiUpxoO8g6BkUBs340O9bz+QiWsDpt2jJNZuSDgHCYK5RUXk8SHwDHHBrl6zFr4aW3bXerdvk8xh4XHBdz7QCNSFQNSmJwJ/zSmEI1C9XgyWZWrQrMcaTm/gXFuoe2tsra9t/oMf6H38+MUT0wzwNRCWHyepUpgRGC6EFkBYBJr7MwUFjXrEZEANJRMkowIVwXQDUXm1yXYVbt1l9R155lEEzQIu+HaOIAeYUsMJAmXDASl9IAETOlcwAswIXwzRST2lPGCODiAQxR2F5eF20GGLfTfheSVVYoAJr2hTDiEB1JIMBVUMI4cR7TgjxBjb3BIEN/WIQ0QBq9RjiACtCKPABnVgYg534ukIIXq6ramVhOTBqSZJuLCAQQtNsHEHNfUsQ0Yep4QjEDZ4DKKKgrZI0UUHCRQjzSGu1GMME0B4YiNPmJokTzfWdHOpVAb5RosIvLRzDgw8ZKrqqha5cQFRIWUsweqstDZUDQkr0KHHGdPU6uuvBZnDiiW7fArssQYFBAA7); background-color: rgb(255, 255, 255); background-position: 0% 50%; background-repeat: no-repeat no-repeat; ">
+      <input type="submit" name="sa" value="Go">
+    <input name="siteurl" type="hidden" value="publications.gbdirect.co.uk/c_book/chapter5/sizeof_and_malloc.html"><input name="ref" type="hidden" value="www.google.com.ph/url?sa=t&amp;rct=j&amp;q=c%20sizeof&amp;source=web&amp;cd=3&amp;ved=0CFsQFjAC&amp;url=http%3A%2F%2Fpublications.gbdirect.co.uk%2Fc_book%2Fchapter5%2Fsizeof_and_malloc.html&amp;ei=DCAnUNrWNaWViQK_8YDYCQ&amp;usg=AFQjCNF2KGsyiPOSYJ2l2wQaXtRSXNqlLQ"><input name="ss" type="hidden" value=""></form></span>
+    
+<!-- End Google search -->
+  </div>
+  <div class="Tabsbar"><span class="Tab" id="ThisTab"><a class="global" href="http://training.gbdirect.co.uk/">Training</a></span> <span class="NoCSS2">| </span> <span class="Tab"><a class="global" href="http://ebusiness.gbdirect.co.uk/contact.html">Contact</a></span></div>
+  <div id="container">
+    <div class="Tabsbar" id="tabsbar" style="position: absolute; width: 100%; left: 0px; top: 9291px; ">
+      <span class="skiplink"><a href="#main">Skip to page content</a></span>
+      <span class="skiplink"><a href="#menu">Skip to section menu</a></span>
+      <span class="skiplink"><a href="#sitewidenav">Skip to site-wide navigation</a></span>
+      <a name="sitewidenav" class="skiplink"></a>
+      
+  
+  
+    <span class="Tab"><a class="global" href="http://ebusiness.gbdirect.co.uk/">About Us</a></span>
+  
+
+  <span class="NoCSS2">| </span>
+  
+    <span class="Tab"><a class="global" href="http://training.gbdirect.co.uk/">Training</a></span>
+  
+
+  <span class="NoCSS2">| </span>
+  
+    <span class="Tab"><a class="global" href="http://consulting.gbdirect.co.uk/">Consultancy</a></span>
+  
+
+  <span class="NoCSS2">| </span>
+  
+    <span class="Tab"><a class="global" href="http://development.gbdirect.co.uk/">Software</a></span>
+  
+
+  <span class="NoCSS2">| </span>
+  
+    <span class="Tab" id="ThisTab">Publications</span>
+  
+
+  <span class="NoCSS2">| </span>
+  
+    <span class="Tab"><a class="global" href="http://open-source.gbdirect.co.uk/">Open&nbsp;Source</a></span>
+  
+
+  <span class="NoCSS2">| </span>
+  
+    <span class="Tab"><a class="global" href="http://software-support.gbdirect.co.uk/">Support</a></span>
+  
+
+  <span class="NoCSS2">| </span>
+  
+    <span class="Tab"><a class="global" href="http://open-standards.gbdirect.co.uk/">Open&nbsp;Standards</a></span>
+  
+
+  <span class="NoCSS2">| </span>
+  
+    <span class="Tab"><a class="global" href="http://faq.gbdirect.co.uk/">FAQ</a></span>
+  
+
+  <span class="NoCSS2">| </span>
+  
+    <span class="Tab"><a class="global" href="http://jobs.gbdirect.co.uk/">Jobs</a></span>
+  
+
+
+      <div class="NoCSS2">
+        <a href="http://ebusiness.gbdirect.co.uk/howtos/web_site_design_with_css.html">Site Style Info</a>
+      </div>
+    </div>
+    <div id="main">
+	  
+		<div id="breadcrumb">
+			
+			<a href="http://publications.gbdirect.co.uk/">Publications</a>
+			
+			 &gt; <a href="http://publications.gbdirect.co.uk/c_book/">The C&nbsp;Book</a>
+			
+			 &gt; <a href="http://publications.gbdirect.co.uk/c_book/chapter5/">Arrays &amp; pointers</a>
+			
+			 &gt; Sizeof &amp; malloc
+			
+		</div>
+		<br>
+	  
+      <h1>5.5. Sizeof and storage allocation</h1>
+      
+
+
+  
+
+  <p>The <code>sizeof</code> operator returns the size in bytes of its
+   operand. Whether the result of <code>sizeof</code> is <code>unsigned
+   int</code> or <code>unsigned long</code> is implementation
+   defined—which is why the declaration of malloc above ducked the
+   issue by omitting any parameter information; normally you would use the
+   <code>stdlib.h</code> header file to declare <code>malloc</code>
+   correctly. Here is the last example done portably:</p>
+
+  <pre>#include &lt;stdlib.h&gt;     /* declares malloc() */
+float *fp;
+
+fp = (float *)malloc(sizeof(float));</pre>
+
+  <p>The operand of <code>sizeof</code> only has to be parenthesized if it's
+   a type name, as it was in the example. If you are using the name of
+   a data object instead, then the parentheses can be omitted, but they
+   rarely are.</p>
+
+  <pre>#include &lt;stdlib.h&gt;
+
+int *ip, ar[100];
+ip = (int *)malloc(sizeof ar);</pre>
+
+  <p>In the last example, the array <code>ar</code> is an array of <code>100
+   ints</code>; after the call to <code>malloc</code> (assuming that it was
+   successful), <code>ip</code> will point to a region of store that can
+   also be treated as an array of <code>100 ints</code>.</p>
+
+  <p>The fundamental unit of storage in <a href="http://training.gbdirect.co.uk/courses/c/">C</a> is the <code>char</code>, and by
+   definition</p>
+
+  <pre>sizeof(char)</pre>
+
+  <p>is equal to 1, so you could allocate space for an array of ten
+   <code>char</code>s with</p>
+
+  <pre>malloc(10)</pre>
+
+  <p>while to allocate room for an array of ten <code>int</code>s, you would
+   have to use</p>
+
+  <pre>malloc(sizeof(int[10]))</pre>
+
+  <p>If <code>malloc</code> can't find enough free space to satisfy
+   a request it returns a null pointer to indicate failure. For historical
+   reasons, the <code>stdio.h</code> header file contains a defined constant
+   called NULL which is traditionally used to check the return value from
+   <code>malloc</code> and some other library functions. An explicit
+   <code>0</code> or <code>(void *)0</code> could equally well be used.</p>
+
+  <p>As a first illustration of the use of <code>malloc</code>, here's
+   a program which reads up to <code>MAXSTRING</code> strings from its input
+   and sort them into alphabetical order using the library
+   <code>strcmp</code> routine. The strings are terminated by
+   a ‘<code>\n</code>’ character. The sort is done by keeping an array
+   of pointers to the strings and simply exchanging the pointers until the
+   order is correct. This saves having to copy the strings themselves, which
+   improves the efficency somewhat.</p>
+
+  <p>The example is done first using fixed size arrays, then another version
+   uses malloc and allocates space for the strings at run time.
+   Unfortunately, the array of pointers is still fixed in size: a better
+   solution would use a linked list or similar data structure to store the
+   pointers and would have no fixed arrays at all. At the moment, we haven't
+   seen how to do that.</p>
+
+  <p>The overall structure is this:</p>
+
+  <pre>while(number of strings read &lt; MAXSTRING
+      &amp;&amp; input still remains){
+
+              read next string;
+}
+sort array of pointers;
+print array of pointers;
+exit;</pre>
+
+  <p>A number of functions are used to implement this program:</p>
+
+  <dl>
+   <dt><code>char *next_string(char *destination)</code></dt>
+   <dd>
+    <p>Read a line of characters terminated by ‘<code>\n</code>’ from
+     the program's input. The first <code>MAXLEN-1</code> characters are
+     written into the array pointed to by destination.</p>
+    <p>If the first character read is <code>EOF</code>, return a null pointer,
+     otherwise return the address of the start of the string (destination).
+     On return, destination always points to a null-terminated string.</p>
+   </dd>
+
+   <dt><code>void sort_arr(const char *p_array[])</code></dt>
+   <dd>
+    <p><code>P_array[]</code> is an array of pointers to characters. The
+     array can be arbitrarily long; its end is indicated by the first element
+     containing a null pointer.</p>
+    <p><code>Sort_arr</code> sorts the pointers so that the pointers point to
+     strings which are in alphabetical order when the array is traversed in
+     index order.</p>
+   </dd>
+
+   <dt><code>void print_arr(const char *p_array[])</code></dt>
+   <dd>Like <code>sort_arr</code>, but prints the strings in index order.</dd>
+  </dl>
+
+  <p>It will help to understand the examples if you remember that in an
+   expression, an array's name is converted to the address of its first
+   element. Similarly, for a two-dimensional array (such as
+   <code>strings</code> below), then the expression
+   <code>strings[1][2]</code> has type char, but <code>strings[1]</code> has
+   type ‘array of <code>char</code>’ which is therefore converted to
+   the address of the first element: it is equivalent to
+   <code>&amp;strings[1][0]</code>.</p>
+
+  <div class="inset-example"><a name="example-10"></a><pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+#define MAXSTRING       50      /* max no. of strings */
+#define MAXLEN          80      /* max length. of strings */
+
+void print_arr(const char *p_array[]);
+void sort_arr(const char *p_array[]);
+char *next_string(char *destination);
+
+main(){
+      /* leave room for null at end */
+      char *p_array[MAXSTRING+1];
+
+      /* storage for strings */
+      char strings[MAXSTRING][MAXLEN];
+
+      /* count of strings read */
+      int nstrings;
+
+      nstrings = 0;
+      while(nstrings &lt; MAXSTRING &amp;&amp;
+              next_string(strings[nstrings]) != 0){
+
+              p_array[nstrings] = strings[nstrings];
+              nstrings++;
+      }
+      /* terminate p_array */
+      p_array[nstrings] = 0;
+
+      sort_arr(p_array);
+      print_arr(p_array);
+      exit(EXIT_SUCCESS);
+}
+
+void print_arr(const char *p_array[]){
+      int index;
+      for(index = 0; p_array[index] != 0; index++)
+              printf("%s\n", p_array[index]);
+}
+
+
+void sort_arr(const char *p_array[]){
+      int comp_val, low_index, hi_index;
+      const char *tmp;
+
+      for(low_index = 0;
+              p_array[low_index] != 0 &amp;&amp;
+                              p_array[low_index+1] != 0;
+                      low_index++){
+
+              for(hi_index = low_index+1;
+                      p_array[hi_index] != 0;
+                              hi_index++){
+
+                      comp_val=strcmp(p_array[hi_index],
+                              p_array[low_index]);
+                      if(comp_val &gt;= 0)
+                              continue;
+                      /* swap strings */
+                      tmp = p_array[hi_index];
+                      p_array[hi_index] = p_array[low_index];
+                      p_array[low_index] = tmp;
+              }
+      }
+}
+
+
+
+char *next_string(char *destination){
+      char *cp;
+      int c;
+
+      cp = destination;
+      while((c = getchar()) != '\n' &amp;&amp; c != EOF){
+              if(cp-destination &lt; MAXLEN-1)
+                      *cp++ = c;
+      }
+      *cp = 0;
+      if(c == EOF &amp;&amp; cp == destination)
+              return(0);
+      return(destination);
+}</pre><cite>Example&nbsp;5.10</cite></div>
+
+  <p>It is no accident that <code>next_string</code> returns a pointer. We
+   can now dispense with the strings array by getting
+   <code>next_string</code> to allocate its own storage.</p>
+
+  <div class="inset-example"><a name="example-11"></a><pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+#define MAXSTRING       50      /* max no. of strings */
+#define MAXLEN          80      /* max length. of strings */
+
+void print_arr(const char *p_array[]);
+void sort_arr(const char *p_array[]);
+char *next_string(void);
+
+main(){
+      char *p_array[MAXSTRING+1];
+      int nstrings;
+
+      nstrings = 0;
+      while(nstrings &lt; MAXSTRING &amp;&amp;
+              (p_array[nstrings] = next_string()) != 0){
+
+              nstrings++;
+      }
+      /* terminate p_array */
+      p_array[nstrings] = 0;
+
+      sort_arr(p_array);
+      print_arr(p_array);
+      exit(EXIT_SUCCESS);
+}
+
+void print_arr(const char *p_array[]){
+      int index;
+      for(index = 0; p_array[index] != 0; index++)
+              printf("%s\n", p_array[index]);
+}
+
+
+void sort_arr(const char *p_array[]){
+      int comp_val, low_index, hi_index;
+      const char *tmp;
+
+      for(low_index = 0;
+              p_array[low_index] != 0 &amp;&amp;
+                      p_array[low_index+1] != 0;
+                      low_index++){
+
+              for(hi_index = low_index+1;
+                      p_array[hi_index] != 0;
+                              hi_index++){
+
+                      comp_val=strcmp(p_array[hi_index],
+                              p_array[low_index]);
+                      if(comp_val &gt;= 0)
+                              continue;
+                      /* swap strings */
+                      tmp = p_array[hi_index];
+                      p_array[hi_index] = p_array[low_index];
+                      p_array[low_index] = tmp;
+              }
+      }
+}
+
+char *next_string(void){
+      char *cp, *destination;
+      int c;
+
+      destination = (char *)malloc(MAXLEN);
+      if(destination != 0){
+              cp = destination;
+              while((c = getchar()) != '\n' &amp;&amp; c != EOF){
+                      if(cp-destination &lt; MAXLEN-1)
+                              *cp++ = c;
+              }
+              *cp = 0;
+              if(c == EOF &amp;&amp; cp == destination)
+                      return(0);
+      }
+      return(destination);
+}</pre><cite>Example&nbsp;5.11</cite></div>
+
+  <p>Finally, for the extremely brave, here is the whole thing with even
+   <code>p_array</code> allocated using <code>malloc</code>. Further, most
+   of the array indexing is rewritten to use pointer notation. If you are
+   feeling queasy, skip this example. It is hard. One word of explanation:
+   <code>char **p</code> means a pointer to a pointer to a character. Many
+   C programmers find this hard to deal with.</p>
+
+  <div class="inset-example"><a name="example-12"></a><pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.hi&gt;
+#include &lt;string.h&gt;
+
+#define MAXSTRING       50      /* max no. of strings */
+#define MAXLEN          80      /* max length. of strings */
+
+void print_arr(const char **p_array);
+void sort_arr(const char **p_array);
+char *next_string(void);
+
+main(){
+      char **p_array;
+      int nstrings;   /* count of strings read */
+
+      p_array = (char **)malloc(
+                      sizeof(char *[MAXSTRING+1]));
+      if(p_array == 0){
+              printf("No memory\n");
+              exit(EXIT_FAILURE);
+      }
+
+      nstrings = 0;
+      while(nstrings &lt; MAXSTRING &amp;&amp;
+              (p_array[nstrings] = next_string()) != 0){
+
+              nstrings++;
+      }
+      /* terminate p_array */
+      p_array[nstrings] = 0;
+
+      sort_arr(p_array);
+      print_arr(p_array);
+      exit(EXIT_SUCCESS);
+}
+
+void print_arr(const char **p_array){
+      while(*p_array)
+              printf("%s\n", *p_array++);
+}
+
+
+void sort_arr(const char **p_array){
+      const char **lo_p, **hi_p, *tmp;
+
+      for(lo_p = p_array;
+              *lo_p != 0 &amp;&amp; *(lo_p+1) != 0;
+                                      lo_p++){
+              for(hi_p = lo_p+1; *hi_p != 0; hi_p++){
+
+                      if(strcmp(*hi_p, *lo_p) &gt;= 0)
+                              continue;
+                      /* swap strings */
+                      tmp = *hi_p;
+                      *hi_p = *lo_p;
+                      *lo_p = tmp;
+              }
+      }
+}
+
+
+
+char *next_string(void){
+      char *cp, *destination;
+      int c;
+
+      destination = (char *)malloc(MAXLEN);
+      if(destination != 0){
+              cp = destination;
+              while((c = getchar()) != '\n' &amp;&amp; c != EOF){
+                      if(cp-destination &lt; MAXLEN-1)
+                              *cp++ = c;
+              }
+              *cp = 0;
+              if(c == EOF &amp;&amp; cp == destination)
+                      return(0);
+      }
+      return(destination);
+}</pre><cite>Example&nbsp;5.12</cite></div>
+
+  <p>To further illustrate the use of <code>malloc</code>, another example
+   program follows which can cope with arbitrarily long strings. It simply
+   reads strings from its standard input, looking for a newline character to
+   mark the end of the string, then prints the string on its standard
+   output.  It stops when it detects end-of-file. The characters are put
+   into an array, the end of the string being indicated (as always) by
+   a zero. The newline is not stored, but used to detect when a full line of
+   input should be printed on the output. The program doesn't know how long
+   the string will be, so it starts by allocating ten characters—enough
+   for a short string.</p>
+
+  <p>If the string is more than ten characters long, <code>malloc</code> is
+   called to allocate room for the current string plus ten more characters.
+   The current characters are copied into the new space, the old storage
+   previously allocated is released and the program continues using the new
+   storage.</p>
+
+  <p>To release storage allocated by <code>malloc</code>, the library
+   function <code>free</code> is used. If you don't release storage when it
+   isn't needed any more, it just hangs around taking up space. Using
+   <code>free</code> allows it to be ‘given away’, or at least re-used
+   later.</p>
+
+  <p>The program reports errors by using <code>fprintf</code>, a close
+   cousin of <code>printf</code>. The only difference between them is that
+   fprintf takes an additional first argument which indicates where its
+   output should go. There are two constants of the right type for this
+   purpose defined in <code>stdio.h</code>. Using <code>stdout</code>
+   indicates that the program's standard output is to be used;
+   <code>stderr</code> refers to the program's standard error stream. On
+   some systems both may be the same, but other systems do make the
+   distinction.</p>
+
+  <div class="inset-example"><a name="example-13"></a><pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+#define GROW_BY 10      /* string grows by 10 chars */
+
+main(){
+      char *str_p, *next_p, *tmp_p;
+      int ch, need, chars_read;
+
+      if(GROW_BY &lt; 2){
+              fprintf(stderr,
+                      "Growth constant too small\n");
+              exit(EXIT_FAILURE);
+      }
+
+      str_p = (char *)malloc(GROW_BY);
+      if(str_p == NULL){
+              fprintf(stderr,"No initial store\n");
+              exit(EXIT_FAILURE);
+      }
+
+      next_p = str_p;
+      chars_read = 0;
+      while((ch = getchar()) != EOF){
+              /*
+               * Completely restart at each new line.
+               * There will always be room for the
+               * terminating zero in the string,
+               * because of the check further down,
+               * unless GROW_BY is less than 2,
+               * and that has already been checked.
+               */
+              if(ch == '\n'){
+                      /* indicate end of line */
+                      *next_p = 0;
+                      printf("%s\n", str_p);
+                      free(str_p);
+                      chars_read = 0;
+                      str_p = (char *)malloc(GROW_BY);
+                      if(str_p == NULL){
+                              fprintf(stderr,"No initial store\n");
+                              exit(EXIT_FAILURE);
+                      }
+                      next_p = str_p;
+                      continue;
+              }
+              /*
+               * Have we reached the end of the current
+               * allocation ?
+               */
+              if(chars_read == GROW_BY-1){
+                      *next_p = 0;    /* mark end of string */
+                      /*
+                       * use pointer subtraction
+                       * to find length of
+                       * current string.
+                       */
+                      need = next_p - str_p +1;
+                      tmp_p = (char *)malloc(need+GROW_BY);
+                      if(tmp_p == NULL){
+                              fprintf(stderr,"No more store\n");
+                              exit(EXIT_FAILURE);
+                      }
+                      /*
+                       * Copy the string using library.
+                       */
+                      strcpy(tmp_p, str_p);
+                      free(str_p);
+                      str_p = tmp_p;
+                      /*
+                       * and reset next_p, character count
+                       */
+                      next_p = str_p + need-1;
+                      chars_read = 0;
+              }
+              /*
+               * Put character at end of current string.
+               */
+              *next_p++ = ch;
+              chars_read++;
+      }
+      /*
+       * EOF - but do unprinted characters exist?
+       */
+      if(str_p - next_p){
+              *next_p = 0;
+              fprintf(stderr,"Incomplete last line\n");
+              printf("%s\n", str_p);
+      }
+      exit(EXIT_SUCCESS);
+}</pre><cite>Example&nbsp;5.13</cite></div>
+
+  <p>That may not be a particularly realistic example of how to handle
+   arbitrarily long strings—for one thing, the maximum storage demand
+   is <em>twice</em> the amount needed for the longest string—but it
+   does actually work. It also costs rather a lot in terms of copying
+   around. Both problems could be reduced by using the library
+   <code>realloc</code> function instead.</p>
+
+  <p>A more sophisticated method might use a linked list, implemented with
+   the use of <dfn>structures</dfn>, as described in the next chapter. That
+   would have its drawbacks too though, because then the standard library
+   routines wouldn't work for a different method of storing strings.</p>
+
+  <h2><a name="section-1"></a>5.5.1.&nbsp;What sizeof can't do</h2>
+   
+
+   <p>One common mistake made by beginners is shown below:</p>
+
+   <div class="inset-example"><a name="example-14"></a><pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+const char arr[] = "hello";
+const char *cp = arr;
+main(){
+
+      printf("Size of arr %lu\n", (unsigned long)
+                      sizeof(arr));
+      printf("Size of *cp %lu\n", (unsigned long)
+                      sizeof(*cp));
+      exit(EXIT_SUCCESS);
+}</pre><cite>Example&nbsp;5.14</cite></div>
+
+   <p>The numbers printed will <em>not</em> be the same. The first will,
+    correctly, identify the size of <code>arr</code> as <code>6</code>; five
+    characters followed by a null. The second one will always, on every
+    system, print <code>1</code>. That's because the type of
+    <code>*cp</code> is <code>const char</code>, which can only have a size
+    of <code>1</code>, whereas the type of <code>arr</code> is different:
+    array of <code>const char</code>. The confusion arises because this is
+    the one place that the use of an array is not converted into a pointer
+    first. It is never possible, using <code>sizeof</code>, to find out how
+    long an array a pointer points to; you <em>must</em> have a genuine
+    array name instead.</p>
+
+  
+
+  <h2><a name="section-2"></a>5.5.2.&nbsp;The type of sizeof</h2>
+   
+
+   <p>Now comes the question of just what this does:</p>
+
+   <pre>sizeof ( sizeof (anything legal) )</pre>
+
+   <p>That is to say, what type does the result of <code>sizeof</code> have?
+    The answer is that it is implementation defined, and will be either
+    <code>unsigned long</code> or <code>unsigned int</code>, depending on
+    your implementation. There are two safe things to do: either always cast
+    the return value to unsigned long, as the examples have done, or to use
+    the defined type <code>size_t</code> provided in the
+    <code>&lt;stddef.h&gt;</code> header file. For example:</p>
+
+   <div class="inset-example"><a name="example-15"></a><pre>#include &lt;stddef.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+main(){
+      size_t sz;
+      sz = sizeof(sz);
+      printf("size of sizeof is %lu\n",
+              (unsigned long)sz);
+      exit(EXIT_SUCCESS);
+}</pre><cite>Example&nbsp;5.15</cite></div>
+
+  
+
+ <div class="cbook_next_prev"><p><a href="http://publications.gbdirect.co.uk/c_book/chapter5/character_handling.html">Previous section</a> | <a href="http://publications.gbdirect.co.uk/c_book/chapter5">Chapter contents</a> | <a href="http://publications.gbdirect.co.uk/c_book/chapter5/function_pointers.html">Next section</a></p></div>
+    </div>
+    <div id="menu" class="Left">
+      <a name="NavBlock"></a>
+      
+ 
+  
+  <div class="nav">
+
+
+		
+		  <div class="nav0">
+			
+			  <a href="http://undefined/">Publications</a>
+			
+			
+		</div>
+		
+
+		
+		  <div class="nav1">
+			
+			  <a href="http://publications.gbdirect.co.uk/c_book">The C&nbsp;Book</a>
+			
+			
+		</div>
+		
+
+		
+		  <div class="nav2">
+			
+			  <a href="http://publications.gbdirect.co.uk/c_book/preface">Preface</a>
+			
+			
+		</div>
+		
+
+		
+		  <div class="nav2">
+			
+			  <a href="http://publications.gbdirect.co.uk/c_book/chapter1">Introduction</a>
+			
+			
+		</div>
+		
+
+		
+		  <div class="nav2">
+			
+			  <a href="http://publications.gbdirect.co.uk/c_book/chapter2">Variables &amp; arithmetic</a>
+			
+			
+		</div>
+		
+
+		
+		  <div class="nav2">
+			
+			  <a href="http://publications.gbdirect.co.uk/c_book/chapter3">Control flow</a>
+			
+			
+		</div>
+		
+
+		
+		  <div class="nav2">
+			
+			  <a href="http://publications.gbdirect.co.uk/c_book/chapter4">Functions</a>
+			
+			
+		</div>
+		
+
+		
+		  <div class="nav2">
+			
+			  <a href="http://publications.gbdirect.co.uk/c_book/chapter5">Arrays &amp; pointers</a>
+			
+			
+		</div>
+		
+
+		
+		  <div class="nav3">
+			
+			  <a href="http://publications.gbdirect.co.uk/c_book/chapter5/opening_shots.html">Opening shots</a>
+			
+			
+		</div>
+		
+
+		
+		  <div class="nav3">
+			
+			  <a href="http://publications.gbdirect.co.uk/c_book/chapter5/arrays.html">Arrays</a>
+			
+			
+		</div>
+		
+
+		
+		  <div class="nav3">
+			
+			  <a href="http://publications.gbdirect.co.uk/c_book/chapter5/pointers.html">Pointers</a>
+			
+			
+		</div>
+		
+
+		
+		  <div class="nav3">
+			
+			  <a href="http://publications.gbdirect.co.uk/c_book/chapter5/character_handling.html">Character handling</a>
+			
+			
+		</div>
+		
+
+		
+		  <div class="nav3">
+			
+			  <strong>Sizeof &amp; malloc</strong>
+			
+			
+		</div>
+		
+
+		
+		  <div class="nav3">
+			
+			  <a href="http://publications.gbdirect.co.uk/c_book/chapter5/function_pointers.html">Function pointers</a>
+			
+			
+		</div>
+		
+
+		
+		  <div class="nav3">
+			
+			  <a href="http://publications.gbdirect.co.uk/c_book/chapter5/pointer_expressions.html">Pointer expressions</a>
+			
+			
+		</div>
+		
+
+		
+		  <div class="nav3">
+			
+			  <a href="http://publications.gbdirect.co.uk/c_book/chapter5/arrays_and_address_of.html">Arrays &amp; address-of</a>
+			
+			
+		</div>
+		
+
+		
+		  <div class="nav3">
+			
+			  <a href="http://publications.gbdirect.co.uk/c_book/chapter5/summary.html">Summary</a>
+			
+			
+		</div>
+		
+
+		
+		  <div class="nav3">
+			
+			  <a href="http://publications.gbdirect.co.uk/c_book/chapter5/exercises.html">Exercises</a>
+			
+			
+		</div>
+		
+
+		
+		  <div class="nav2">
+			
+			  <a href="http://publications.gbdirect.co.uk/c_book/chapter6">Structures</a>
+			
+			
+		</div>
+		
+
+		
+		  <div class="nav2">
+			
+			  <a href="http://publications.gbdirect.co.uk/c_book/chapter7">Preprocessor</a>
+			
+			
+		</div>
+		
+
+		
+		  <div class="nav2">
+			
+			  <a href="http://publications.gbdirect.co.uk/c_book/chapter8">Specialized areas</a>
+			
+			
+		</div>
+		
+
+		
+		  <div class="nav2">
+			
+			  <a href="http://publications.gbdirect.co.uk/c_book/chapter9">Libraries</a>
+			
+			
+		</div>
+		
+
+		
+		  <div class="nav2">
+			
+			  <a href="http://publications.gbdirect.co.uk/c_book/chapter10">Complete Programs</a>
+			
+			
+		</div>
+		
+
+		
+		  <div class="nav2">
+			
+			  <a href="http://publications.gbdirect.co.uk/c_book/answers">Answers</a>
+			
+			
+		</div>
+		
+
+		
+		  <div class="nav2">
+			
+			  <a href="http://publications.gbdirect.co.uk/c_book/copyright.html">Copyright</a>
+			
+			
+		</div>
+		
+
+
+</div>
+
+ 
+
+      <div class="ColBtm">
+        <hr>
+<h1><a href="http://ebusiness.gbdirect.co.uk/contact.html">Contact Us</a></h1>
+
+      </div>
+
+    </div>
+    <div id="sidebar" class="Right">
+      
+ <div class="box">
+  
+  
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsSAAALEgHS3X78AAAAB3RJTUUH0woHDwI4nnF5GAAAAadJREFUeJw9kj1uE2EYhJ9vvYl/Y0icEiEicQJcBysXcMMFcEVpcQAakOgiGq5BSwmNuUCCQ+XEwSDFsRPW8a7t/X7elyKOR5ry0WhGY1ir2+2+bzabX1T1EyiqAAoYjDFvB4PBm16v9zF+AJrN5mG73f7mvT8SCYgIAMZElMul3V7vR2s4HH7eAN575vM5eb7CWrsBarUdQPDeEUURG2C1WjK5HrNYLlksFogIhUKBxl5OpVIhyzJEhBgwQO3mZro9Gv0myzLSNAUg3toiy+bs1Gpcj8eFy8vhY9PpdJ60Xh5+mE4nr2azu7a19ru1+TrXUCwWqVQqR87Zr1FkfsUHB8+e53n+utVqsddoYDbbgN5PhaqSJEm53//5Ip5OJ4U4jjg761Ov11FVRAIhCCKCSECCkKYpg/MBcZL8q+7v73J7O+Hq6i8ignMOax3eOayzOOcQUVSF+OTkNE+S5LxcKjZExIvqnQQhhHBvCUgIPgSZee80vrgYnnrn3lWr1aeiOgKOUTUKSAiqKBLkj0g4ds4vDVAASsA2kAKP1p0fvgEwA+pA+A9KbAvoTunHrAAAAABJRU5ErkJggg==" alt="" title="Printer-friendly version of this page">
+<a href="http://publications.gbdirect.co.uk/c_book/chapter5/?format=pf">
+  Printer-friendly version
+</a>
+
+ </div>
+
+ <div class="box">
+  <h3>The C Book</h3>
+  
+<p>This book is published as a matter of historical interest.
+ Please read the
+ <a href="http://publications.gbdirect.co.uk/c_book/copyright.html">copyright and disclaimer information</a>.</p>
+
+<p>GBdirect Ltd provides up-to-date training and consultancy in
+ <a href="http://training.gbdirect.co.uk/courses/c/">C</a>,
+ <a href="http://training.gbdirect.co.uk/courses/c/real_time_linux_embedded_c_training.html">Embedded C</a>,
+ <a href="http://training.gbdirect.co.uk/courses/c++/">C++</a>
+ and a wide range of
+ <a href="http://training.gbdirect.co.uk/courses/">other subjects based on
+ open standards</a> if you happen to be interested.</p>
+
+ </div>
+
+
+    </div>
+  </div>
+
+
+
+<div id="mixpanel" style="visibility: hidden; "></div><div style="display: none; " id="hiddenlpsubmitdiv"></div></body></html>

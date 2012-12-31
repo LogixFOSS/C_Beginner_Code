@@ -1,0 +1,548 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><!--
+ Archive processed by SingleFile 
+ url: http://www.network-theory.co.uk/docs/gccintro/gccintro_11.html 
+ saved date: Mon Nov 19 2012 10:12:17 GMT+0800 (China Standard Time) 
+--><head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<!-- This HTML file has been created by texi2html 1.54+ (gsl)
+     from gccintro.texi -->
+
+<title>An Introduction to GCC - Compiling multiple source files</title>
+<style rel="stylesheet" title="Default Style Sheet" type="text/css">HTML {
+  padding: 0px; 
+}
+
+BODY {
+        margin: 0px 0px 0px 0px;
+        background-color: white;
+        color: black;
+}
+
+.top {
+	margin: 0px 0px 0px 0px;
+        margin-bottom: 1em;
+        /* background: #eeeeec; */
+        /*       border-bottom: solid 1px grey; */
+}
+
+.main {
+	max-width:85em;
+        margin-top: 0px;
+        padding-top: 0px;
+        padding-left: 12px;
+        padding-right: 12px;
+	line-height:1.6em;
+	font-family: "Verdana", "Arial", sans-serif;
+}
+
+
+h1  {	font-size:      large;
+        font-family:	"Verdana", "Arial", sans-serif;
+	padding: 0px 0px 0px 0px;
+}
+
+h2, h3, h4, h5  {	
+        font-size: medium;
+        font-family:	"Verdana", "Arial", sans-serif;
+}
+
+h2 {
+        border-bottom:  solid 1px black;
+}
+
+.Front {
+       	padding: 1em 1em 1em 1em;        
+}
+
+.Catalogue {
+       	padding: 0.5em 0px 0.5em 0px;
+}
+
+
+/* Banner at top of page  */
+
+.Header { font-weight: bold;
+          font-variant: small-caps;
+          font-size: large;
+          padding-left: 12px;
+          padding-top: 6px;
+          font-family: "Verdana", "Arial", sans-serif; 
+}
+
+.Header .logo a{ text-decoration:none; }
+
+.nav {
+	border-style:solid;
+	border-color:#3080b0;
+        border-width:3px 0px 0px 0px;
+	margin: 2px 0px 0px 0px;
+	padding: 3px 0px 3px 12px;
+        font-family: "Verdana", "Arial", sans-serif; 
+}
+
+.nav a { margin-left: 2px; margin-right: 2px; }
+
+.nav2 {
+        border-width: 1px 1px 1px 1px;
+        border-color: #3080b0;
+        border-style: solid;
+	margin: 8px 0px 16px 0px;
+	padding: 1px 0px 1px 0px;
+}
+
+
+.navdoc {
+        padding:0em;    
+        margin :0em;  
+}
+
+.prev {
+        width: 33%;
+}
+
+.toc {
+        width: 33%;
+        text-align: center;
+}
+
+.next {
+        width: 33%;
+        text-align: right;
+}
+
+.buyit {
+        text-align: center;
+        float: right;
+        padding: 1ex; 
+        margin: 0;
+        /*        background-color: #ffff66; */
+        border-width: 1px 1px 1px 1px;
+        border-color: black;
+        border-style: solid;
+}
+
+.buytitle {
+        font-size: smaller;
+}
+
+.docbar {
+        margin: 0;
+        padding: 0;
+        border: 0;
+}
+
+#docicon {
+        border-width: 0;
+        margin: 1ex;
+}
+
+
+.Footer {
+	font-size: x-small;
+	border-style:solid;
+	border-color:#3080b0;
+        border-width:3px 0px 0px 0px;
+	margin: 1.5em 0px 0px 0px;
+	padding: 3px 0px 3px 12px;
+        font-family: "Verdana", "Arial", sans-serif; 
+}
+
+.Title {
+	/* font-size: medium; */
+	font-weight: bold;
+        font-family: "Verdana", "Arial", sans-serif;
+        padding-top: 8px;
+        margin-top: 0px;
+	}
+
+div.PageImage {
+        text-align: center;
+        width: 720px;
+        margin-left: auto;
+        margin-right: auto;
+}
+
+img.PageImage {
+	border-style:solid;
+	border-color:black;
+	border-width:1px 1px 1px 1px;
+        vertical-align: top;
+        }
+
+:hover.pageimagenavleft, :hover.pageimagenavright {
+        background: lightgrey;
+}
+
+img.pageimagenavleft {
+	border-style:solid;
+	border-color:black;
+	border-width:1px 0px 1px 1px;
+        background-color: darkgrey;
+	padding: 30px 10px 846px 10px;
+	margin: 0px 0px 10px 8px;
+        vertical-align: top;
+        }
+img.pageimagenavright {
+	border-style:solid;
+	border-color:black;
+	border-width:1px 1px 1px 0px;
+        background-color: darkgrey;
+	padding: 30px 10px 846px 10px;
+	margin: 0px 8px 10px 0px;
+        vertical-align: top;
+        }
+
+
+.FrontCaption {
+        text-align: center;
+        padding: 0px 0px 1ex 0px;
+}
+
+
+.FrontImage {
+        border-style:none;
+        padding: 0px 10px 0px 10px;
+}
+
+
+.CoverImage {
+	border-style:none;
+	margin: 0px 1ex 0px 0px;
+        }
+
+.TinyCoverImage {
+	border-style:none;
+	margin: 0ex 1ex 0ex 1ex;
+        float: left;
+        }
+
+pre {
+        background-color: #F1F5F9;
+        border: 1px solid gray;
+        padding: 1ex 1ex 1ex 2ex;
+}
+
+.copying {
+        font-size: x-small;
+}
+
+.float {
+        padding-bottom: 1ex;
+        padding-top: 1ex;
+}
+
+.caption {
+        margin-bottom: -1ex;
+        }
+
+table.multitable {
+        width: 100%;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        border-collapse: collapse;
+        border-top: 3px double black;
+        border-bottom: 3px double black;
+}
+
+table.multitable tr:first-child {
+        border-bottom: 1px solid black;
+}
+
+
+table.multitable tr {
+        border-top: 1px solid grey;
+        border-bottom: 1px solid grey;
+}
+
+table.multitable td {
+        vertical-align: baseline;
+}
+
+
+pre.flushright {
+        font-family: normal;
+        background-color: #FFFFFF;
+        border: none;
+        padding: 0 0 0 0;
+}
+
+pre.order {
+        background-color: #FFFFFF;
+        border: 1px solid #000000;
+        padding: 2em 2em 1em 2em;
+}
+
+.smallcaps {
+        font-variant: small-caps;
+}
+
+
+optgroup {
+        font-style: normal;
+}
+
+.print {
+        display: none;
+}
+
+DL.table DD {
+        padding-bottom: 1em;
+}
+
+.cover { margin-left: 0.5em; }
+.bibdata { margin-left: 1em; }
+
+.indented {
+        margin-left: 3em;
+}
+
+ul li {
+	list-style-type:square;
+}
+
+TR.headitem {
+    font-weight: bold;
+}
+
+.titlepage {
+           font-size: x-small;
+}
+
+.titlepage .cmbx-12x-x-120 {
+           font-weight: bold;
+           font-size: large;
+}
+
+.titlepage .cmr-10x-x-109 {
+           font-weight: bold;
+           font-size: large;
+}
+
+
+</style>
+<style rel="stylesheet" media="print" type="text/css">@media print {
+
+body {
+      background: white;
+      color: black;
+      font-size: 11pt;
+      font-family: serif;
+      width: 90%;
+}
+
+h1 { font-size: 14pt; border: none;}
+h2, h3, h4, h5 { font-size: 12pt; border: none;}
+
+div.nav, div.nav2 { display: none !important ; }
+
+pre {
+       white-space: pre-wrap;       /* css-3 */
+       white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+       white-space: -pre-wrap;      /* Opera 4-6 */
+       white-space: -o-pre-wrap;    /* Opera 7 */
+       word-wrap: break-word;       /* Internet Explorer 5.5+ */
+       font-size: 8pt;
+       border: none;
+}
+
+code, samp { font-family: Courier, monospace; }
+
+div.Header {
+        font-family: sans-serif;
+        font-size: 16pt;
+        display: block !important; 
+        border-bottom: solid 1px;
+} 
+
+div.Footer {
+     font-family: sans-serif;
+     font-size: 8pt;
+     font-style: italic;
+     display: block !important; 
+     margin: 2em 0px 1em 0px;
+     padding: 1ex 0px 1ex 0px;
+     border-top: solid 1px; 
+}
+
+.print {
+        display: block;
+}
+
+}</style>
+<!--[if lte IE 7]>
+<LINK rel="stylesheet" href="/css/ie.css" type="text/css" />
+<![endif]-->
+<link href="gccintro_12.html" rel="Next">
+<link href="gccintro_10.html" rel="Previous">
+<link href="index.html" rel="ToC">
+<link type="image/x-icon" rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAD/ZUYA/wAAAP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAERERERERERERIiESESIhEREhERIRIRIRESEREhEhEhERIRESESESEREhESIhIiEREREREREREREREREREREREQAAAAAAAAAAAAAAAAAAAAACIAIgACIAAAIgIiAAIgAAAiIiIAAiAAACIgIgACIAAAIgAiAiIiIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"></head>
+<body>
+<div class="top"><div class="Header"><span class="logo">Network Theory Ltd</span><span class="tagline"> - publishing free software manuals</span></div>
+<div class="nav">
+[<a href="http://www.network-theory.co.uk/">Home</a>]
+[<a href="http://www.network-theory.co.uk/books.html">Catalogue</a>]
+[<a href="http://www.network-theory.co.uk/newtitles.html">New Titles</a>]
+[<a href="http://www.network-theory.co.uk/news.html">News</a>]
+[<a href="http://www.network-theory.co.uk/sitemap.html">Site Map</a>]
+[<a href="http://www.network-theory.co.uk/about.html">About</a>]
+[<a href="http://www.network-theory.co.uk/contact.html">Contact</a>]
+</div></div>
+<div class="main"><div class="nav2">
+<table width="100%" class="navdoc">
+<tbody><tr>
+<td class="prev"><a href="http://www.network-theory.co.uk/docs/gccintro/gccintro_10.html">&lt;&lt;&lt; previous</a></td>
+<td class="toc"><a href="http://www.network-theory.co.uk/docs/gccintro/index.html">table of contents</a></td>
+<td class="next"><a href="http://www.network-theory.co.uk/docs/gccintro/gccintro_12.html">next &gt;&gt;&gt;</a></td>
+</tr>
+</tbody></table>
+</div>
+<table class="docbar" cellspacing="0" width="100%"><tbody><tr><td><b><a href="http://www.network-theory.co.uk/gcc/intro/">An Introduction to GCC - for the GNU compilers gcc and g++</a></b><br> by Brian J. Gough, foreword by Richard M. Stallman<br>Paperback (6"x9"), 144 pages<br>ISBN 0954161793<br>RRP £12.95 ($19.95)<p>"A wonderfully thorough guide... well-written, seriously usable information" --- <i>Linux User and Developer Magazine (Issue 40, June 2004)</i> <a href="http://www.network-theory.co.uk/gcc/intro/">Get a printed copy&gt;&gt;&gt;</a></p></td><td width="30%"><div class="buyit"><a href="http://www.network-theory.co.uk/gcc/intro/"><span class="buytitle">An Introduction to GCC</span><br></a><a href="http://www.network-theory.co.uk/gcc/intro/"><img id="docicon" alt="" src="data:image/png;base64,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"></a><br><a href="http://www.network-theory.co.uk/gcc/intro/">Buy the book here!&nbsp;&gt;&gt;&gt;<br><span class="buytitle">support free documentation</span><br></a></div></td></tr></tbody></table>
+
+<h2>2.3  Compiling multiple source files</h2>
+<p>
+A program can be split up into multiple files.  This makes it easier to
+edit and understand, especially in the case of large programs--it also
+allows the individual parts to be compiled independently.
+
+</p>
+<p>
+In the following example we will split up the program <i>Hello World</i>
+into three files: <tt>‘main.c’</tt>, <tt>‘hello_fn.c’</tt> and the header file
+<tt>‘hello.h’</tt>.  Here is the main program <tt>‘main.c’</tt>:
+
+</p>
+
+<pre class="example">#include "hello.h"
+
+int
+main (void)
+{
+  hello ("world");
+  return 0;
+}
+</pre>
+
+<p>
+The original call to the <code>printf</code> system function in the previous
+program <tt>‘hello.c’</tt> has been replaced by a call to a new external
+function <code>hello</code>, which we will define in a separate file
+<tt>‘hello_fn.c’</tt>.
+
+</p>
+<p>
+The main program also includes the header file <tt>‘hello.h’</tt> which will
+contain the declaration of the function <code>hello</code>.  The declaration
+is used to ensure that the types of the arguments and return value match
+up correctly between the function call and the function definition.  We
+no longer need to include the system header file <tt>‘stdio.h’</tt> in
+<tt>‘main.c’</tt> to declare the function <code>printf</code>, since the file
+<tt>‘main.c’</tt> does not call <code>printf</code> directly.
+
+</p>
+<p>
+The declaration in <tt>‘hello.h’</tt> is a single line specifying the
+prototype of the function <code>hello</code>:
+
+</p>
+
+<pre class="example">void hello (const char * name);
+</pre>
+
+<p>
+The definition of the function <code>hello</code> itself is contained in the
+file <tt>‘hello_fn.c’</tt>:
+
+</p>
+
+<pre class="example">#include &lt;stdio.h&gt;
+#include "hello.h"
+
+void 
+hello (const char * name)
+{
+  printf ("Hello, %s!\n", name);
+}
+</pre>
+
+<p>
+This function prints the message "<code>Hello, </code><var>name</var><code>!</code>"
+using its argument as the value of <var>name</var>.
+
+</p>
+<p>
+Incidentally, the difference between the two forms of the include
+statement <code>#include "<var>FILE</var>.h"</code> and <code>#include
+&lt;<var>FILE</var>.h&gt;</code> is that the former searches for <tt>‘<var>FILE</var>.h’</tt> in
+the current directory before looking in the system header file
+directories.  The include statement <code>#include &lt;<var>FILE</var>.h&gt;</code>
+searches the system header files, but does not look in the current
+directory by default.
+
+</p>
+<p>
+To compile these source files with <code>gcc</code>, use the following
+command:
+
+</p>
+
+<pre class="example">$ gcc -Wall main.c hello_fn.c -o newhello
+</pre>
+
+<p>
+In this case, we use the <code>-o</code> option to specify a different output
+file for the executable, <tt>‘newhello’</tt>.  Note that the header file
+<tt>‘hello.h’</tt> is not specified in the list of files on the command
+line.  The directive <code>#include "hello.h"</code> in the source files
+instructs the compiler to include it automatically at the appropriate
+points.
+
+</p>
+<p>
+To run the program, type the path name of the executable:
+
+</p>
+
+<pre class="example">$ ./newhello
+Hello, world!
+</pre>
+
+<p>
+All the parts of the program have been combined into a single executable
+file, which produces the same result as the executable created from the
+single source file used earlier.
+
+</p>
+<div class="nav2">
+<table width="100%" class="navdoc">
+<tbody><tr>
+<td class="prev"><a href="http://www.network-theory.co.uk/docs/gccintro/gccintro_10.html">&lt;&lt;&lt; previous</a></td>
+<td class="toc"><a href="http://www.network-theory.co.uk/docs/gccintro/index.html">table of contents</a></td>
+<td class="next"><a href="http://www.network-theory.co.uk/docs/gccintro/gccintro_12.html">next &gt;&gt;&gt;</a></td>
+</tr>
+</tbody></table>
+</div>
+<table class="docbar" cellspacing="0" width="100%"><tbody><tr><td width="20%"><a class="boxed" href="http://www.network-theory.co.uk/gcc/intro/">ISBN 0954161793</a></td><td align="center"><b>An Introduction to GCC - for the GNU compilers gcc and g++</b></td><td width="20%" align="right"><a class="boxed" href="http://www.network-theory.co.uk/gcc/intro/">See the print edition</a></td></tr></tbody></table>
+<a href="http://www.network-theory.co.uk/robotrack.html"></a>
+</div>
+<div class="Footer">
+Network Theory Limited,
+United Kingdom<br>
+Telephone: +44 117 317 9309 
+Fax: +44 117 973 3323
+Email: sales<!-- s p a m 
+-->@<!-- 
+domain. 
+ -->network-theory.<!-- no s p am.
+-->co.<!-- at 
+ --><!-- dot 
+-->uk<br>
+<span class="print">
+Web: www.network-theory.co.uk<br>
+Buying our books supports the development of free software and documentation!
+</span>
+</div>
+
+
+
+</body></html>

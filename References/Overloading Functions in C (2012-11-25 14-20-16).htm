@@ -1,0 +1,1087 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><!--
+ Archive processed by SingleFile 
+ url: http://locklessinc.com/articles/overloading/ 
+ saved date: Sun Nov 25 2012 14:20:10 GMT+0800 (China Standard Time) 
+--><head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<link rel="alternate" type="application/rss+xml" href="/feed.rss" title="Lockless Inc. Articles">
+
+<title>Overloading Functions in C</title>
+<meta name="description" content="Overloading Functions in C">
+<meta name="robots" content="index,follow">
+<style rel="stylesheet" type="text/css">body
+{
+	font-family:"arial";
+	margin:0px;
+	color: #222277;
+}
+
+/* No border around images */
+:link img
+{
+	border:0px;
+}
+
+:visited img
+{
+	border:0px;
+}
+
+h1
+{
+	background: #cccce4;
+}
+
+.header1
+{
+	width: 100%;
+	height: 100px;
+	background: #cccce4;
+	overflow: hidden;
+}
+
+.header2
+{
+	background: #999999;
+	height: 30px;
+}
+
+.header3
+{
+	background: #ffdd00;
+	height: 3px;
+}
+
+/*
+ * These need to be in this order
+ * a:link {color: #FF0000}
+ * a:visited {color: #00FF00}
+ * a:hover {color: #FF00FF}
+ * a:active {color: #0000FF}
+ */
+
+.cart
+{
+	position:absolute;
+	top:0;
+	right:0;
+}
+
+.cart a:link{color: #333333}
+.cart a:visited {color: #333333}
+.cart a:hover {color: #777777}
+.cart a:active {color: #777777}
+.cart a
+{
+	font-weight: bold;
+	font-size: small;
+	text-decoration: none;
+}
+
+.menu_1holder
+{
+	position:absolute;
+	top:0;
+	width:100%;
+}
+
+
+.menu_1
+{
+	height: 100px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.menu_1 a:link{color: #333333}
+.menu_1 a:visited {color: #333333}
+.menu_1 a:hover {color: #777777}
+.menu_1 a:active {color: #777777}
+.menu_1 a
+{
+	font-weight: bold;
+	font-size: small;
+	text-decoration: none;
+	display:block;
+}
+
+.menu_td
+{
+	background-image: url(data:image/gif;base64,R0lGODlhWgAdAMIGAN3d3X5+fn9/f4GBgYCAgNzc3P///////ywAAAAAWgAdAAADRCix3P4wyklrJEOUzbv/YCiOZGmeaKqubOu+cCzPdG3feK7vfO//wKBwSCwaj8ikcslsOp/QqHRKrVqv2Kx2y+16v7wEADs=);
+	width:98%;
+}
+
+.menu_2
+{
+	font-weight: bold;
+	font-size: medium;
+	color: #444466;
+	background: #ddddee;
+	width: 9%;
+}
+
+.menu_2 a:link{color: #444466}
+.menu_2 a:visited {color: #444466}
+.menu_2 a:hover {color: #777799}
+.menu_2 a:active {color: #777799}
+.menu_2 a
+{
+	text-decoration: none;
+	display:block;
+}
+
+.menu_2 ul
+{
+	margin: 0;
+	padding: 0;
+	list-style:none;
+	list-style-type:none;
+}
+
+.menu_2 li
+{
+	border-bottom: 1px solid #9999bb;
+	margin: 10px;
+}
+
+.menu_2 li:hover ul
+{
+	display:block;
+}
+
+.menu_2 ul ul
+{
+	display:none;
+	border-left: 1px solid #9999bb;
+	border-bottom: 1px solid #9999bb;
+	top:0;
+	left:0;
+	margin-bottom:-1px;
+}
+
+.menu_2 ul ul li
+{
+	border-bottom: 0;
+	margin: 5px;
+	padding:0;
+}
+
+.maintext
+{
+	margin:20px;
+	padding:20px;
+}
+
+.maintext a:link{color: #000000}
+.maintext a:visited {color: #333333}
+.maintext a:hover {color: #555555}
+.maintext a:active {color: #555555}
+.maintext pre
+{
+	color: #111111;
+	background: #f8f8f8;
+	margin-left: 20px;
+	margin-right: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.main_page ul
+{
+	padding-left: 10px;
+}
+
+.main_page li
+{
+	list-style-type:none;
+}
+
+.main_page li h3
+{
+	padding-left: 20px;
+	background: #ddddff;
+}
+
+.main_page h4
+{
+	text-align: center;
+	color: #333333
+}
+
+.footer1 a:link{color: #ffffff}
+.footer1 a:visited {color: #ffffff}
+.footer1 a:hover {color: #dddddd}
+.footer1 a:active {color: #dddddd}
+.footer1 a
+{
+	font-size: small;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.footer1
+{
+	text-align: center;
+	width: 100%;
+	height: 20px;
+	background: #999999;
+}
+
+.footer2 a:link{color: #000000}
+.footer2 a:visited {color: #000000}
+.footer2 a:hover {color: #666666}
+.footer2 a:active {color: #666666}
+.footer2 a
+{
+	font-size: small;
+	text-decoration: none;
+}
+
+.footer2
+{
+	width: 100%;
+}
+
+.pheader
+{
+	font-weight: bold;
+	font-size: x-large;
+}
+
+.pricet
+{
+	font-weight: bold;
+}
+
+.pricev
+{
+	font-weight: bold;
+	color: #cc3333;
+}
+
+.help_text p
+{
+	font-size: small;
+	position:relative;
+	left:20px;
+}
+
+/* column container */
+.colmask
+{
+	clear:both;
+	float:left;
+	width:100%;	/* width of whole page */
+	overflow:hidden;	/* This chops off any overhanging divs */
+}
+/* common column settings */
+.colleft
+{
+	float:left;
+	width:100%;
+	position:relative;
+}
+.col1,
+.col2
+{
+	float:left;
+	position:relative;
+	padding:0 0 1em 0;
+	overflow:hidden;
+}
+.doublepage .colleft
+{
+	right:50%;	/* right column width */
+}
+.doublepage .col1
+{
+	width:46%;	/* left column content width (column width minus left and right padding) */
+	left:52%;	/* right column width plus left column left padding */
+}
+.doublepage .col2
+{
+	width:46%;	/* right column content width (column width minus left and right padding) */
+	left:56%;	/* (right column width) plus (left column left and right padding) plus (right column left padding) */
+}
+
+.comments
+{
+	background:#f4f4ff;
+	margin: 10px;
+	padding: 10px;
+}
+
+.comments h2
+{
+	text-align:center;
+	margin: 5px;
+	padding: 0;
+}
+
+.comments .a_name
+{
+	color: #990077;
+	font-weight: bold;
+	font-size: large;
+}
+
+.comments .name
+{
+	font-weight: bold;
+	font-size: large;
+}
+
+.comments .said
+{
+	font-weight: bold;
+}
+
+.comment_text
+{
+	font-size: small;
+	margin: 0px 0px 10px;
+	padding: 0;
+	border-top: 1px solid #9999bb;
+}
+
+.bread
+{
+	position:absolute;
+	left:200px;
+	top:105px;
+	color: #ffffff;
+	margin:0;
+	padding:0;
+}
+
+.bread a:link{color: #ffffff}
+.bread a:visited {color: #ffffff}
+.bread a:hover {color: #dddddd}
+.bread a:active {color: #dddddd}
+.bread a
+{
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.bread ul
+{
+	margin:0;
+	padding:0;
+}
+
+.bread li
+{
+	list-style: none;
+	display: inline;
+	margin:0;
+	padding:0;
+}
+
+.bread li:after
+{
+	content: "\0020 \0020 \0020 \00BB \0020";
+}
+
+/*.bread li:first-child:before
+{
+	content: "";
+}*/
+
+.update
+{
+	background: #cccccc;
+	font-size: 26px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.update a
+{
+	text-decoration: none;
+}
+
+span.bold
+{
+	font-weight: bold;
+}
+
+span.emphasis
+{
+	font-style:italic;
+}
+
+span.manpage
+{
+	font-weight: bold;
+}
+
+h2.nroffsh
+{
+	background: #cccce4;
+	height: 30px;
+}
+
+p.level1
+{
+	margin: 0px 50px 0px;
+}
+</style>
+<link rel="icon" type="image/vnd.microsoft.icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADKAAAAyjY2AMpQUADKjIwAyrOzAP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQAAAAAAAQECAgMFBQUFBQUAAAABAQECAgMDBAUFBQUFAAAFBQUFBQUFBQUFBQUFBQAABQEBAQECAgMEBQUFBQUAAAUBAQECAgMDBQUFBQUFAAAFAQAFBQUFBQUFBQUFBQAABQEABQUFBQUFBQUFBQUAAAUBAAUFBQUFBQUFBQUFAAAFAQAFBQUFBQUFBQUFBQAABQAABQUFBQUFBQUFBQUAAAUAAAUFBQUFBQUFBQUFBQAFAAUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=">
+</head><body>
+
+<div class="header1">
+<a href="http://undefined/" title="Lockless Inc"><img border="0" src="data:image/jpeg;base64,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" alt="Lockless Inc"></a>
+</div>
+
+<table width="100%" cellpadding="0" cellspacing="0">
+	<tbody><tr class="header2"><td colspan="3"></td></tr>
+	<tr class="header3"><td colspan="3"></td></tr>
+	<tr>
+		<td class="menu_2" valign="top">
+		<ul>
+		<li><a href="http://undefined/" title="Lockless Inc">Lockless Inc</a></li>
+		<li><a href="http://locklessinc.com/cindex.shtml">Purchase »</a>
+		<ul>
+			<li><a href="http://locklessinc.com/products/linux.shtml">Linux</a></li>
+			<li><a href="http://locklessinc.com/products/windows.shtml">Windows</a></li>
+			<li><a href="http://locklessinc.com/products/developers.shtml">Developers</a></li>
+		</ul>
+		</li>
+		<li><a href="http://locklessinc.com/benchmarks.shtml">Benchmarks</a></li>
+		<li><a href="http://locklessinc.com/install.shtml">Installation</a></li>
+		<li><a href="http://locklessinc.com/articles">Articles</a></li>
+		<li><a href="http://locklessinc.com/technical.shtml">Technical</a></li>
+		<li><a href="http://locklessinc.com/downloads">Downloads</a></li>
+		<li><a href="http://locklessinc.com/man">Documentation</a></li>
+		<li><a href="http://locklessinc.com/whatsnew.shtml">What's New</a></li>
+		<li><a href="http://locklessinc.com/about.shtml">About Us</a></li>
+		<li><a href="http://locklessinc.com/help.shtml">Help</a></li>
+		</ul>
+		<br><img src="data:image/png;base64,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" border="0" alt="credit card logos">
+		</td>
+		<td class="maintext">
+
+<h1 align="center">Overloading Functions in C</h1>
+
+<p>It is well known that C++ allows one to overload functions, and C does not.  This is typically done by "mangling" the name of a function, and thus including the types of its arguments in the symbol definition.  Each variant of an overloaded function will then obtain a different symbolic name for the entry point.  So by calling or jumping to the correct symbol we can execute the right version of the function.</p>
+
+<p>Typically, the C compiler does no function symbol name mangling at all. (This is ignoring underscore hacks.)  This means that you simply cannot define two versions of a function.  They'll get the same symbolic name, and the linker will complain.</p>
+
+<p>However, this isn't quite the whole story.  Various parts of the C and POSIX standards require overloaded versions of C functions to exist.  The simplest of these is the definition of the <code>open()</code> function.  This function takes two arguments, the first of which describes the path of the file to open, and the second a set of flags describing exactly how to open the file.  There is an optional third parameter that is only required when the file may be created.  This third parameter describes the permissions settings to use for the new file.</p>
+
+<p>So how do we specify an optional extra parameter in C code?  This is a form of function overloading; overloading by number of parameters.  Obviously it isn't done by mangling, and instead the va_args package can be used.  An implementation of a function which takes only two arguments, with an optional third parameter only required when the second parameter takes a specific value is:</p>
+
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;stdarg.h&gt;
+
+void va_overload2(int p1, int p2)
+{
+	printf("va_overload2 %d %d\n", p1, p2);
+}
+
+void va_overload3(int p1, int p2, int p3)
+{
+	printf("va_overload3 %d %d %d\n", p1, p2, p3);
+}
+
+static void va_overload(int p1, int p2, ...)
+{
+	if (p2 == 7)
+	{
+		va_list v;
+		va_start(v, p2);
+		
+		int p3 = va_arg(v, int);
+		va_end(v);
+		va_overload3(p1, p2, p3);
+		
+		return;
+	}
+
+	va_overload2(p1, p2);
+}
+</code></pre>
+
+<p>In the above code, we can parse the arguments, and then choose to either call <code>va_overload2()</code> or <code>va_overload3()</code>.  The POSIX <code>open()</code> function may have a similar implementation on your system.</p>
+
+<p>The <code>printf</code> and <code>sprintf</code> family of functions can parse an arbitrary number of arguments.  These use an initial format specifier to work out how many arguments, and of which type, exist.  One problem with this technique is that a va_args based function doesn't do any type checking of its input arguments.  This can be a source of errors if the program interprets one type as another.  Fortunately, the <code>gcc</code> compiler provides a set of warnings for the standard functions that catch most of the problems.  User functions can be annotated with special attributes that describe their input if it matches the format + args pattern.</p>
+
+<p>Another common usage of the va_args package is to accept an unlimited number of arguments, with no direct specifier of the number to accept.  By NULL-terminating the list, we can parse the arbitrary input to our function:</p>
+
+<pre><code>
+static void print_nt_strings(const char *s, ...)
+{
+	va_list v;
+	va_start(v, s);
+	
+	/* Stop on NULL */
+	while (s)
+	{
+		printf("%s", s);
+		
+		/* Grab next parameter */
+		s = va_arg(v, const char *);
+	}
+	
+	va_end(v);
+}
+</code></pre>
+
+<p>The above function will print all the C-strings passed to it, no matter the number provided the last pointer is NULL.  The problem here is remembering to add the final NULL to the list.  If it is left off, the above function will interpret values on the stack as <code>const char *</code> pointers and try to print them out.  This will invoke undefined behavior and probably crash the program.</p>
+
+<p>A way to fix this problem is to explicitly say how many arguments exist, removing the need for the NULL on the end.  Having the user manually specify the number is inconvenient and error prone.  However, it is possible to automate this.</p>
+
+<p>The first trick is to notice that the C pre-processor is powerful enough to count the number of arguments.  We can then use it to calculate this number, and include it as a hidden parameter to the "real" version of the function.</p>
+
+<pre><code>
+#define COUNT_PARMS2(_1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _, ...) _
+#define COUNT_PARMS(...)\
+	COUNT_PARMS2(__VA_ARGS__, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1)
+	
+static void print_strings2(int count, ...)
+{
+	int i;
+	
+	va_list v;
+	va_start(v, count);
+	
+	for (i = 0; i &lt; count; i++)
+	{
+		/* Grab next parameter + print it */
+		const char *s = va_arg(v, const char *);
+		printf("%s", s);
+	}
+	
+	va_end(v);
+}
+
+#define print_strings(...)\
+	print_strings2(COUNT_PARMS(__VA_ARGS__), __VA_ARGS__)
+</code></pre>
+
+<p>By calling the <code>print_strings()</code> macro, we indirectly call the <code>print_strings2()</code> function with the first argument being the count of all the rest of the arguments passed.</p>
+
+<p>Note that the above <code>COUNT_PARMS</code> magic macro will only work for up to 10 arguments.  Extending it to more than 10 is relatively easy though.  Another subtle problem is that the C pre-processor macros do not distinguish well between zero and one arguments.  This makes it impossible to construct a macro to return "0", and thus call <code>print_strings()</code> with no arguments at all.  With gcc will get the error "error: expected expression before ')' token".  In this case it doesn't matter much, but in some cases it might make an API a bit more complex.</p>
+
+<p>Using a little more C pre-processor magic, we can remove the need for va_args parsing for overloaded functions.  The pre-processor can count the arguments, and then call a different function for each possibility.  This requires pasting the number generated by the <code>COUNT_PARMS()</code> macro to the function name.</p>
+
+<p>Some code which doesn't do the pasting would look like:</p>
+
+<pre><code>
+void count_overload1(int p1)
+{
+	printf("One param: %d\n", p1);
+}
+
+void count_overload2(double *p1, const char *p2)
+{
+	printf("Two params: %p (%f) %s\n", p1, *p1, p2);
+}
+
+void count_overload3(int p1, int p2, int p3)
+{
+	printf("Three params: %c %d %d\n", p1, p2, p3);
+}
+
+void count_overload_aux(int count, ...)
+{
+	va_list v;
+	va_start(v, count);
+	
+	switch(count)
+	{
+		case 1:
+		{
+			int p1 = va_arg(v, int);
+			count_overload1(p1);
+			break;
+		}
+		
+		case 2:
+		{
+			double *p1 = va_arg(v, double *);
+			const char *p2 = va_arg(v, const char *);
+			count_overload2(p1, p2);
+			break;
+		}
+		
+		case 3:
+		{
+			int p1 = va_arg(v, int);
+			int p2 = va_arg(v, int);
+			int p3 = va_arg(v, int);
+			count_overload3(p1, p2, p3);
+			break;
+		}
+	
+		default:
+		{
+			va_end(v);
+			
+			printf("Invalid arguments to function 'count_overload()'");
+			exit(1);
+		}
+	}
+	
+	va_end(v);
+}
+#define count_overload(...)\
+	count_overload_aux(COUNT_PARMS(__VA_ARGS__), __VA_ARGS__)
+</code></pre>
+
+<p>And some code which replaces <code>count_overload_aux()</code> with a macro is:</p>
+
+<pre><code>
+void cpp_overload1(int p1)
+{
+	printf("CPP One param: %d\n", p1);
+}
+
+void cpp_overload2(double *p1, const char *p2)
+{
+	printf("CPP Two params: %p (%f) %s\n", p1, *p1, p2);
+}
+
+void cpp_overload3(int p1, int p2, int p3)
+{
+	printf("CPP Three params: %c %d %d\n", p1, p2, p3);
+}
+
+#define CAT(A, B) CAT2(A, B)
+#define CAT2(A, B) A ## B
+
+#define cpp_overload(...)\
+	CAT(cpp_overload, COUNT_PARMS(__VA_ARGS__))(__VA_ARGS__)
+</code></pre>
+
+<p>As can be seen, the second version is much simpler.  It also can be quite a bit faster, as the compiler tends to find optimizing functions using va_args difficult.  The C pre-processor does enough of the symbol mangling calculation that the compiler can even inline the correct version of the function in whatever calls it.  Yet another advantage is that the compiler will check for mismatching argument count at compile time.  There is no need for something corresponding to the message+exit default option in the <code>switch</code> statement in the first version.</p>
+
+<p>Using the above macros it is possible to overload functions based on number of parameters provided that the overloaded function takes at least one argument.  The actual types of the arguments are not inspected.  This allows the code above to have different type signatures for each overload.  Of course, this extra complexity is not always necessary, but it is nice to have the feature available.</p> 
+
+<p>Something similar to the above trick is that of default arguments to a function.  Often we would like to have some parameters only changed if the function user requests it.  Having default arguments that don't always need to be explicitly set can simplify interfaces.  Simply by defining the less-argument versions of a function in terms of the full version, we can implement this in C.</p>
+
+<pre><code>
+#define cpp_default1(A) cpp_default2(A, "default string")
+
+void cpp_default2(int x, const char *s)
+{
+	printf("Got %d %s\n", x, s);
+}
+
+#define cpp_default(...)\
+	CAT(cpp_default, COUNT_PARMS(__VA_ARGS__))(__VA_ARGS__)
+</code></pre>
+
+<p>The above code will in the default case print the integer first argument, followed by the "default string" string.  If the user calls the function (macro) with two arguments, with the second of them a C string, that string will be used instead.</p>
+
+<p>Another form of overloading is that due to type.  This is done within the C standard library in some of the math functions.  For example the isinf() function (which is actually a macro) will work with any floating point type.  The macro calls the required version of the overloaded function by inspecting the type of the argument.  This is done in the current version of glibc by investigating the size of the datatype.</p>
+
+<pre><code>
+void sizeof_overload_float(float f)
+{
+	printf("Got float %f\n", f);
+}
+
+void sizeof_overload_double(double d)
+{
+	printf("Got double %f\n", d);
+}
+
+void sizeof_overload_longdouble(long double ld)
+{
+	printf("Got long double %Lf\n", ld);
+}
+
+#define sizeof_overload(A)\
+	((sizeof(A) == sizeof(float))?sizeof_overload_float(A):\
+	(sizeof(A) == sizeof(double))?sizeof_overload_double(A):\
+	(sizeof(A) == sizeof(long double))?sizeof_overload_longdouble(A):(void)0)
+</code></pre>
+
+<p>The above <code>sizeof_overload()</code> macro works similarly.  It assumes it is passed a floating point type, and will print which one based on the size.  However, there are a couple of flaws with this technique.  The first is that not all types differ in size.  The <code>__float128</code> type has the same size as the <code>long double</code> type, and thus the wrong overload will be called.  The gcc manual describes some intrinsics that can be used to fix this problem.</p>
+
+<p>We can use <code>__builtin_types_compatible_p()</code> to compare types directly (instead of indirectly via their sizes), and use <code>__builtin_choose_expr()</code> instead of the unwieldy ternary operator.</p>
+
+<pre><code>
+struct s1
+{
+	int a;
+	int b;
+	
+	double c;
+};
+
+struct s2
+{
+	long long a;
+	long long b;
+};
+
+void gcc_overload_s1(struct s1 s)
+{
+	printf("Got a struct s1: %d %d %f\n", s.a, s.b, s.c);
+}
+
+void gcc_overload_s2(struct s2 s)
+{
+	printf("Got a struct s2: %lld %lld\n", s.a, s.b);
+}
+
+// warning: dereferencing type-punned pointer will break strict-aliasing rules
+#define gcc_overload(A)\
+	__builtin_choose_expr(__builtin_types_compatible_p(typeof(A), struct s1),\
+		gcc_overload_s1(*(struct s1 *)&amp;A),\
+	__builtin_choose_expr(__builtin_types_compatible_p(typeof(A), struct s2),\
+		gcc_overload_s2(*(struct s2 *)&amp;A),(void)0))
+</code></pre>
+
+<p>This allows us to overload on the two structs s1 and s2, even though they are the same size.  The second problem is that we need to make sure that we call each overload with the correct type.  We cannot for example call <code>gcc_overload_s1()</code> with an argument of type <code>struct s2</code>.  This means that we need to add some type casts to the macro.  Unfortunately, the compiler doesn't notice that the "wrong" case is never called, and will emit a warning about breaking aliasing rules.  Unfortunately, silencing this warning via using a union causes incorrect code to be generated on gcc version 4.5  A final problem is that <code>__builtin_types_compatible_p</code> ignores type qualifiers such as <code>const</code> and <code>volatile</code>, making this technique not quite as powerful as C++ function overloads.</p>
+
+<p>A more advanced method that doesn't have the aliasing problem is based on the fact that we can use macros to detect the type of the arguments.  We can then pass this extra information to a function that then uses the va_args package to parse them.  This suffers from one small issue.  <code>char</code> and <code>short</code> typed arguments to variable argument C functions are expanded to type <code>int</code>.  Similarly <code>float</code> arguments are converted to <code>double</code>.  Provided you don't need to determine between these particular types, we can overload on the type of any argument in a C function.</p>
+
+<pre><code>
+void gcc_type_overload_aux(int typeval, ...)
+{
+	switch(typeval)
+	{
+		case 1:
+		{
+			va_list v;
+			va_start(v, typeval);
+	
+			struct s1 s = va_arg(v, struct s1);
+		
+			va_end(v);
+			
+			gcc_overload_s1(s);
+		
+			break;
+		}
+		
+		case 2:
+		{
+			va_list v;
+			va_start(v, typeval);
+	
+			struct s2 s = va_arg(v, struct s2);
+		
+			va_end(v);
+			
+			gcc_overload_s2(s);
+		
+			break;
+		}
+		
+		default:
+		{
+			printf("Invalid type to 'gcc_type_overload()'\n");
+			exit(1);
+		}
+	}
+}
+
+#define gcc_type_overload(A)\
+	gcc_type_overload_aux(\
+		__builtin_types_compatible_p(typeof(A), struct s1) * 1\
+		+ __builtin_types_compatible_p(typeof(A), struct s2) * 2\
+		, A)
+
+</code></pre>
+
+<p>The above constructs an integer based on the type of the argument in the macro, and then uses a <code>switch</code> statement to parse it in the auxiliary function.</p>
+
+<p>Taking the above to an extreme, we show a set of functions and macros that will describe the type and value of up to four arguments to a multiply overloaded function.</p>
+
+<pre><code>
+void print_type(int t, va_list *v)
+{
+	switch(t)
+	{
+		case 1:
+		{
+			int p = va_arg(*v, int);
+			
+			printf("int :%d\n", p);
+			break;
+		}
+		
+		case 2:
+		{
+			long long p = va_arg(*v, long long);
+			
+			printf("long long :%lld\n", p);
+			break;
+		}
+		
+		case 3:
+		{
+			double p = va_arg(*v, double);
+			
+			printf("double :%f\n", p);
+			break;
+		}
+		
+		case 4:
+		{
+			long double p = va_arg(*v, long double);
+			
+			printf("long double :%Lf\n", p);
+			break;
+		}
+		
+		default:
+		{
+			printf("Unknown type\n");
+			exit(1);
+		}
+	}
+}
+
+
+void param_lister1_aux(int t1, ...)
+{
+	va_list v;
+	va_start(v, t1);
+	
+	printf("1st param:");
+	print_type(t1, &amp;v);
+	
+	va_end(v);
+}
+
+void param_lister2_aux(int t1, ...)
+{
+	int t2;
+	va_list v;
+	va_start(v, t1);
+	
+	printf("1st param:");
+	print_type(t1, &amp;v);
+	
+	t2 = va_arg(v, int);
+	printf("2nd param:");
+	print_type(t2, &amp;v);
+	
+	va_end(v);
+}
+
+void param_lister3_aux(int t1, ...)
+{
+	int t2, t3;
+	va_list v;
+	va_start(v, t1);
+	
+	printf("1st param:");
+	print_type(t1, &amp;v);
+	
+	t2 = va_arg(v, int);
+	printf("2nd param:");
+	print_type(t2, &amp;v);
+	
+	t3 = va_arg(v, int);
+	printf("3rd param:");
+	print_type(t3, &amp;v);
+	
+	va_end(v);
+}
+
+void param_lister4_aux(int t1, ...)
+{
+	int t2, t3, t4;
+	va_list v;
+	va_start(v, t1);
+	
+	printf("1st param:");
+	print_type(t1, &amp;v);
+	
+	t2 = va_arg(v, int);
+	printf("2nd param:");
+	print_type(t2, &amp;v);
+	
+	t3 = va_arg(v, int);
+	printf("3rd param:");
+	print_type(t3, &amp;v);
+	
+	t4 = va_arg(v, int);
+	printf("4th param:");
+	print_type(t4, &amp;v);
+	
+	va_end(v);
+}
+
+#define TYPENUM(A)\
+		__builtin_types_compatible_p(typeof(A), int) * 1\
+		+ __builtin_types_compatible_p(typeof(A), long long) * 2\
+		+ __builtin_types_compatible_p(typeof(A), double) * 3\
+		+ __builtin_types_compatible_p(typeof(A), long double) * 4
+
+#define param_lister1(A)\
+	param_lister1_aux(TYPENUM(A), A)
+
+#define param_lister2(A, B)\
+	param_lister2_aux(TYPENUM(A), A, TYPENUM(B), B)
+
+#define param_lister3(A, B, C)\
+	param_lister3_aux(TYPENUM(A), A, TYPENUM(B), B, TYPENUM(C), C)
+	
+#define param_lister4(A, B, C, D)\
+	param_lister4_aux(TYPENUM(A), A, TYPENUM(B), B, TYPENUM(C), C, TYPENUM(D), D)
+
+
+#define param_lister(...)\
+	CAT(param_lister, COUNT_PARMS(__VA_ARGS__))(__VA_ARGS__)
+
+</code></pre>
+
+<p>Thus, contrary to common knowledge, it is indeed possible to overload functions in C.  Using standard C, the overload possibilities aren't quite as varied as those using gcc intrinsics.  However, it is often extremely useful to overload on the number of function arguments alone.  Type-based overloading with differently sized structs also works well with standard C.  Using gcc intrinsics it is possible to obtain nearly the flexibility of C++ overloaded functions.</p> 
+
+
+<div class="comments">
+<h2>Comments</h2>
+<span class="name">Dmitry V'jukov</span><span class="said"> said...</span><div class="comment_text">
+Hi,<br>
+Nice tricks!<br>
+Do you have any idea how to achieve (note return values):<br>
+float sizeof_overload_float(float f);<br>
+double sizeof_overload_double(double d);<br>
+?<br>
+I am able to do that with gcc (with the help of __typeof__), but the problem is with MSVS C.<br>
+TIA</div>
+
+<span class="a_name">sfuerst</span><span class="said"> said...</span><div class="comment_text">
+The above tricks don't care about the return types, so I set them all to be void for simplicity.  You can alter them to be anything you wish.  Your case looks exactly the case that is solved by the glibc method for the C math library overloaded function macros.<br>
+<br>
+Changing the above code to add return values to the portable "sizeof" method gives:<br>
+<br>
+float overload_float(float f)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;/* Use f */<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return f;<br>
+}<br>
+<br>
+double overload_double(double d)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;/* Use d */<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return d;<br>
+}<br>
+<br>
+#define overload(A)\<br>
+&nbsp;&nbsp;&nbsp;&nbsp;((sizeof(A) == sizeof(float))?overload_float(A):\<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(sizeof(A) == sizeof(double))?overload_double(A):(void)0)<br>
+</div>
+
+<span class="name">degski</span><span class="said"> said...</span><div class="comment_text">
+#define COUNT_PARMS(...) Y_TUPLE_SIZE_II((Y_TUPLE_SIZE_PREFIX_ ## __VA_ARGS__ ## _Y_TUPLE_SIZE_POSTFIX,32,31,30,29,28,27,26,25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0))<br>
+#define Y_TUPLE_SIZE_II(__args) Y_TUPLE_SIZE_I __args<br>
+<br>
+#define Y_TUPLE_SIZE_PREFIX__Y_TUPLE_SIZE_POSTFIX ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0<br>
+<br>
+#define Y_TUPLE_SIZE_I(__p0,__p1,__p2,__p3,__p4,__p5,__p6,__p7,__p8,__p9,__p10,__p11,__p12,__p13,__p14,__p15,__p16,__p17,__p18,__p19,__p20,__p21,__p22,__p23,__p24,__p25,__p26,__p27,__p28,__p29,__p30,__p31,__n,...) __n<br>
+<br>
+You signal that the argument counting is broken for 0 or 1, which I confirm.<br>
+<br>
+The above is a solution to that problem.<br>
+<br>
+The answer I found on this page http://stackoverflow.com/questions/2124339/c-preprocessor-va-args-number-of-arguments , posted by user: "user720594"<br>
+<br>
+</div>
+
+
+<form name="input" action="/cgi-bin/comments.cgi" method="post">
+<img src="data:image/png;base64,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" alt=""><br>
+<input type="hidden" name="Hash" value="V5e7ICVinDGL">
+<input type="hidden" name="page" value="overloading">
+<input type="hidden" name="page_hash" value="B4W66P2DPQ9LSYFK3L9N1KZ8Q">
+Enter the 10 characters above here <input type="text" name="captcha"><br><br>
+<textarea name="comments" rows="20" cols="80">Enter your comments here</textarea><br>
+Name<input type="text" name="name"><br>
+<input type="submit" value="Submit">
+</form>
+
+</div>
+
+<ul class="bread">
+<li><a href="http://undefined/">Lockless</a></li>
+<li><a href="http://locklessinc.com/articles">Articles</a></li>
+<li><a href="http://locklessinc.com/articles/overloading">Overloading Functions in C</a></li>
+</ul>
+
+		</td>
+	</tr>
+</tbody></table>
+
+<div class="menu_1holder">
+<table class="menu_1" cellpadding="0" cellspacing="0" border="0">
+<tbody><tr>
+	<td valign="bottom" align="center"><table cellpadding="0" cellspacing="0"><tbody><tr>
+		<td><table cellpadding="0" cellspacing="0"><tbody><tr>
+			<td width="1%">
+				<a href="http://locklessinc.com/products/linux.shtml" title="Linux"><img src="data:image/gif;base64,R0lGODlhCgAdAIQaAN3d3X5+ftnZ2ZKSkp+fn9TU1Kqqqtzc3NjY2MPDw83NzYKCgre3t4iIiJCQkJmZmZWVlcHBwZSUlL+/v5ycnH9/f5eXl4yMjI+Pj9LS0v///////////////////////yH5BAEAAB8ALAAAAAAKAB0AAAU+4CeOItSQ4mBNAklgiSCPlCHfImHf8+fwOEkEOBsQZQ/GUXBZChbOijMwrS6pV+sRu9USuV8vEDwW88hnZwgAOw==" border="0" alt=""></a>
+			</td>
+			<td class="menu_td" align="center">
+				<a href="http://locklessinc.com/products/linux.shtml" title="Linux">Linux</a>
+			</td>
+			<td width="1%">
+				<a href="http://locklessinc.com/products/linux.shtml" title="Linux"><img src="data:image/gif;base64,R0lGODlhCgAdAIQcAN3d3X5+fpqamtnZ2aWlpZGRkc/Pz4uLi4qKipWVlbu7u5eXl9vb28bGxpOTk6+vr7S0tJ2dnYSEhNfX16enp5mZmdzc3NTU1M7OztbW1oCAgMXFxf///////////////yH5BAEAAB8ALAAAAAAKAB0AAAVAYFAQX2l+wyYg5Dm8gyC48ABVZv0+Uam/Dt+vUUD9BgnKcaBYLAeHp+SpeQas2OVVmz1uvd3fVxzWjc3l2lkdAgA7" border="0" alt=""></a>
+			</td>
+		</tr></tbody></table></td>
+		<td><table cellpadding="0" cellspacing="0"><tbody><tr>
+			<td width="1%">
+				<a href="http://locklessinc.com/products/windows.shtml" title="Windows"><img src="data:image/gif;base64,R0lGODlhCgAdAIQaAN3d3X5+ftnZ2ZKSkp+fn9TU1Kqqqtzc3NjY2MPDw83NzYKCgre3t4iIiJCQkJmZmZWVlcHBwZSUlL+/v5ycnH9/f5eXl4yMjI+Pj9LS0v///////////////////////yH5BAEAAB8ALAAAAAAKAB0AAAU+4CeOItSQ4mBNAklgiSCPlCHfImHf8+fwOEkEOBsQZQ/GUXBZChbOijMwrS6pV+sRu9USuV8vEDwW88hnZwgAOw==" border="0" alt=""></a>
+			</td>
+			<td class="menu_td" align="center">
+				<a href="http://locklessinc.com/products/windows.shtml" title="Windows">Windows</a>
+			</td>
+			<td width="1%">
+				<a href="http://locklessinc.com/products/windows.shtml" title="Windows"><img src="data:image/gif;base64,R0lGODlhCgAdAIQcAN3d3X5+fpqamtnZ2aWlpZGRkc/Pz4uLi4qKipWVlbu7u5eXl9vb28bGxpOTk6+vr7S0tJ2dnYSEhNfX16enp5mZmdzc3NTU1M7OztbW1oCAgMXFxf///////////////yH5BAEAAB8ALAAAAAAKAB0AAAVAYFAQX2l+wyYg5Dm8gyC48ABVZv0+Uam/Dt+vUUD9BgnKcaBYLAeHp+SpeQas2OVVmz1uvd3fVxzWjc3l2lkdAgA7" border="0" alt=""></a>
+			</td>
+		</tr></tbody></table></td>
+		<td><table cellpadding="0" cellspacing="0"><tbody><tr>
+			<td width="1%">
+				<a href="http://locklessinc.com/products/developers.shtml" title="Developers"><img src="data:image/gif;base64,R0lGODlhCgAdAIQaAN3d3X5+ftnZ2ZKSkp+fn9TU1Kqqqtzc3NjY2MPDw83NzYKCgre3t4iIiJCQkJmZmZWVlcHBwZSUlL+/v5ycnH9/f5eXl4yMjI+Pj9LS0v///////////////////////yH5BAEAAB8ALAAAAAAKAB0AAAU+4CeOItSQ4mBNAklgiSCPlCHfImHf8+fwOEkEOBsQZQ/GUXBZChbOijMwrS6pV+sRu9USuV8vEDwW88hnZwgAOw==" border="0" alt=""></a>
+			</td>
+			<td class="menu_td" align="center">
+				<a href="http://locklessinc.com/products/developers.shtml" title="Developers">Developers</a>
+			</td>
+			<td width="1%">
+				<a href="http://locklessinc.com/products/developers.shtml" title="Developers"><img src="data:image/gif;base64,R0lGODlhCgAdAIQcAN3d3X5+fpqamtnZ2aWlpZGRkc/Pz4uLi4qKipWVlbu7u5eXl9vb28bGxpOTk6+vr7S0tJ2dnYSEhNfX16enp5mZmdzc3NTU1M7OztbW1oCAgMXFxf///////////////yH5BAEAAB8ALAAAAAAKAB0AAAVAYFAQX2l+wyYg5Dm8gyC48ABVZv0+Uam/Dt+vUUD9BgnKcaBYLAeHp+SpeQas2OVVmz1uvd3fVxzWjc3l2lkdAgA7" border="0" alt=""></a>
+			</td>
+		</tr></tbody></table></td>
+	</tr></tbody></table></td>
+</tr>
+</tbody></table>
+</div>
+
+<table class="footer1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+	<td><a href="http://locklessinc.com/about.shtml">About Us</a></td>
+	<td><a href="http://locklessinc.com/returns.shtml">Returns Policy</a></td>
+	<td><a href="http://locklessinc.com/privacy.shtml">Privacy Policy</a></td>
+	<td><a href="http://locklessinc.com/articles/overloading/mailto:support@locklessinc.com?subject=Customer%20Feedback%20for%20www.locklessinc.com">Send us Feedback</a></td>
+</tr>
+</tbody></table>
+<table class="footer2" cellspacing="0" cellpadding="0"><tbody><tr> 
+    <td valign="top" align="center"> 
+    <a href="http://locklessinc.com/about.shtml">Company Info</a> |
+	<a href="http://locklessinc.com/products">Product Index</a> |
+	<a href="http://locklessinc.com/cindex.shtml">Category Index</a> |
+	<a href="http://locklessinc.com/help.shtml">Help</a> |
+	<a href="http://locklessinc.com/terms.shtml">Terms of Use</a>
+	<br>
+	<a href="http://locklessinc.com/terms.shtml">Copyright ©
+		2012
+	Lockless Inc&nbsp;All Rights Reserved.</a>
+	</td>
+</tr></tbody></table>
+
+<div class="cart">
+	<a href="https://www.cartsquare.net/cgi-bin/cart.cgi?UserLogin=locklessinc&amp;CheckOut=Online&amp;CartID=locklessinc"><img src="data:image/gif;base64,R0lGODlhGQAWAMZiAAAAAAQEBBERERUVFSAgICQkJCYmJigoKCkpKTIyMjMzMzQ0NDg4OD09PT8/P0hISElJSVRUVFZWVllZWVpaWlxcXF1dXWFhYWNjY21tbXNzc3d3d3l5eXt7e3x8fIKCgoSEhIWFhYiIiImJiYuLi5CQkJOTk5SUlJiYmJmZmZqamp6enp+fn6GhoaOjo6Wlpaampqenp6+vr7CwsLm5uby8vMLCwsPDw8TExMbGxsnJycrKysvLy87Ozs/Pz9DQ0NHR0dLS0tPT09TU1NbW1tfX19jY2NnZ2dra2tvb293d3d7e3t/f3+Dg4OHh4eLi4uPj4+fn5+jo6Onp6ezs7O/v7/Ly8vT09PX19fb29vf39/j4+Pn5+fr6+vv7+/z8/P39/f7+/v///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////yH5BAEKAH8ALAAAAAAZABYAAAf+gH+Cg39ARUJGQD6EjI2CR1hikpNXRo6XkZOaV5eNTpJZRFQ9WWCSTp2DR2GSNTIRIx03kmCWqZk7QDo6HBwdPJKcnUOSWyBbXSwoFiEaX5I/nU2SMSVTXUlBJDMXUJJDnVKSHQ8rOFViTzkZWZJAnVGSHwoYJ0+SPS2sYqlJkjYHEoTYISVJCkqp/kx6saAAhQoMJNCgtSSVNzFcqqhIYaKBAQfAxHQ5cksSKy1imjwAMEGJJCypjGTSRANBgA0oxVTqVOSKmJlaYAgY4AJhwkKZvJgAQECIF2hH/0CSZAUCABH7ogoy0k6MERZIgmkVhOSpJi9FxgpiYlaMl4oIagcRcULEUSAAOw==" align="top" border="0" alt="">My Account</a>
+	<a href="https://www.cartsquare.net/cgi-bin/cart.cgi?ViewCart=locklessinc"><img src="data:image/gif;base64,R0lGODlhGQAWAOf/AAAAAAEBAQICAgMDAwQEBAUFBQYGBgcHBwgICAkJCQoKCgsLCwwMDA0NDQ4ODg8PDxAQEBERERISEhMTExQUFBUVFRYWFhcXFxgYGBkZGRoaGhsbGxwcHB0dHR4eHh8fHyAgICEhISIiIiMjIyQkJCUlJSYmJicnJygoKCkpKSoqKisrKywsLC0tLS4uLi8vLzAwMDExMTIyMjMzMzQ0NDU1NTY2Njc3Nzg4ODk5OTo6Ojs7Ozw8PD09PT4+Pj8/P0BAQEFBQUJCQkNDQ0REREVFRUZGRkdHR0hISElJSUpKSktLS0xMTE1NTU5OTk9PT1BQUFFRUVJSUlNTU1RUVFVVVVZWVldXV1hYWFlZWVpaWltbW1xcXF1dXV5eXl9fX2BgYGFhYWJiYmNjY2RkZGVlZWZmZmdnZ2hoaGlpaWpqamtra2xsbG1tbW5ubm9vb3BwcHFxcXJycnNzc3R0dHV1dXZ2dnd3d3h4eHl5eXp6ent7e3x8fH19fX5+fn9/f4CAgIGBgYKCgoODg4SEhIWFhYaGhoeHh4iIiImJiYqKiouLi4yMjI2NjY6Ojo+Pj5CQkJGRkZKSkpOTk5SUlJWVlZaWlpeXl5iYmJmZmZqampubm5ycnJ2dnZ6enp+fn6CgoKGhoaKioqOjo6SkpKWlpaampqenp6ioqKmpqaqqqqurq6ysrK2tra6urq+vr7CwsLGxsbKysrOzs7S0tLW1tba2tre3t7i4uLm5ubq6uru7u7y8vL29vb6+vr+/v8DAwMHBwcLCwsPDw8TExMXFxcbGxsfHx8jIyMnJycrKysvLy8zMzM3Nzc7Ozs/Pz9DQ0NHR0dLS0tPT09TU1NXV1dbW1tfX19jY2NnZ2dra2tvb29zc3N3d3d7e3t/f3+Dg4OHh4eLi4uPj4+Tk5OXl5ebm5ufn5+jo6Onp6erq6uvr6+zs7O3t7e7u7u/v7/Dw8PHx8fLy8vPz8/T09PX19fb29vf39/j4+Pn5+fr6+vv7+/z8/P39/f7+/v///yH5BAEKAPcALAAAAAAZABYAAAjzAO8JHEiwoMGDCBMe/MeQocKE/95cseHM4UOD/9QMATCFXMOPIC0ObJimg59FKFOmVISyULZ/Bf/xW/WAw4ibOEeQ4GDhggQAyWASbIjhXUiQsxyIHOmvhjB/Rxs6CbN0YL5PO+xF/QcPgTehGP9B4LdVkAhuYA36q3Ar2i5mvZIJI4Zs2YFFadUeEbHjB5MfSYYg0QHkw0uF+EoJ4CUMWDDHwnLZIlY1Jr0BqIDx4tXLl69d2eblPejPxYMLIChEaFCBQhRsow32g5JggJ5y3HjVAEDiWOyC+vIA6LAP3jxyUwDsmHbx3seRz5tLn069usGAADs=" align="top" border="0" alt="">View Cart</a>&nbsp;&nbsp;
+</div>
+
+
+
+<div style="display: none;" id="hiddenlpsubmitdiv"></div></body></html>

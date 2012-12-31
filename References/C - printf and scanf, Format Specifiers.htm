@@ -1,0 +1,266 @@
+
+<!-- saved from url=(0046)http://www.mobidev.com/shalan/scanf_printf.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>C - printf and scanf, Format Specifiers</title>
+</head><body>
+<h1>More on printf &amp; scanf Format Specifiers </h1>
+  <!--/NL-->
+<!--C-->
+<p>There are several format specifiers - the one you use should depend on the type of the variable you wish to print out. Here are the common ones: </p>
+<table width="270" border="1" align="CENTER" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC" bgcolor="#EEFFFF">
+  <tbody><tr> 
+    <th nowrap="" width="50%"> 
+      <p>Format Specifier</p>
+    </th>
+    <th align="CENTER" nowrap="" width="50%"> 
+      <p align="CENTER">Type</p>
+    </th>
+  </tr>
+  <tr> 
+    <td> 
+      <p align="CENTER"><tt>%d</tt> (or <tt>%i</tt>)</p>
+    </td>
+    <td align="CENTER"> 
+      <p align="CENTER"><tt>int</tt></p>
+    </td>
+  </tr>
+  <tr> 
+    <td> 
+      <p align="CENTER"><tt>%c</tt></p>
+    </td>
+    <td align="CENTER"> 
+      <p align="CENTER"><tt>char</tt></p>
+    </td>
+  </tr>
+  <tr> 
+    <td> 
+      <p align="CENTER"><tt>%f</tt></p>
+    </td>
+    <td align="CENTER" nowrap=""> 
+      <p align="CENTER"><tt>float</tt></p>
+    </td>
+  </tr>
+  <tr> 
+    <td> 
+      <p align="CENTER"><tt>%lf</tt></p>
+    </td>
+    <td align="CENTER" nowrap=""> 
+      <p align="CENTER"><tt> double</tt></p>
+    </td>
+  </tr>
+  <tr> 
+    <td> 
+      <p align="CENTER"><tt>%s</tt></p>
+    </td>
+    <td align="CENTER"> 
+      <p align="CENTER">string</p>
+    </td>
+  </tr>
+  <tr align="CENTER"> 
+    <td><tt>%x</tt></td>
+    <td>hexadecimal</td>
+  </tr>
+</tbody></table>
+<p>To display a number in scientific notation, use<tt> %e</tt>. To display a percent sign, use <tt>%%</tt>.</p>
+<p><tt>%d</tt> is essentially the same as <tt>%i</tt> but I used <tt>%d</tt> from the very first day. LF stands for "long float".</p>
+<!--/C-->
+<!--/SS-->
+<!--SS-->
+<h2><hr><br>Warning</h2>
+<p>Don't try to display a (decimal) float/double number using the integer format specifier, <tt>%d</tt>, as this displays unexpected values! Similarly, don't use <tt>%f</tt> 
+  for displaying integers. Mixing <tt>%d</tt> with <tt>char</tt> variables, or <tt>%c</tt> with <tt>int</tt> variables is all right, as shown in this example: 
+  <!--/SS-->
+  <!--SS-->
+  <!--C-->
+</p><pre>#include &lt;stdio.h&gt;
+
+int main() {
+  int a = 72;
+  char b = 'A';
+  printf("a equals %d \n", a);
+  printf("a equals %c \n", a);
+  printf("b equals %d \n", b);
+  printf("b equals %c \n", b);
+}</pre>
+<!--/C-->
+<!--C-->
+<br>
+<table width="270" border="1" align="CENTER" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+  <tbody><tr align="LEFT" valign="TOP" nowrap=""> 
+    <td width="100%" bgcolor="#FFFFFF"> <code>a equals 72<br>
+      a equals H<br>
+      b equals 65<br>
+      b equals A<br>
+      </code> </td>
+  </tr>
+</tbody></table>
+<p>The reason why this works is because a character constant is just an integer from 0 to 255. </p>
+<!--/C-->
+<!--/SS-->
+<!--SS-->
+<h2><hr><br>Two or More Format Specifiers</h2>
+<!--C-->
+<p>You could use as many format specifiers as you want with <tt>printf</tt> - just as long as you pass the correct number of arguments. </p>
+<p>The ordering of the arguments matters. The first one should correspond to the first format specifier in the string and so on. Take this example: </p>
+<p><tt>printf("a=%d, b=%d, c=%d\n", a,b,c);</tt></p>
+<!--/C-->
+<!--C-->
+<p>If <tt>a</tt>, <tt>b</tt> and <tt>c</tt> were integers, this statement will print the values in the correct order. Rewriting the statement as... </p>
+<p><tt>printf("a=%d, b=%d, c=%d\n", c,a,b);</tt></p>
+<p>... would still cause the program to compile OK, but the values of <tt>a</tt>, <tt>b</tt> and <tt>c</tt> would be displayed in the wrong order! </p>
+<!--/C-->
+<!--/SS-->
+<!--SS-->
+<h2><hr><br>Minimum Field Width</h2> 
+<!--R--> 
+<!--C--> 
+<p>Suppose you want the program to display output that occupies a minimum number of spaces on the screen. You can achieve this by adding an integer value 
+  after the percent sign of a format specifier. </p> 
+<!--/C--> 
+<!--C--> 
+<p>For example, if you want to display an integer using a minimum of 8 spaces, you'd write <tt>%8d</tt> in your <tt>printf</tt> statement. </p> 
+<p>This example gives a demonstration: </p> 
+<!--/C--> 
+<!--/R--> 
+<!--R--> 
+<pre> 
+#include &lt;stdio.h&gt;
+ 
+int main() {
+  int x = 123;
+	
+  printf("Printing 123 using %%0d displays %0d\n", x);
+  printf("Printing 123 using %%1d displays %1d\n", x);
+  printf("Printing 123 using %%2d displays %2d\n", x);
+  printf("Printing 123 using %%3d displays %3d\n", x);
+  printf("Printing 123 using %%4d displays %4d\n", x);
+  printf("Printing 123 using %%5d displays %5d\n", x);
+  printf("Printing 123 using %%6d displays %6d\n", x);
+  printf("Printing 123 using %%7d displays %7d\n", x);
+  printf("Printing 123 using %%8d displays %8d\n", x);
+  printf("Printing 123 using %%9d displays %9d\n", x);
+	
+  return 0;
+}</pre> 
+<!--/R--> 
+<!--R--> 
+<p>Output: </p> 
+<table width="95%" border="1" align="CENTER" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC"> 
+  <tbody><tr align="LEFT" valign="TOP" nowrap=""> 
+    <td width="100%" bgcolor="#FFFFFF"> <code class="monospace">Printing 123 using %0d displays 123<br> 
+      Printing 123 using %1d displays 123<br> 
+      Printing 123 using %2d displays 123<br> 
+      Printing 123 using %3d displays 123<br> 
+      Printing 123 using %4d displays &nbsp;123<br> 
+      Printing 123 using %5d displays &nbsp; 123<br> 
+      Printing 123 using %6d displays &nbsp; &nbsp;123<br> 
+      Printing 123 using %7d displays &nbsp; &nbsp; 123<br> 
+      Printing 123 using %8d displays &nbsp; &nbsp; &nbsp;123<br> 
+      Printing 123 using %9d displays &nbsp; &nbsp; &nbsp; 123 </code> </td> 
+  </tr> 
+</tbody></table> 
+<p>Notice that in the first 4 cases, <tt>123</tt> is displayed in the same way as when you normally use <tt>%d</tt>. Why? Simple - the number 
+  of spaces on the screen that <tt>123</tt> can be displayed is greater than or equal to 3. </p> 
+<p>But also, if you write <tt>%09d</tt>, the program will display zeros before the number itself. In the above example, it will display: 
+</p> 
+<p><tt>Printing 123 using %09d displays 000000123</tt> <br> 
+</p> 
+<p> An advantage of using this, is that you can count the minimum field of the number!</p> 
+<!--/R--> 
+<!--/SS--> 
+<!--SS--> 
+<h2><hr><br>More Precision</h2> 
+<!--R--> 
+<!--C--> 
+<p>You can gain more control with the displaying of integers by placing a dot, followed by an integer, after the minimum field specifier. The dot and this 
+  integer is known as a <span class="RED">PRECISION SPECIFIER</span>. </p> 
+<p>The integer you add specifies the maximum field width when displaying an integer or string. </p> 
+          
+<!--/C--> 
+<!--C--> 
+<p>If you're using <tt>%f</tt>, the format specifier for floating point numbers, you can control the number of decimal places that is displayed (which is 
+  6 by default). How? By using the precision specifier. This time, the number after the dot is the number of decimal places. The number before the dot is 
+  still the minimum field width. </p> 
+<p>This example should help clarify things: </p> 
+          
+<!--/C--> 
+<!--/R--> 
+<!--R--> 
+<pre> 
+#include &lt;stdio.h&gt;
+ 
+int main() {
+  float x = 3.141592;
+  
+  printf("Printing 3.141592 using %%f \t displays %f\n", x);
+  printf("Printing 3.141592 using %%1.1f \t displays %1.1f\n", x);
+  printf("Printing 3.141592 using %%1.2f \t displays %1.2f\n", x);
+  printf("Printing 3.141592 using %%3.3f \t displays %3.3f\n", x);
+  printf("Printing 3.141592 using %%4.4f \t displays %4.4f\n", x);
+  printf("Printing 3.141592 using %%4.5f \t displays %4.5f\n", x);
+  printf("Printing 3.141592 using %%09.3f   displays %09.3f\n", x);
+  printf("Printing 3.141592 using %%-09.3f  displays %-09.3f\n", x);
+  printf("Printing 3.141592 using %%9.3f    displays %9.3f\n", x);
+  printf("Printing 3.141592 using %%-9.3f   displays %-9.3f\n", x);
+  
+  return 0;
+}</pre> 
+<!--/R--> 
+<!--R--> 
+<p>Output: </p> 
+<table width="95%" border="1" align="CENTER" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC"> 
+  <tbody><tr align="LEFT" valign="TOP" nowrap=""> 
+    <td width="100%" bgcolor="#FFFFFF"> <code class="monospace">Printing 3.141592 using %f &nbsp; &nbsp; &nbsp; displays 3.141592<br> 
+      Printing 3.141592 using %1.1f &nbsp; &nbsp;displays 3.1<br> 
+      Printing 3.141592 using %1.2f &nbsp; &nbsp;displays 3.14<br> 
+      Printing 3.141592 using %3.3f &nbsp; &nbsp;displays 3.142<br> 
+      Printing 3.141592 using %4.4f &nbsp; &nbsp;displays 3.1416<br> 
+      Printing 3.141592 using %4.5f &nbsp; &nbsp;displays 3.14159<br> 
+      Printing 3.141592 using %09.3f &nbsp; displays 00003.142<br> 
+      Printing 3.141592 using %-09.3f &nbsp;displays 3.142<br> 
+      Printing 3.141592 using %9.3f &nbsp; &nbsp;displays &nbsp; &nbsp; 3.142<br> 
+      Printing 3.141592 using %-9.3f &nbsp; displays 3.142<br> 
+      </code> </td> 
+  </tr> 
+</tbody></table> 
+<p>You may have noticed that if you use a negative value for the minimum width specifier, the output will not be affected by a zero after 
+  the minus sign. </p> 
+<p> Also, in the case for decimal numbers, the decimal point occupies a character space on the screen. </p> 
+<h2><hr><br><span class="blue">scanf</span></h2>
+<!--C-->
+
+<p>If you have multiple format specifiers within the string argument of <tt>scanf</tt>, you can input multiple values. All you need to do is to separate 
+  each format specifier with a <span class="RED">DELIMITER</span> - a string that separates variables. For convenience, the delimiter should be one character 
+  that's a punctuation mark, like a comma or a space. As a default, <tt>scanf</tt> stops reading in a value when space, tab or Enter is pressed. </p>
+<p>Consider <tt>scanf("%d %d", &amp;x, &amp;y);</tt></p>
+<p>(Assume that <tt>x</tt> and <tt>y</tt> have been declared beforehand!). </p>
+<p>If I entered: <tt>1 2</tt> and pressed Enter, <tt>1</tt> would get assigned to <tt>x</tt>, and <tt>2</tt> would get assigned to <tt>y</tt>. </p>
+<p>But if I entered <tt>1, 2</tt> and pressed Enter, <tt>x</tt> would equal <tt>1</tt>, but <tt>y</tt> won't get assigned <tt>2</tt> because <tt>scanf</tt> 
+  was not expecting a comma in the input string. </p>
+<!--/C-->
+<!--C-->
+<p>Now consider: </p>
+<p><tt> scanf("%d, %d, %d", &amp;x,&amp;y,&amp;z);</tt> </p>
+<p>If I entered <tt>1 2 3</tt> and pressed enter <tt>1</tt> would get assigned to <tt>x</tt> but <tt>2</tt> and <tt>3</tt> won't get assigned to <tt>y</tt> 
+  or <tt>z</tt>, simply because I didn't separate the numbers with commas. </p>
+<p>Entering <tt>1,2,3</tt> works, but why does <tt>1, 2, 3</tt> also work? <tt>scanf</tt> ignores spaces, tabs and carriage returns immediately after the 
+  delimiters. </p>
+<p>Just don't put a space, tab or carriage return before the delimiter! <tt>1 ,2, 3</tt> won't work. </p>
+<p>If you want the user to press return after each number, try something along the lines as: </p>
+<p><tt>scanf("%d\n%d\n%d", &amp;x,&amp;y,&amp;z); </tt></p>
+<p>Note that you shouldn't put a delimiter after the last format specifier! </p>
+<!--/C-->
+<!--/SS-->
+<!--SS-->
+<h2><hr><br>Tip</h2>
+<p>This is probably past the novice stage, but if you wanted to enter a value for a <tt>double</tt> variable using <tt>scanf</tt>, you need to use <tt>%lf</tt> 
+  as the format specifier - it's the specifier for a <tt>long float</tt> variable. </p>
+<!--/SS-->
+<!--SS-->
+
+<br>
+<br>
+
+
+
+</body></html>
